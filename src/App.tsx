@@ -1,25 +1,26 @@
-import { useState, useRef } from 'react';
-import { useReactToPrint } from 'react-to-print';
+
 import { Printer } from 'lucide-react';
-import QuoteHeader from './components/QuoteHeader';
-import ClientDetails from './components/ClientDetails';
-import ProjectSummary from './components/ProjectSummary';
-import Packages from './components/Packages';
-import ServicesList from './components/ServicesList';
-import PaymentTerms from './components/PaymentTerms';
-import Timeline from './components/Timeline';
-import Terms from './components/Terms';
 import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import { useReactToPrint } from 'react-to-print';
+import ProjectSummary from './components/ProjectSummary';
 import PrintableQuote from './components/PrintableQuote';
-import { graphicServices, webServices } from './data/services';
+import QuoteHeader from './components/QuoteHeader';
+import ServicesList from './components/ServicesList';
+import { useState, useRef } from 'react';
+import ClientDetails from './components/ClientDetails';
 import { QuoteInfo, ServiceItem } from './types';
+import Terms from './components/Terms';
+import PaymentTerms from './components/PaymentTerms';
+import Packages from './components/Packages';
+import Footer from './components/Footer';
+import Timeline from './components/Timeline';
+import { createServices } from './data/services';
+import { currentPricingVersion } from './data/pricing';
 
 function App() {
-  const [services, setServices] = useState<ServiceItem[]>([
-    ...graphicServices,
-    ...webServices
-  ]);
+  const [services, setServices] = useState<ServiceItem[]>(
+    createServices(currentPricingVersion)
+  );
 
   const quoteInfo: QuoteInfo = {
     id: 'PSP-2025-001',
@@ -35,8 +36,9 @@ function App() {
   };
 
   const printRef = useRef<HTMLDivElement>(null);
+  
   const handlePrint = useReactToPrint({
-    content: () => printRef.current,
+    contentRef: printRef,
     documentTitle: `PSPro_Arajanlat_${quoteInfo.id}`
   });
 

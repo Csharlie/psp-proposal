@@ -1,6 +1,8 @@
-import { packages } from '../data/services';
-import { ServiceItem } from '../types';
+
 import { Check } from 'lucide-react';
+import { servicePackages } from '../data/services';
+import { currentPricingVersion } from '../data/pricing';
+import { ServiceItem } from '../types';
 
 interface PackagesProps {
   allServices: ServiceItem[];
@@ -29,7 +31,7 @@ export default function Packages({ allServices, onSelectPackage }: PackagesProps
         Előre összeállított csomagok kedvezményes áron
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 print:gap-4">
-        {packages.map((pkg) => (
+        {servicePackages.map((pkg) => (
           <div
             key={pkg.name}
             className="border-2 border-gray-200 rounded-lg p-6 hover:border-gray-400 transition-all print:break-inside-avoid"
@@ -42,7 +44,7 @@ export default function Packages({ allServices, onSelectPackage }: PackagesProps
             </p>
             <div className="mb-4 pb-4 border-b border-gray-200">
               <p className="text-2xl font-medium text-gray-900">
-                {formatPrice(pkg.price)}
+                {formatPrice(pkg.prices[currentPricingVersion])}
               </p>
               <p className="text-xs text-gray-500">bruttó ár</p>
             </div>
