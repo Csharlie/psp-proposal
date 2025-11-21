@@ -28,51 +28,29 @@ const serviceDefinitions: ServiceBase[] = [
     id: 'wordpress-dev',
     category: 'Webfejlesztési szolgáltatások',
     name: 'WordPress és Elementor fejlesztés',
-    description: 'Modern, reszponzív WordPress weboldal Elementor builderrel',
+    description: 'Teljes körű WordPress weboldal Elementor page builderrel',
     prices: {
       premium: 350000,
-      standard: 280000,
-      basic: 200000,
+      standard: 250000,
+      basic: 180000,
     },
   },
   {
-    id: 'design-dev-package',
+    id: 'custom-web-dev',
     category: 'Webfejlesztési szolgáltatások',
-    name: 'Design + fejlesztés egyben',
-    description: 'Teljes körű megoldás a tervezéstől az éles indításig',
+    name: 'Egyedi webfejlesztés (React/Next.js)',
+    description: 'Modern, egyedi weboldal React vagy Next.js technológiával',
     prices: {
-      premium: 550000,
-      standard: 420000,
+      premium: 500000,
+      standard: 400000,
       basic: 300000,
     },
   },
   {
-    id: 'custom-modules',
+    id: 'responsive-design',
     category: 'Webfejlesztési szolgáltatások',
-    name: 'Egyedi modulok és logika',
-    description: 'Testreszabott funkciók, API integrációk, automatizálások',
-    prices: {
-      premium: 180000,
-      standard: 140000,
-      basic: 100000,
-    },
-  },
-  {
-    id: 'webshop',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Webshop funkciók',
-    description: 'WooCommerce webáruház beállítás és testreszabás',
-    prices: {
-      premium: 280000,
-      standard: 220000,
-      basic: 160000,
-    },
-  },
-  {
-    id: 'responsive-optimization',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Reszponzív optimalizálás',
-    description: 'Mobil és tablet nézetek finomhangolása',
+    name: 'Reszponzív design',
+    description: 'Mobilbarát, minden eszközön tökéletesen működő megjelenés',
     prices: {
       premium: 80000,
       standard: 60000,
@@ -80,405 +58,301 @@ const serviceDefinitions: ServiceBase[] = [
     },
   },
   {
-    id: 'content-upload',
+    id: 'seo-optimization',
     category: 'Webfejlesztési szolgáltatások',
-    name: 'Tartalomfeltöltés',
-    description: 'Szövegek, képek, videók feltöltése és formázása',
+    name: 'SEO optimalizálás',
+    description: 'Keresőoptimalizálás, meta tagek, sitemap, robots.txt',
     prices: {
-      premium: 60000,
-      standard: 45000,
-      basic: 30000,
-    },
-  },
-  {
-    id: 'basic-seo',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Alap SEO beállítások',
-    description: 'Keresőoptimalizálás, meta adatok, sitemap, alapvető SEO',
-    prices: {
-      premium: 70000,
-      standard: 55000,
-      basic: 40000,
-    },
-  },
-  {
-    id: 'advanced-seo',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Haladó SEO optimalizálás',
-    description: 'Részletes kulcsszókutatás, technikai SEO, link building stratégia',
-    prices: {
-      premium: 150000,
-      standard: 120000,
-      basic: 90000,
+      premium: 120000,
+      standard: 80000,
+      basic: 50000,
     },
   },
   {
     id: 'performance-optimization',
     category: 'Webfejlesztési szolgáltatások',
     name: 'Teljesítmény optimalizálás',
-    description: 'Gyorsítás, cache beállítás, képoptimalizálás, Core Web Vitals',
+    description: 'Gyors betöltés, képoptimalizálás, kód minifikálás',
     prices: {
       premium: 100000,
-      standard: 80000,
-      basic: 60000,
+      standard: 70000,
+      basic: 45000,
+    },
+  },
+
+  // E-commerce szolgáltatások
+  {
+    id: 'woocommerce-setup',
+    category: 'E-commerce szolgáltatások',
+    name: 'WooCommerce webshop',
+    description: 'Teljes körű webáruház WordPress WooCommerce-szel',
+    prices: {
+      premium: 450000,
+      standard: 350000,
+      basic: 250000,
     },
   },
   {
-    id: 'security-package',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Biztonsági csomag',
-    description: 'SSL, tűzfal, biztonsági mentések, malware védelem',
+    id: 'payment-integration',
+    category: 'E-commerce szolgáltatások',
+    name: 'Fizetési rendszer integráció',
+    description: 'Bankkártya, PayPal, Stripe, SimplePay integráció',
     prices: {
-      premium: 90000,
-      standard: 70000,
+      premium: 150000,
+      standard: 100000,
+      basic: 70000,
+    },
+  },
+  {
+    id: 'product-management',
+    category: 'E-commerce szolgáltatások',
+    name: 'Termékkezelő rendszer',
+    description: 'Termékek, kategóriák, készletkezelés, variációk',
+    prices: {
+      premium: 120000,
+      standard: 80000,
       basic: 50000,
     },
   },
   {
-    id: 'multilingual',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Többnyelvű weboldal',
-    description: 'WPML vagy Polylang integráció, 2-3 nyelv beállítása',
-    prices: {
-      premium: 120000,
-      standard: 95000,
-      basic: 70000,
-    },
-  },
-  {
-    id: 'booking-system',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Foglalási rendszer',
-    description: 'Online időpontfoglalás, naptár integráció',
-    prices: {
-      premium: 200000,
-      standard: 160000,
-      basic: 120000,
-    },
-  },
-  {
-    id: 'membership-system',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Tagsági rendszer',
-    description: 'Regisztráció, belépés, felhasználói profilok, tartalom korlátozás',
-    prices: {
-      premium: 250000,
-      standard: 200000,
-      basic: 150000,
-    },
-  },
-  {
-    id: 'blog-setup',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Blog funkció beállítás',
-    description: 'Blogmotor, kategóriák, címkék, kommentrendszer',
+    id: 'shipping-integration',
+    category: 'E-commerce szolgáltatások',
+    name: 'Szállítási módok beállítása',
+    description: 'Futárszolgálat integráció, szállítási díjak kalkuláció',
     prices: {
       premium: 80000,
       standard: 60000,
-      basic: 45000,
-    },
-  },
-  {
-    id: 'newsletter-integration',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Hírlevél integráció',
-    description: 'Mailchimp, Sendinblue vagy más rendszer bekötése',
-    prices: {
-      premium: 60000,
-      standard: 45000,
-      basic: 35000,
-    },
-  },
-  {
-    id: 'analytics-setup',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Analitika beállítás',
-    description: 'Google Analytics, Tag Manager, konverziók követése',
-    prices: {
-      premium: 70000,
-      standard: 55000,
       basic: 40000,
-    },
-  },
-  {
-    id: 'gdpr-compliance',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'GDPR megfelelőség',
-    description: 'Cookie banner, adatvédelmi nyilatkozat, hozzájárulás kezelés',
-    prices: {
-      premium: 80000,
-      standard: 60000,
-      basic: 45000,
-    },
-  },
-  {
-    id: 'maintenance',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Karbantartási csomag (havi)',
-    description: 'Havi support, frissítések, biztonsági mentések, monitoring',
-    prices: {
-      premium: 25000,
-      standard: 20000,
-      basic: 15000,
-    },
-  },
-  {
-    id: 'hosting-setup',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Tárhelyre telepítés',
-    description: 'Domain beállítás, tárhelyre feltöltés, éles indítás',
-    prices: {
-      premium: 50000,
-      standard: 40000,
-      basic: 30000,
-    },
-  },
-  {
-    id: 'migration',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Weboldal migráció',
-    description: 'Meglévő weboldal áthelyezése új tárhelyre vagy platformra',
-    prices: {
-      premium: 120000,
-      standard: 95000,
-      basic: 70000,
-    },
-  },
-  {
-    id: 'redesign',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Weboldal újratervezés',
-    description: 'Meglévő weboldal modern megjelenésre frissítése',
-    prices: {
-      premium: 400000,
-      standard: 320000,
-      basic: 240000,
-    },
-  },
-  {
-    id: 'landing-page',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Landing page készítés',
-    description: 'Egyoldalas konverziós céloldal kampányokhoz',
-    prices: {
-      premium: 150000,
-      standard: 120000,
-      basic: 90000,
-    },
-  },
-  {
-    id: 'portfolio-site',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Portfólió weboldal',
-    description: 'Kreatív bemutatkozó oldal galéria funkcióval',
-    prices: {
-      premium: 200000,
-      standard: 160000,
-      basic: 120000,
-    },
-  },
-  {
-    id: 'corporate-site',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Vállalati bemutatkozó oldal',
-    description: 'Professzionális céges weboldal 5-10 aloldallal',
-    prices: {
-      premium: 450000,
-      standard: 360000,
-      basic: 270000,
     },
   },
 
   // Grafikai tervezés
   {
     id: 'logo-design',
-    name: 'Logó tervezés',
-    description: 'Egyedi arculati logó készítése, 3 koncepcióban, végleges fájlok',
     category: 'Grafikai tervezés',
+    name: 'Logó tervezés',
+    description: 'Egyedi logó tervezés, 3 koncepció, végtelen módosítás',
     prices: {
       premium: 150000,
-      standard: 120000,
-      basic: 90000,
-    },
-  },
-  {
-    id: 'brand-identity',
-    name: 'Teljes arculattervezés',
-    description: 'Komplett vizuális arculat (logó, színpaletta, tipográfia, stílusútmutató)',
-    category: 'Grafikai tervezés',
-    prices: {
-      premium: 400000,
-      standard: 320000,
-      basic: 250000,
-    },
-  },
-  {
-    id: 'business-card',
-    name: 'Névjegykártya tervezés',
-    description: 'Kétoldalas névjegykártya design',
-    category: 'Grafikai tervezés',
-    prices: {
-      premium: 50000,
-      standard: 40000,
-      basic: 30000,
-    },
-  },
-  {
-    id: 'social-media-graphics',
-    name: 'Social media grafika csomag',
-    description: '10 db egyedi poszt design közösségi médiához',
-    category: 'Grafikai tervezés',
-    prices: {
-      premium: 120000,
-      standard: 90000,
-      basic: 70000,
-    },
-  },
-  {
-    id: 'print-materials',
-    name: 'Nyomdai anyagok',
-    description: 'Névjegykártya, levélpapír, mappák, szórólapok',
-    category: 'Grafikai tervezés',
-    prices: {
-      premium: 80000,
-      standard: 60000,
-      basic: 45000,
-    },
-  },
-  {
-    id: 'presentation-design',
-    name: 'Prezentáció design',
-    description: 'Egyedi PowerPoint vagy Keynote prezentáció',
-    category: 'Grafikai tervezés',
-    prices: {
-      premium: 100000,
-      standard: 80000,
+      standard: 100000,
       basic: 60000,
     },
   },
   {
-    id: 'infographic',
-    name: 'Infografika készítés',
-    description: 'Adatok vizualizálása egyedi grafikává',
+    id: 'brand-identity',
     category: 'Grafikai tervezés',
+    name: 'Arculattervezés',
+    description: 'Teljes vizuális arculat: logó, színek, tipográfia, stílusútmutató',
     prices: {
-      premium: 120000,
-      standard: 90000,
-      basic: 70000,
+      premium: 300000,
+      standard: 200000,
+      basic: 120000,
     },
   },
   {
-    id: 'flyer-design',
-    name: 'Flyer és brosúra tervezés',
-    description: 'Hirdetési anyagok, promóciós anyagok',
+    id: 'social-media-graphics',
     category: 'Grafikai tervezés',
+    name: 'Social media grafikák',
+    description: 'Facebook, Instagram, LinkedIn posztok és borítóképek',
     prices: {
-      premium: 90000,
-      standard: 70000,
-      basic: 50000,
+      premium: 80000,
+      standard: 60000,
+      basic: 40000,
     },
   },
   {
     id: 'banner-design',
-    name: 'Banner design',
-    description: 'Web és közösségi média banner',
     category: 'Grafikai tervezés',
+    name: 'Banner és hirdetés tervezés',
+    description: 'Online hirdetések, Google Ads, Facebook Ads grafikák',
     prices: {
       premium: 60000,
       standard: 45000,
       basic: 30000,
     },
   },
+
+  // Kiegészítő szolgáltatások
   {
-    id: 'packaging-design',
-    name: 'Csomagolás tervezés',
-    description: 'Termékcsomagolás, doboz, címke design',
-    category: 'Grafikai tervezés',
-    prices: {
-      premium: 150000,
-      standard: 120000,
-      basic: 90000,
-    },
-  },
-  {
-    id: 'editorial-design',
-    name: 'Szerkesztői design',
-    description: 'Cikk, hírlevél, újság szerkesztési design',
-    category: 'Grafikai tervezés',
+    id: 'content-creation',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Tartalomkészítés',
+    description: 'Szövegírás, képszerkesztés, tartalomfeltöltés',
     prices: {
       premium: 100000,
-      standard: 80000,
-      basic: 60000,
+      standard: 70000,
+      basic: 45000,
     },
   },
   {
-    id: 'illustration',
-    name: 'Illusztráció készítés',
-    description: 'Egyedi illusztrációk készítése szükség szerint',
-    category: 'Grafikai tervezés',
+    id: 'google-analytics',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Google Analytics beállítás',
+    description: 'Analitika telepítés, célok, konverziók követése',
+    prices: {
+      premium: 50000,
+      standard: 35000,
+      basic: 25000,
+    },
+  },
+  {
+    id: 'ssl-certificate',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'SSL tanúsítvány telepítés',
+    description: 'HTTPS beállítás, biztonságos kapcsolat',
+    prices: {
+      premium: 30000,
+      standard: 25000,
+      basic: 20000,
+    },
+  },
+  {
+    id: 'backup-setup',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Automatikus mentés beállítása',
+    description: 'Napi automatikus biztonsági mentés',
+    prices: {
+      premium: 40000,
+      standard: 30000,
+      basic: 20000,
+    },
+  },
+  {
+    id: 'training',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Oktatás és átadás',
+    description: 'Személyes oktatás a weboldal kezeléséhez',
+    prices: {
+      premium: 80000,
+      standard: 60000,
+      basic: 40000,
+    },
+  },
+  {
+    id: 'maintenance-monthly',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Havi karbantartás (1 év)',
+    description: 'Frissítések, biztonsági mentések, kisebb módosítások',
     prices: {
       premium: 180000,
-      standard: 140000,
-      basic: 100000,
+      standard: 120000,
+      basic: 72000,
     },
   },
 ];
 
-// Szolgáltatások konvertálása ServiceItem formátumra
-export const createServices = (pricingVersion: PricingVersion): ServiceItem[] => {
-  return serviceDefinitions.map(service => ({
-    id: service.id,
-    name: service.name,
-    description: service.description,
-    category: service.category,
-    price: service.prices[pricingVersion],
-    selected: false,
-  }));
-};
-
-// Csomagok definíciója
-export interface PackageDefinition {
+// Előre összeállított csomagok
+interface ServicePackage {
   name: string;
   description: string;
   services: string[];
+  discount: number;
   prices: Record<PricingVersion, number>;
 }
 
-export const servicePackages: PackageDefinition[] = [
+export const servicePackages: ServicePackage[] = [
   {
-    name: 'Starter csomag',
-    description: 'Ideális induló vállalkozásoknak',
-    services: ['ux-ui-design', 'wordpress-dev', 'basic-seo'],
+    name: 'Bemutatkozó csomag',
+    description: 'Ideális kisvállalkozásoknak és egyéni vállalkozóknak',
+    services: [
+      'ux-ui-design',
+      'wordpress-dev',
+      'responsive-design',
+      'seo-optimization',
+      'ssl-certificate',
+    ],
+    discount: 15,
     prices: {
-      premium: 520000,
-      standard: 400000,
-      basic: 280000,
+      premium: 595000,
+      standard: 445000,
+      basic: 315000,
     },
   },
   {
-    name: 'Business csomag',
-    description: 'Teljes körű online jelenlét',
-    services: ['design-dev-package', 'custom-modules', 'basic-seo', 'maintenance'],
+    name: 'Üzleti csomag',
+    description: 'Teljes körű online jelenlét professzionális megjelenéssel',
+    services: [
+      'ux-ui-design',
+      'custom-web-dev',
+      'responsive-design',
+      'seo-optimization',
+      'performance-optimization',
+      'google-analytics',
+      'ssl-certificate',
+      'training',
+    ],
+    discount: 20,
     prices: {
-      premium: 825000,
-      standard: 635000,
-      basic: 455000,
+      premium: 1040000,
+      standard: 800000,
+      basic: 600000,
     },
   },
   {
     name: 'E-commerce csomag',
-    description: 'Komplett webshop megoldás',
-    services: ['design-dev-package', 'webshop', 'basic-seo', 'maintenance'],
+    description: 'Komplett webáruház minden szükséges funkcióval',
+    services: [
+      'ux-ui-design',
+      'woocommerce-setup',
+      'responsive-design',
+      'payment-integration',
+      'product-management',
+      'shipping-integration',
+      'seo-optimization',
+      'ssl-certificate',
+      'training',
+      'maintenance-monthly',
+    ],
+    discount: 25,
     prices: {
-      premium: 925000,
-      standard: 715000,
-      basic: 515000,
+      premium: 1312500,
+      standard: 975000,
+      basic: 712500,
     },
   },
 ];
 
-// Export a jelenlegi árverziós szolgáltatásokat
-export { serviceDefinitions };
+// Szolgáltatások létrehozása a kiválasztott árverzioval
+export function createServices(pricingVersion: PricingVersion): ServiceItem[] {
+  return serviceDefinitions.map(service => ({
+    ...service,
+    price: service.prices[pricingVersion],
+    selected: false,
+  }));
+}
+
+// Ár formázás
+export function formatPrice(price: number): string {
+  return new Intl.NumberFormat('hu-HU', {
+    style: 'currency',
+    currency: 'HUF',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
+// Csomag teljes árának kiszámítása
+export function calculatePackagePrice(
+  serviceIds: string[],
+  pricingVersion: PricingVersion
+): number {
+  return serviceDefinitions
+    .filter(service => serviceIds.includes(service.id))
+    .reduce((sum, service) => sum + service.prices[pricingVersion], 0);
+}
+
+// Szolgáltatás ár lekérése ID alapján
+export function getServicePrice(serviceId: string, version: PricingVersion): number {
+  const service = serviceDefinitions.find(s => s.id === serviceId);
+  return service?.prices[version] || 0;
+}
+
+// Teljes ár számítása kiválasztott szolgáltatásokra
+export function getTotalPrice(serviceIds: string[], version: PricingVersion): number {
+  return serviceIds.reduce((total, id) => {
+    return total + getServicePrice(id, version);
+  }, 0);
+}
 
 export interface Service {
   id: string;
@@ -546,28 +420,6 @@ export const services: Service[] = [
   },
 ];
 
-// Segédfüggvény az ár lekérdezéséhez
-export const getServicePrice = (serviceId: string, version: PricingVersion): number => {
-  const service = services.find(s => s.id === serviceId);
-  return service?.prices[version] || 0;
-};
-
-// Segédfüggvény az összes ár kiszámításához
-export const getTotalPrice = (serviceIds: string[], version: PricingVersion): number => {
-  return serviceIds.reduce((total, id) => {
-    return total + getServicePrice(id, version);
-  }, 0);
-};
-
-// Formázott ár megjelenítése
-export const formatPrice = (price: number): string => {
-  return new Intl.NumberFormat('hu-HU', {
-    style: 'decimal',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price);
-};
-
 export const graphicServices: ServiceItem[] = [
   {
     id: 'logo-design',
@@ -619,205 +471,13 @@ export const graphicServices: ServiceItem[] = [
   }
 ];
 
-export const webServices: ServiceItem[] = [
-  {
-    id: 'ux-ui-design',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Weboldal UX/UI tervezés',
-    description: 'Felhasználói élmény és felület tervezés, wireframe, mockup',
-    price: 200000,
-    selected: false
-  },
-  {
-    id: 'wordpress-dev',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'WordPress és Elementor fejlesztés',
-    description: 'Modern, reszponzív WordPress weboldal Elementor builderrel',
-    price: 350000,
-    selected: false
-  },
-  {
-    id: 'design-dev-package',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Design + fejlesztés egyben',
-    description: 'Teljes körű megoldás a tervezéstől az éles indításig',
-    price: 550000,
-    selected: false
-  },
-  {
-    id: 'custom-modules',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Egyedi modulok és logika',
-    description: 'Testreszabott funkciók, API integrációk, automatizálások',
-    price: 180000,
-    selected: false
-  },
-  {
-    id: 'webshop',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Webshop funkciók',
-    description: 'WooCommerce webáruház beállítás és testreszabás',
-    price: 280000,
-    selected: false
-  },
-  {
-    id: 'responsive-optimization',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Reszponzív optimalizálás',
-    description: 'Mobil és tablet nézetek finomhangolása',
-    price: 80000,
-    selected: false
-  },
-  {
-    id: 'content-upload',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Tartalomfeltöltés',
-    description: 'Szövegek, képek, videók feltöltése és formázása',
-    price: 60000,
-    selected: false
-  },
-  {
-    id: 'basic-seo',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Alap SEO beállítások',
-    description: 'Keresőoptimalizálás, meta adatok, sitemap, alapvető SEO',
-    price: 70000,
-    selected: false
-  },
-  {
-    id: 'advanced-seo',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Haladó SEO optimalizálás',
-    description: 'Részletes kulcsszókutatás, technikai SEO, link building stratégia',
-    price: 150000,
-    selected: false
-  },
-  {
-    id: 'performance-optimization',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Teljesítmény optimalizálás',
-    description: 'Gyorsítás, cache beállítás, képoptimalizálás, Core Web Vitals',
-    price: 100000,
-    selected: false
-  },
-  {
-    id: 'security-package',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Biztonsági csomag',
-    description: 'SSL, tűzfal, biztonsági mentések, malware védelem',
-    price: 90000,
-    selected: false
-  },
-  {
-    id: 'multilingual',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Többnyelvű weboldal',
-    description: 'WPML vagy Polylang integráció, 2-3 nyelv beállítása',
-    price: 120000,
-    selected: false
-  },
-  {
-    id: 'booking-system',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Foglalási rendszer',
-    description: 'Online időpontfoglalás, naptár integráció',
-    price: 200000,
-    selected: false
-  },
-  {
-    id: 'membership-system',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Tagsági rendszer',
-    description: 'Regisztráció, belépés, felhasználói profilok, tartalom korlátozás',
-    price: 250000,
-    selected: false
-  },
-  {
-    id: 'blog-setup',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Blog funkció beállítás',
-    description: 'Blogmotor, kategóriák, címkék, kommentrendszer',
-    price: 80000,
-    selected: false
-  },
-  {
-    id: 'newsletter-integration',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Hírlevél integráció',
-    description: 'Mailchimp, Sendinblue vagy más rendszer bekötése',
-    price: 60000,
-    selected: false
-  },
-  {
-    id: 'analytics-setup',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Analitika beállítás',
-    description: 'Google Analytics, Tag Manager, konverziók követése',
-    price: 70000,
-    selected: false
-  },
-  {
-    id: 'gdpr-compliance',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'GDPR megfelelőség',
-    description: 'Cookie banner, adatvédelmi nyilatkozat, hozzájárulás kezelés',
-    price: 80000,
-    selected: false
-  },
-  {
-    id: 'maintenance',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Karbantartási csomag (havi)',
-    description: 'Havi support, frissítések, biztonsági mentések, monitoring',
-    price: 25000,
-    selected: false
-  },
-  {
-    id: 'hosting-setup',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Tárhelyre telepítés',
-    description: 'Domain beállítás, tárhelyre feltöltés, éles indítás',
-    price: 50000,
-    selected: false
-  },
-  {
-    id: 'migration',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Weboldal migráció',
-    description: 'Meglévő weboldal áthelyezése új tárhelyre vagy platformra',
-    price: 120000,
-    selected: false
-  },
-  {
-    id: 'redesign',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Weboldal újratervezés',
-    description: 'Meglévő weboldal modern megjelenésre frissítése',
-    price: 400000,
-    selected: false
-  },
-  {
-    id: 'landing-page',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Landing page készítés',
-    description: 'Egyoldalas konverziós céloldal kampányokhoz',
-    price: 150000,
-    selected: false
-  },
-  {
-    id: 'portfolio-site',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Portfólió weboldal',
-    description: 'Kreatív bemutatkozó oldal galéria funkcióval',
-    price: 200000,
-    selected: false
-  },
-  {
-    id: 'corporate-site',
-    category: 'Webfejlesztési szolgáltatások',
-    name: 'Vállalati bemutatkozó oldal',
-    description: 'Professzionális céges weboldal 5-10 aloldallal',
-    price: 450000,
-    selected: false
-  }
-];
+export const webServices: ServiceItem[] = createServices('standard').filter(
+  s => s.category === 'Webfejlesztési szolgáltatások'
+);
+
+export const graphicServicesLegacy: ServiceItem[] = createServices('standard').filter(
+  s => s.category === 'Grafikai tervezés'
+);
+
+// Export a szolgáltatás definíciókat
+export { serviceDefinitions };

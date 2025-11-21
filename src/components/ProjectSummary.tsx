@@ -1,39 +1,46 @@
-export default function ProjectSummary() {
+
+import { Briefcase } from 'lucide-react';
+import type { ProjectInfo } from '../types';
+
+interface ProjectSummaryProps {
+  projectInfo: ProjectInfo;
+}
+
+export default function ProjectSummary({ projectInfo }: ProjectSummaryProps) {
   return (
-    <section className="mb-8 print:mb-6">
-      <h2 className="text-lg font-medium text-gray-900 mb-4">
-        Projekt összefoglaló
-      </h2>
-      <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
-        <div>
-          <h3 className="font-medium text-gray-900 mb-1">A kihívás</h3>
-          <p>
-            Vállalkozása online jelenléte és vizuális identitása kulcsfontosságú a piaci
-            sikerhez. A megfelelő arculat és modern weboldal hiánya versenyhátrányt jelent.
-          </p>
-        </div>
-        <div>
-          <h3 className="font-medium text-gray-900 mb-1">A célunk</h3>
-          <p>
-            Olyan professzionális, letisztult megoldást nyújtunk, amely pontosan tükrözi
-            vállalkozása értékrendjét és segít hatékonyan elérni célközönségét.
-          </p>
-        </div>
-        <div>
-          <h3 className="font-medium text-gray-900 mb-1">Várható eredmény</h3>
-          <p>
-            Erős vizuális identitás, modern WordPress-alapú weboldal, amely felhasználóbarát,
-            keresőoptimalizált és teljes mértékben az Ön igényeire szabott.
-          </p>
-        </div>
-        <div>
-          <h3 className="font-medium text-gray-900 mb-1">PSPro hozzáadott érték</h3>
-          <p>
-            Design és fejlesztés egy kézben. Kreatív megoldások üzleti szemlélettel.
-            Átlátható kommunikáció és határidők. KKV-k valós igényeinek ismerete.
-          </p>
-        </div>
+    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <div className="flex items-center gap-3 mb-4">
+        <Briefcase className="w-6 h-6 text-blue-600" />
+        <h2 className="text-xl font-bold text-gray-900">Projekt összefoglaló</h2>
       </div>
-    </section>
+      
+      <div className="space-y-4">
+        <div>
+          <h3 className="font-semibold text-gray-900 mb-2">Projekt címe</h3>
+          <p className="text-gray-700">{projectInfo.title || 'Nincs megadva'}</p>
+        </div>
+        
+        <div>
+          <h3 className="font-semibold text-gray-900 mb-2">Leírás</h3>
+          <p className="text-gray-700">{projectInfo.description || 'Nincs megadva'}</p>
+        </div>
+        
+        <div>
+          <h3 className="font-semibold text-gray-900 mb-2">Időkeret</h3>
+          <p className="text-gray-700">{projectInfo.timeline || 'Nincs megadva'}</p>
+        </div>
+        
+        {projectInfo.deliverables && projectInfo.deliverables.length > 0 && (
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Eredmények</h3>
+            <ul className="list-disc list-inside space-y-1">
+              {projectInfo.deliverables.map((item, index) => (
+                <li key={index} className="text-gray-700">{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

@@ -1,40 +1,58 @@
 export type PricingVersion = 'premium' | 'standard' | 'basic';
 
-export interface PricingConfig {
-  deposit: number; // Előleg százalék
-  final: number; // Végső fizetés százalék
-  paymentDeadline: number; // Fizetési határidő (napok)
-  label: string; // Verzió neve
-  description: string; // Verzió leírása
+export interface PricingTier {
+  id: PricingVersion;
+  name: string;
+  description: string;
+  multiplier: number;
+  features: string[];
 }
 
-export const pricingVersions: Record<PricingVersion, PricingConfig> = {
-  premium: {
-    deposit: 25,
-    final: 75,
-    paymentDeadline: 8,
-    label: 'Prémium csomag',
-    description: 'Teljes körű szolgáltatás, gyors átfutási idővel',
+export const pricingTiers: PricingTier[] = [
+  {
+    id: 'basic',
+    name: 'Alap',
+    description: 'Kezdő vállalkozásoknak',
+    multiplier: 1.0,
+    features: [
+      'Alapvető funkciók',
+      'Email támogatás',
+      '1 hónap garancia',
+      '1 körös módosítás',
+    ],
   },
-  standard: {
-    deposit: 30,
-    final: 70,
-    paymentDeadline: 15,
-    label: 'Standard csomag',
-    description: 'Kiváló ár-érték arány, optimális megoldás',
+  {
+    id: 'standard',
+    name: 'Standard',
+    description: 'Legtöbbet választott csomag',
+    multiplier: 1.35,
+    features: [
+      'Minden alap funkció',
+      'Prioritásos támogatás',
+      '3 hónap garancia',
+      '2 körös módosítás',
+      'Alapvető SEO',
+    ],
   },
-  basic: {
-    deposit: 40,
-    final: 60,
-    paymentDeadline: 30,
-    label: 'Alap csomag',
-    description: 'Költséghatékony megoldás, alapvető funkciókkal',
+  {
+    id: 'premium',
+    name: 'Prémium',
+    description: 'Teljes körű megoldás',
+    multiplier: 1.75,
+    features: [
+      'Minden standard funkció',
+      '24/7 támogatás',
+      '6 hónap garancia',
+      'Korlátlan módosítás',
+      'Haladó SEO',
+      'Teljesítmény optimalizálás',
+      'Havi riport',
+    ],
   },
+];
+
+export const getDefaultPricingVersion = (): PricingVersion => 'standard';
+
+export const getPricingTier = (version: PricingVersion): PricingTier => {
+  return pricingTiers.find(tier => tier.id === version) || pricingTiers[1];
 };
-
-// Aktuális verzió kiválasztása - ITT VÁLTOZTASD MEG!
-export const currentPricingVersion: PricingVersion = 'standard';
-
-// Az aktuális verzióhoz tartozó config kinyer';
-
-export const getCurrentPricing = () => pricingVersions[currentPricingVersion];

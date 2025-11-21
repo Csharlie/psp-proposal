@@ -1,13 +1,13 @@
-import { forwardRef } from 'react';
-import { QRCodeSVG } from 'qrcode.react';
-import QuoteHeader from './QuoteHeader';
-import ClientDetails from './ClientDetails';
+import Terms from './Terms';
 import ProjectSummary from './ProjectSummary';
+import QuoteHeader from './QuoteHeader';
+import Footer from './Footer';
+import { QRCodeSVG } from 'qrcode.react';
 import ServicesList from './ServicesList';
 import PaymentTerms from './PaymentTerms';
-import Timeline from './Timeline';
-import Terms from './Terms';
-import Footer from './Footer';
+import { Timeline } from './Timeline';
+import { forwardRef } from 'react';
+import ClientDetails from './ClientDetails'; // Ez marad default import
 import { QuoteInfo, ServiceItem } from '../types';
 
 interface PrintableQuoteProps {
@@ -22,7 +22,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
       <div ref={ref} className="bg-white p-12 print:p-8 max-w-4xl mx-auto">
         <QuoteHeader quoteInfo={quoteInfo} />
         <ClientDetails clientInfo={quoteInfo.clientInfo} />
-        <ProjectSummary />
+        <ProjectSummary projectInfo={quoteInfo.projectInfo} />
         <ServicesList services={services} interactive={false} />
         <PaymentTerms />
         <Timeline />

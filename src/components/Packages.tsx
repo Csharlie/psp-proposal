@@ -1,70 +1,83 @@
 
-import { Check } from 'lucide-react';
-import { servicePackages } from '../data/services';
-import { currentPricingVersion } from '../data/pricing';
-import { ServiceItem } from '../types';
+import { Package, Star } from 'lucide-react';
+import { PricingVersion } from '../data/pricing';
+import { servicePackages, formatPrice } from '../data/services';
 
 interface PackagesProps {
-  allServices: ServiceItem[];
+  pricingVersion: PricingVersion;
   onSelectPackage: (serviceIds: string[]) => void;
 }
 
-export default function Packages({ allServices, onSelectPackage }: PackagesProps) {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('hu-HU', {
-      style: 'currency',
-      currency: 'HUF',
-      maximumFractionDigits: 0
-    }).format(price);
-  };
-
-  const getServiceName = (serviceId: string) => {
-    return allServices.find(s => s.id === serviceId)?.name || serviceId;
-  };
-
+export default function Packages({ pricingVersion, onSelectPackage }: PackagesProps) {
   return (
-    <section className="mb-8 print:mb-6">
-      <h2 className="text-lg font-medium text-gray-900 mb-4">
-        Csomagajánlatok
-      </h2>
-      <p className="text-sm text-gray-600 mb-6">
-        Előre összeállított csomagok kedvezményes áron
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 print:gap-4">
-        {servicePackages.map((pkg) => (
-          <div
-            key={pkg.name}
-            className="border-2 border-gray-200 rounded-lg p-6 hover:border-gray-400 transition-all print:break-inside-avoid"
-          >
-            <h3 className="text-xl font-medium text-gray-900 mb-2">
-              {pkg.name}
-            </h3>
-            <p className="text-sm text-gray-600 mb-4">
-              {pkg.description}
-            </p>
-            <div className="mb-4 pb-4 border-b border-gray-200">
-              <p className="text-2xl font-medium text-gray-900">
-                {formatPrice(pkg.prices[currentPricingVersion])}
-              </p>
-              <p className="text-xs text-gray-500">bruttó ár</p>
-            </div>
-            <ul className="space-y-2 mb-6">
-              {pkg.services.map((serviceId) => (
-                <li key={serviceId} className="flex items-start gap-2 text-sm">
-                  <Check className="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{getServiceName(serviceId)}</span>
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={() => onSelectPackage(pkg.services)}
-              className="w-full bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium print:hidden"
-            >
-              Csomag választása
-            </button>
-          </div>
-        ))}
+    <div className="mb-8 pb-8 border-b border-gray-200">
+      <div className="flex items-center gap-2 mb-4">
+        <Package className="w-6 h-6 text-blue-600" />
+        <h2 className="text-2xl font-bold text-gray-900">
+          Előre összeállított csomagok
+        </h2>
       </div>
-    </section>
+
+      <p className="text-gray-600 mb-6">
+        Válasszon előre összeállított csomagjaink közül, amelyek a leggyakoribb igényeket 
+        fedik le kedvezményes áron.
+      </p>
+
+      <div className="grid md:grid-cols-3 gap-6">
+        {servicePackages.map((pkg, index) => {
+          const price = pkg.prices[pricingVersion];
+          const discountedPrice = price * (1 - pkg.discount / 100);
+
+          return (
+            <div
+              key={index}
+              className="bg-white rounded-lg border-2 border-gray-200 hover:border-blue-300 transition-all overflow-hidden"
+            >
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+                <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
+                <p className="text-blue-100 text-sm">{pkg.description}</p>
+                
+                <div className="mt-4 flex items-baseline gap-2">
+                  <span className="text-3xl font-bold">{formatPrice(discountedPrice)}</span>
+                  <span className="text-blue-200 line-through text-sm">{formatPrice(price)}</span>
+                </div>
+                
+                <div className="mt-2 inline-flex items-center gap-1 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-semibold">
+                  <Star className="w-4 h-4 fill-current" />
+                  {pkg.discount}% megtakarítás
+                </div>
+              </div>
+
+              <div className="p-6">
+                <h4 className="font-semibold text-gray-900 mb-3">Tartalmazza:</h4>
+                <ul className="space-y-2 mb-6">
+                  {pkg.services.map((serviceId, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
+                      <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-1.5 flex-shrink-0"></div>
+                      <span>{serviceId}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={() => onSelectPackage(pkg.services)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Csomag kiválasztása
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <p className="text-sm text-gray-700">
+          <span className="font-semibold text-blue-800">Tipp:</span> A csomagok kiválasztása 
+          automatikusan bejelöli a bennük foglalt szolgáltatásokat. Ezt követően szabadon 
+          módosíthatja a kiválasztást egyedi igényei szerint.
+        </p>
+      </div>
+    </div>
   );
 }

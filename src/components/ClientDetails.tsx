@@ -1,3 +1,5 @@
+
+import { Building2, Mail, MapPin, Phone, User } from 'lucide-react';
 import { ClientInfo } from '../types';
 
 interface ClientDetailsProps {
@@ -6,34 +8,45 @@ interface ClientDetailsProps {
 
 export default function ClientDetails({ clientInfo }: ClientDetailsProps) {
   return (
-    <section className="bg-gray-50 p-6 rounded-lg mb-8 print:bg-white print:border print:border-gray-200 print:p-4 print:mb-6">
-      <h2 className="text-sm uppercase tracking-wider text-gray-500 mb-4 font-medium">
-        Ügyfél adatai
-      </h2>
-      <div className="space-y-2">
-        <div>
-          <p className="text-sm text-gray-500">Név / Vállalkozás</p>
-          <p className="text-base font-medium text-gray-900">{clientInfo.name}</p>
-        </div>
-        <div>
-          <p className="text-sm text-gray-500">Kapcsolattartó</p>
-          <p className="text-base text-gray-900">{clientInfo.contact}</p>
-        </div>
-        <div className="grid grid-cols-2 gap-4">
+    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 className="text-xl font-bold text-gray-900 mb-4">Ügyfél adatai</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex items-center gap-3">
+          <User className="w-5 h-5 text-gray-400" />
           <div>
-            <p className="text-sm text-gray-500">Telefon</p>
-            <p className="text-base text-gray-900">{clientInfo.phone}</p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-500">E-mail</p>
-            <p className="text-base text-gray-900">{clientInfo.email}</p>
+            <p className="text-sm text-gray-600">Név</p>
+            <p className="font-medium">{clientInfo.name || 'Nincs megadva'}</p>
           </div>
         </div>
-        <div>
-          <p className="text-sm text-gray-500">Számlázási cím</p>
-          <p className="text-base text-gray-900">{clientInfo.address}</p>
+        <div className="flex items-center gap-3">
+          <Building2 className="w-5 h-5 text-gray-400" />
+          <div>
+            <p className="text-sm text-gray-600">Cég</p>
+            <p className="font-medium">{clientInfo.company || 'Nincs megadva'}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <Mail className="w-5 h-5 text-gray-400" />
+          <div>
+            <p className="text-sm text-gray-600">Email</p>
+            <p className="font-medium">{clientInfo.email || 'Nincs megadva'}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <Phone className="w-5 h-5 text-gray-400" />
+          <div>
+            <p className="text-sm text-gray-600">Telefon</p>
+            <p className="font-medium">{clientInfo.phone || 'Nincs megadva'}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 md:col-span-2">
+          <MapPin className="w-5 h-5 text-gray-400" />
+          <div>
+            <p className="text-sm text-gray-600">Cím</p>
+            <p className="font-medium">{clientInfo.address || 'Nincs megadva'}</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

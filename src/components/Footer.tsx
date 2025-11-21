@@ -1,28 +1,25 @@
 import { Layers } from 'lucide-react';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="border-t-2 border-gray-200 pt-6 mt-8 print:pt-4 print:mt-6">
-      <div className="flex items-start justify-between gap-8">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <Layers className="w-5 h-5 text-gray-700" strokeWidth={1.5} />
-            <p className="font-medium text-gray-900">PSPro</p>
-          </div>
-          <p className="text-xs text-gray-600">Peter Sardy Productions</p>
-          <p className="text-xs text-gray-500 mt-1">
-            Professzionális grafika és webfejlesztés
-          </p>
-        </div>
-        <div className="text-right text-xs text-gray-600">
-          <p className="font-medium text-gray-900 mb-1">Kapcsolat</p>
-          <p>info@pspro.hu</p>
-          <p>+36 30 123 4567</p>
-          <p className="mt-2 text-gray-500">Budapest, Magyarország</p>
-        </div>
+    <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
+      <div className="mb-4">
+        <p className="font-semibold text-gray-900 mb-2">PSPro - Pesardy Péter E.V.</p>
+        <p>Professzionális webfejlesztés és grafikai tervezés</p>
       </div>
-      <div className="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-500 text-center">
-        <p>© {new Date().getFullYear()} PSPro – Peter Sardy Productions. Minden jog fenntartva.</p>
+      
+      <div className="space-y-1 mb-4">
+        <p>Email: hello@pspro.hu | Telefon: +36 30 123 4567</p>
+        <p>Székhely: Budapest, Magyarország</p>
+      </div>
+
+      <div className="pt-4 border-t border-gray-200">
+        <p>&copy; {currentYear} PSPro. Minden jog fenntartva.</p>
+        <p className="mt-2 text-xs text-gray-500">
+          Ez az árajánlat bizalmas információkat tartalmaz, kizárólag a címzett részére készült.
+        </p>
       </div>
     </footer>
   );

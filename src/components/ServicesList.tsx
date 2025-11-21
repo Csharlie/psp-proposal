@@ -3,11 +3,11 @@ import { ServiceItem } from '../types';
 
 interface ServicesListProps {
   services: ServiceItem[];
-  onToggle?: (id: string) => void;
+  onToggle?: (serviceId: string) => void;
   interactive?: boolean;
 }
 
-export default function ServicesList({ services, onToggle, interactive = true }: ServicesListProps) {
+export default function ServicesList({ services, onToggle, interactive }: ServicesListProps) {
   const VAT_RATE = 0.27;
 
   const calculatePrices = (netPrice: number) => {
@@ -16,21 +16,7 @@ export default function ServicesList({ services, onToggle, interactive = true }:
     return { vat, gross };
   };
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('hu-HU', {
-      style: 'currency',
-      currency: 'HUF',
-      maximumFractionDigits: 0
-    }).format(price);
-  };
-
-  const selectedServices = services.filter(s => s.selected);
-  const hasSelected = selectedServices.length > 0;
-
-  const total = selectedServices.reduce((sum, service) => sum + service.price, 0);
-  const totalVat = total * VAT_RATE;
-  const totalGross = total + totalVat;
-
+  // Szolgáltatások csoportosítása kategóriák szerint
   const groupedServices = services.reduce((acc, service) => {
     if (!acc[service.category]) {
       acc[service.category] = [];
@@ -40,87 +26,75 @@ export default function ServicesList({ services, onToggle, interactive = true }:
   }, {} as Record<string, ServiceItem[]>);
 
   return (
-    <section className="mb-8 print:mb-6">
-      <h2 className="text-lg font-medium text-gray-900 mb-4">
-        Szolgáltatások
+    <div className="mb-8 pb-8 border-b border-gray-200">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        Elérhető szolgáltatások
       </h2>
 
+      {interactive !== false && (
+        <p className="text-gray-600 mb-6">
+          Válassza ki a projekthez szükséges szolgáltatásokat. Kattintson a szolgáltatásra 
+          a kiválasztáshoz vagy eltávolításhoz.
+        </p>
+      )}
+
       {Object.entries(groupedServices).map(([category, categoryServices]) => (
-        <div key={category} className="mb-6">
-          <h3 className="text-sm font-medium text-gray-700 uppercase tracking-wider mb-3">
+        <div key={category} className="mb-8">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-200">
             {category}
           </h3>
-          <div className="space-y-2">
-            {categoryServices.map(service => {
-              const { vat, gross } = calculatePrices(service.price);
-              return (
-                <div
-                  key={service.id}
-                  className={`border rounded-lg p-4 transition-all print:break-inside-avoid ${
+          
+          <div className="grid md:grid-cols-2 gap-4">
+            {categoryServices.map((service) => (
+              <div
+                key={service.id}
+                onClick={() => interactive !== false && onToggle?.(service.id)}
+                className={`
+                  p-5 rounded-lg border-2 transition-all
+                  ${interactive === false ? 'cursor-default' : 'cursor-pointer'}
+                  ${
                     service.selected
-                      ? 'border-gray-800 bg-gray-50'
-                      : 'border-gray-200 bg-white'
-                  } ${interactive ? 'hover:border-gray-400 cursor-pointer' : ''}`}
-                  onClick={() => interactive && onToggle?.(service.id)}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-start gap-3">
-                        {interactive && (
-                          <input
-                            type="checkbox"
-                            checked={service.selected}
-                            onChange={() => onToggle?.(service.id)}
-                            className="mt-1 w-4 h-4 print:hidden"
-                            onClick={(e) => e.stopPropagation()}
-                          />
-                        )}
-                        <div className="flex-1">
-                          <h4 className="font-medium text-gray-900 mb-1">
-                            {service.name}
-                          </h4>
-                          <p className="text-sm text-gray-600">
-                            {service.description}
-                          </p>
-                        </div>
-                      </div>
+                      ? 'border-blue-500 bg-blue-50 shadow-md'
+                      : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm'
+                  }
+                `}
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 mt-1">
+                    {service.selected ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-blue-600">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-gray-400">
+                        <circle cx="12" cy="12" r="10"></circle>
+                      </svg>
+                    )}
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h4 className="font-semibold text-gray-900 leading-tight">
+                        {service.name}
+                      </h4>
+                      <span className={`
+                        text-sm font-bold whitespace-nowrap flex-shrink-0
+                        ${service.selected ? 'text-blue-600' : 'text-gray-700'}
+                      `}>
+                        {service.price} Ft
+                      </span>
                     </div>
-                    <div className="text-right flex-shrink-0">
-                      <p className="text-sm text-gray-500">Nettó</p>
-                      <p className="text-base font-medium text-gray-900">
-                        {formatPrice(service.price)}
-                      </p>
-                      <p className="text-xs text-gray-500 mt-1">
-                        ÁFA: {formatPrice(vat)}
-                      </p>
-                      <p className="text-sm font-medium text-gray-900">
-                        {formatPrice(gross)}
-                      </p>
-                    </div>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       ))}
-
-      {hasSelected && (
-        <div className="mt-6 border-t-2 border-gray-300 pt-4">
-          <div className="flex justify-between items-center text-sm text-gray-600 mb-2">
-            <span>Összesen nettó:</span>
-            <span className="font-medium">{formatPrice(total)}</span>
-          </div>
-          <div className="flex justify-between items-center text-sm text-gray-600 mb-2">
-            <span>ÁFA (27%):</span>
-            <span className="font-medium">{formatPrice(totalVat)}</span>
-          </div>
-          <div className="flex justify-between items-center text-lg font-medium text-gray-900">
-            <span>Végösszeg bruttó:</span>
-            <span>{formatPrice(totalGross)}</span>
-          </div>
-        </div>
-      )}
-    </section>
+    </div>
   );
 }

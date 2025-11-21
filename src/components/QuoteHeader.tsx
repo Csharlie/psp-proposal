@@ -1,45 +1,65 @@
-import { Layers } from 'lucide-react';
+
 import { QuoteInfo } from '../types';
+import { FileText } from 'lucide-react';
 
 interface QuoteHeaderProps {
-  quoteInfo: QuoteInfo;
+  quoteNumber?: string;
+  date?: string;
+  validityDays?: number;
+  quoteInfo?: QuoteInfo;
 }
 
-export default function QuoteHeader({ quoteInfo }: QuoteHeaderProps) {
-  const validUntil = new Date(quoteInfo.issueDate);
-  validUntil.setDate(validUntil.getDate() + quoteInfo.validityDays);
+export default function QuoteHeader({ quoteNumber, date, validityDays, quoteInfo }: QuoteHeaderProps) {
+  const info = quoteInfo || { quoteNumber, date, validityDays, issueDate: new Date().toISOString() };
+  const issueDate = new Date(info.issueDate || info.date || new Date());
+  const validUntil = new Date(issueDate);
+  validUntil.setDate(validUntil.getDate() + (info.validityDays || 0));
 
   return (
-    <header className="border-b-2 border-gray-200 pb-8 mb-8 print:pb-6 print:mb-6">
-      <div className="flex items-start justify-between">
+    <div className="mb-8 pb-8 border-b-2 border-gray-200">
+      <div className="flex items-start justify-between mb-6">
         <div>
-          <div className="flex items-center gap-3 mb-2">
-            <Layers className="w-8 h-8 text-gray-800" strokeWidth={1.5} />
-            <h1 className="text-3xl font-light text-gray-900">PSPro</h1>
+          <div className="flex items-center gap-3 mb-3">
+            <FileText className="w-8 h-8 text-blue-600" />
+            <h1 className="text-4xl font-bold text-gray-900">
+              Árajánlat
+            </h1>
           </div>
-          <p className="text-sm text-gray-600 font-light tracking-wide">
-            Peter Sardy Productions
-          </p>
-          <p className="text-xs text-gray-500 mt-1">
-            Grafika · Webfejlesztés · Kreatív design
-          </p>
+          <div className="space-y-1 text-sm text-gray-600">
+            <p>
+              <span className="font-semibold text-gray-700">Árajánlat száma:</span>{' '}
+              {info.quoteNumber || (info as QuoteInfo).id}
+            </p>
+            <p>
+              <span className="font-semibold text-gray-700">Kiállítás dátuma:</span>{' '}
+              {issueDate.toLocaleDateString('hu-HU', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </p>
+            <p>
+              <span className="font-semibold text-gray-700">Érvényesség:</span>{' '}
+              {validUntil.toLocaleDateString('hu-HU', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}-ig
+            </p>
+          </div>
         </div>
-
+        
         <div className="text-right">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">
-            Árajánlat
-          </p>
-          <p className="text-sm font-medium text-gray-900 mb-1">
-            #{quoteInfo.id}
-          </p>
-          <p className="text-xs text-gray-600">
-            Kiállítva: {new Date(quoteInfo.issueDate).toLocaleDateString('hu-HU')}
-          </p>
-          <p className="text-xs text-gray-600">
-            Érvényes: {validUntil.toLocaleDateString('hu-HU')}-ig
-          </p>
+          <div className="text-2xl font-bold text-gray-900 mb-2">
+            PSPro
+          </div>
+          <div className="text-sm text-gray-600 space-y-1">
+            <p>Pesardy Péter E.V.</p>
+            <p>Email: hello@pspro.hu</p>
+            <p>Tel: +36 30 123 4567</p>
+          </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 }
