@@ -20,7 +20,7 @@ export default function PaymentTerms() {
                 1
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Előleg - 50%</p>
+                <p className="font-semibold text-gray-900">Előleg - 20%</p>
                 <p className="text-sm text-gray-600">A megrendelés visszaigazolása után</p>
               </div>
             </div>
@@ -29,7 +29,7 @@ export default function PaymentTerms() {
                 2
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Végösszeg - 50%</p>
+                <p className="font-semibold text-gray-900">Végösszeg - 80%</p>
                 <p className="text-sm text-gray-600">A projekt sikeres átadása után</p>
               </div>
             </div>
