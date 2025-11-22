@@ -54,7 +54,7 @@ export default function QuoteHeader({ quoteNumber, date, validityDays, quoteInfo
             PSPro
           </div>
           <div className="text-sm text-gray-600 space-y-1">
-            <p>Pesardy Péter E.V.</p>
+            <p>Peter Sardy Productions</p>
             <p>Email: hello@pspro.hu</p>
             <p>Tel: +36 30 123 4567</p>
           </div>

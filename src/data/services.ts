@@ -24,6 +24,73 @@ interface ServicePackage {
 
 export const servicePackages: ServicePackage[] = [
   {
+    name: 'BASE / BUSINESS',
+    description: '1 oldalas Landing Page / Többoldalas Weboldal',
+    services: [
+      'ui-ux-design',
+      'custom-web-dev',
+      'responsive-design',
+      'seo-optimization',
+      'performance-optimization',
+      'google-analytics',
+      'ssl-certificate',
+      'training',
+    ],
+    discount: 20,
+    prices: {
+      premium: 259900,
+      standard: 219900,
+      basic: 179900,
+    },
+  },
+  {
+    name: 'PROFESSIONAL / E-COMMERCE',
+    description: 'Bővített Weboldal + Funkciók / Webshop rendszer',
+    services: [
+      'ui-ux-design',
+      'woocommerce-setup',
+      'responsive-design',
+      'payment-integration',
+      'product-management',
+      'shipping-integration',
+      'seo-optimization',
+      'ssl-certificate',
+      'training',
+      'maintenance-monthly',
+    ],
+    discount: 25,
+    prices: {
+      premium: 359900,
+      standard: 299900,
+      basic: 239900,
+    },
+  },
+  {
+    name: 'ENTERPRISE',
+    description: 'Nagyvállalati Webes Ökoszisztéma',
+    services: [
+      'ui-ux-design',
+      'woocommerce-setup',
+      'responsive-design',
+      'payment-integration',
+      'product-management',
+      'shipping-integration',
+      'seo-optimization',
+      'ssl-certificate',
+      'training',
+      'maintenance-monthly',
+    ],
+    discount: 25,
+    prices: {
+      premium: 399900,
+      standard: 359900,
+      basic: 319900,
+    },
+  },
+
+  // Website csomagok 
+
+  {
     name: 'STARTER - Mikrovállalkozói Landing Page',
     description: 'Ideális: magánszemélyek, kezdő vállalkozások, egy szolgáltatás vagy egyszerű bemutatkozó oldal.',
     services: [
@@ -125,6 +192,9 @@ export const servicePackages: ServicePackage[] = [
       basic: 519900,
     },
   },
+
+  // Graphic design csomagok
+
   {
     name: 'GRAFIKAI CSOMAG - Teljes Branding & Marketing Design',
     description: 'Ideális: weboldal mellé, KKV-knak, nagyvállalatoknak, vagy magánszemélyeknek, akik egységes vizuális identitást szeretnének.',

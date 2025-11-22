@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-600">
       <div className="mb-4">
-        <p className="font-semibold text-gray-900 mb-2">PSPro - Pesardy Péter E.V.</p>
+        <p className="font-semibold text-gray-900 mb-2">PSPro - Peter Sardy Productions</p>
         <p>Professzionális webfejlesztés és grafikai tervezés</p>
       </div>
       
