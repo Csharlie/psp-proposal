@@ -108,6 +108,21 @@ function App() {
           services={services}
           onToggle={handleServiceToggle}
         />
+
+        <div className="mt-8 mb-8 bg-white rounded-lg border border-gray-200 p-6 ">
+          <div className="flex justify-between mb-2">
+            <span className="text-gray-600">Összesen:</span>
+            <span className="font-semibold">{totalPrice.toLocaleString('hu-HU')} Ft</span>
+          </div>
+          <div className="flex justify-between mb-2">
+            <span className="text-gray-600">ÁFA (27%):</span>
+            <span className="font-semibold">{vatAmount.toLocaleString('hu-HU')} Ft</span>
+          </div>
+          <div className="flex justify-between border-t pt-2">
+            <span className="font-bold text-lg">Összesen ÁFA-val:</span>
+            <span className="font-bold text-lg text-blue-600">{totalWithVat.toLocaleString('hu-HU')} Ft</span>
+          </div>
+        </div>
         
         <Timeline />
         

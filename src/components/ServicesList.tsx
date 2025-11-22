@@ -26,7 +26,7 @@ export default function ServicesList({ services, onToggle, interactive }: Servic
   }, {} as Record<string, ServiceItem[]>);
 
   return (
-    <div className="mb-8 pb-8 border-b border-gray-200">
+    <div className="mb-8 border-b border-gray-200">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">
         Elérhető szolgáltatások
       </h2>
