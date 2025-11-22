@@ -11,6 +11,79 @@ interface ServiceBase {
   prices: Record<PricingVersion, number>;
 }
 
+
+
+// Előre összeállított csomagok
+interface ServicePackage {
+  name: string;
+  description: string;
+  services: string[];
+  discount: number;
+  prices: Record<PricingVersion, number>;
+}
+
+export const servicePackages: ServicePackage[] = [
+  {
+    name: 'Bemutatkozó csomag',
+    description: 'Ideális kisvállalkozásoknak és egyéni vállalkozóknak',
+    services: [
+      'ux-ui-design',
+      'wordpress-dev',
+      'responsive-design',
+      'seo-optimization',
+      'ssl-certificate',
+    ],
+    discount: 15,
+    prices: {
+      premium: 595000,
+      standard: 445000,
+      basic: 315000,
+    },
+  },
+  {
+    name: 'Üzleti csomag',
+    description: 'Teljes körű online jelenlét professzionális megjelenéssel',
+    services: [
+      'ux-ui-design',
+      'custom-web-dev',
+      'responsive-design',
+      'seo-optimization',
+      'performance-optimization',
+      'google-analytics',
+      'ssl-certificate',
+      'training',
+    ],
+    discount: 20,
+    prices: {
+      premium: 1040000,
+      standard: 800000,
+      basic: 600000,
+    },
+  },
+  {
+    name: 'E-commerce csomag',
+    description: 'Komplett webáruház minden szükséges funkcióval',
+    services: [
+      'ux-ui-design',
+      'woocommerce-setup',
+      'responsive-design',
+      'payment-integration',
+      'product-management',
+      'shipping-integration',
+      'seo-optimization',
+      'ssl-certificate',
+      'training',
+      'maintenance-monthly',
+    ],
+    discount: 25,
+    prices: {
+      premium: 1312500,
+      standard: 975000,
+      basic: 712500,
+    },
+  },
+];
+
 const serviceDefinitions: ServiceBase[] = [
   // Webfejlesztési szolgáltatások
   {
@@ -237,77 +310,6 @@ const serviceDefinitions: ServiceBase[] = [
       premium: 180000,
       standard: 120000,
       basic: 72000,
-    },
-  },
-];
-
-// Előre összeállított csomagok
-interface ServicePackage {
-  name: string;
-  description: string;
-  services: string[];
-  discount: number;
-  prices: Record<PricingVersion, number>;
-}
-
-export const servicePackages: ServicePackage[] = [
-  {
-    name: 'Bemutatkozó csomag',
-    description: 'Ideális kisvállalkozásoknak és egyéni vállalkozóknak',
-    services: [
-      'ux-ui-design',
-      'wordpress-dev',
-      'responsive-design',
-      'seo-optimization',
-      'ssl-certificate',
-    ],
-    discount: 15,
-    prices: {
-      premium: 595000,
-      standard: 445000,
-      basic: 315000,
-    },
-  },
-  {
-    name: 'Üzleti csomag',
-    description: 'Teljes körű online jelenlét professzionális megjelenéssel',
-    services: [
-      'ux-ui-design',
-      'custom-web-dev',
-      'responsive-design',
-      'seo-optimization',
-      'performance-optimization',
-      'google-analytics',
-      'ssl-certificate',
-      'training',
-    ],
-    discount: 20,
-    prices: {
-      premium: 1040000,
-      standard: 800000,
-      basic: 600000,
-    },
-  },
-  {
-    name: 'E-commerce csomag',
-    description: 'Komplett webáruház minden szükséges funkcióval',
-    services: [
-      'ux-ui-design',
-      'woocommerce-setup',
-      'responsive-design',
-      'payment-integration',
-      'product-management',
-      'shipping-integration',
-      'seo-optimization',
-      'ssl-certificate',
-      'training',
-      'maintenance-monthly',
-    ],
-    discount: 25,
-    prices: {
-      premium: 1312500,
-      standard: 975000,
-      basic: 712500,
     },
   },
 ];

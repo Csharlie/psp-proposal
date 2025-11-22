@@ -1,14 +1,18 @@
 
+import { servicePackages, formatPrice, serviceDefinitions } from '../data/services';
 import { Package, Star } from 'lucide-react';
-import { PricingVersion } from '../data/pricing';
-import { servicePackages, formatPrice } from '../data/services';
 
 interface PackagesProps {
-  pricingVersion: PricingVersion;
+  pricingVersion: 'premium' | 'standard' | 'basic';
   onSelectPackage: (serviceIds: string[]) => void;
 }
 
 export default function Packages({ pricingVersion, onSelectPackage }: PackagesProps) {
+  const getServiceName = (serviceId: string): string => {
+    const service = serviceDefinitions.find(s => s.id === serviceId);
+    return service?.name || serviceId;
+  };
+
   return (
     <div className="mb-8 pb-8 border-b border-gray-200">
       <div className="flex items-center gap-2 mb-4">
@@ -54,7 +58,7 @@ export default function Packages({ pricingVersion, onSelectPackage }: PackagesPr
                   {pkg.services.map((serviceId, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
                       <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mt-1.5 flex-shrink-0"></div>
-                      <span>{serviceId}</span>
+                      <span>{getServiceName(serviceId)}</span>
                     </li>
                   ))}
                 </ul>

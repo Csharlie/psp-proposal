@@ -1,5 +1,6 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { dataService } from './services/dataService';
 import QuoteHeader from './components/QuoteHeader';
 import ClientDetails from './components/ClientDetails';
 import ServicesList from './components/ServicesList';
@@ -11,35 +12,38 @@ import Terms from './components/Terms';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import PrintableQuote from './components/PrintableQuote';
-import { createServices } from './data/services';
-import { getDefaultPricingVersion } from './data/pricing';
 import type { ServiceItem, QuoteInfo } from './types';
 
 function App() {
-  const [pricingVersion] = useState(getDefaultPricingVersion());
-  const [services, setServices] = useState<ServiceItem[]>(() => createServices(pricingVersion));
-  
-  const [quoteInfo] = useState<QuoteInfo>({
-    id: 'PSP-2024-001',
-    issueDate: new Date().toISOString(),
-    quoteNumber: 'PSP-2024-001',
-    date: new Date().toLocaleDateString('hu-HU'),
-    validityDays: 30,
-    pricingVersion,
-    clientInfo: {
-      name: '',
-      company: '',
-      email: '',
-      phone: '',
-      address: '',
-    },
-    projectInfo: {
-      title: '',
-      description: '',
-      timeline: '',
-      deliverables: [],
-    },
-  });
+  const [pricingVersion, setPricingVersion] = useState<'premium' | 'standard' | 'basic'>('premium');
+  const [services, setServices] = useState<ServiceItem[]>([]);
+  const [quoteInfo, setQuoteInfo] = useState<QuoteInfo | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        const [pricingVer, servicesData, quoteData] = await Promise.all([
+          dataService.getPricingVersion(),
+          dataService.getServices(),
+          dataService.getQuoteInfo(),
+        ]);
+        
+        setPricingVersion(pricingVer);
+        setServices(servicesData);
+        setQuoteInfo(quoteData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Hiba az adatok betöltésekor');
+        console.error('Data loading error:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, []);
 
   const handleServiceToggle = (serviceId: string) => {
     setServices(prev =>
@@ -56,6 +60,28 @@ function App() {
   const vatAmount = totalPrice * 0.27;
   const totalWithVat = totalPrice + vatAmount;
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Adatok betöltése...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !quoteInfo) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 font-semibold mb-2">Hiba!</p>
+          <p className="text-gray-600">{error || 'Az adatok nem érhetők el'}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -63,12 +89,7 @@ function App() {
         
         <ClientDetails clientInfo={quoteInfo.clientInfo} />
         
-        <ProjectSummary projectInfo={quoteInfo.projectInfo} />
-        
-        <ServicesList 
-          services={services}
-          onToggle={handleServiceToggle}
-        />
+        <ProjectSummary projectInfo={quoteInfo.projectInfo} />        
         
         <Packages 
           pricingVersion={pricingVersion}
@@ -81,6 +102,11 @@ function App() {
               )
             );
           }}
+        />
+        
+        <ServicesList 
+          services={services}
+          onToggle={handleServiceToggle}
         />
         
         <Timeline />
