@@ -1,5 +1,6 @@
 
 import { ServiceItem, QuoteInfo } from '../types';
+import { getConfig } from '../clients';
 
 // Adapter interfész
 export interface IDataProvider {
@@ -10,39 +11,46 @@ export interface IDataProvider {
 
 // Jelenlegi helyi implementáció
 class LocalDataProvider implements IDataProvider {
+  private clientKey: string;
+  
+  constructor(clientKey: string = 'startup-xyz') {
+    this.clientKey = clientKey;
+  }
+
   async getServices(): Promise<ServiceItem[]> {
+    const config = getConfig(this.clientKey);
     const { createServices } = await import('../data/services');
-    const pricingVersion = await this.getPricingVersion();
-    return createServices(pricingVersion);
+    return createServices(config.pricingVersion);
   }
 
   async getQuoteInfo(): Promise<QuoteInfo> {
+    const config = getConfig(this.clientKey);
     return {
-      id: 'PSP-2024-001',
-      issueDate: new Date().toISOString(),
-      quoteNumber: 'PSP-2024-001',
-      date: new Date().toLocaleDateString('hu-HU'),
-      validityDays: 30,
-      pricingVersion: await this.getPricingVersion(),
+      id: config.quote.id,
+      issueDate: config.quote.issueDate,
+      quoteNumber: config.quote.id,
+      date: new Date(config.quote.issueDate).toLocaleDateString('hu-HU'),
+      validityDays: config.quote.validityDays,
+      pricingVersion: config.pricingVersion,
       clientInfo: {
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        address: '',
+        name: config.client.contact,
+        company: config.client.name,
+        email: config.client.email,
+        phone: config.client.phone,
+        address: config.client.address || '',
       },
       projectInfo: {
-        title: '',
-        description: '',
-        timeline: '',
-        deliverables: [],
+        title: config.project.title,
+        description: config.project.description,
+        timeline: config.project.timeline || '',
+        deliverables: config.project.deliverables || [],
       },
     };
   }
 
   async getPricingVersion(): Promise<'premium' | 'standard' | 'basic'> {
-    const { getDefaultPricingVersion } = await import('../data/pricing');
-    return getDefaultPricingVersion();
+    const config = getConfig(this.clientKey);
+    return config.pricingVersion;
   }
 }
 
@@ -76,16 +84,16 @@ class WordPressDataProvider implements IDataProvider {
 
 // Factory pattern
 export class DataServiceFactory {
-  static create(): IDataProvider {
+  static create(clientKey: string = 'startup-xyz'): IDataProvider {
     const useWordPress = import.meta.env.VITE_USE_WORDPRESS === 'true';
     
     if (useWordPress) {
       return new WordPressDataProvider();
     }
     
-    return new LocalDataProvider();
+    return new LocalDataProvider(clientKey);
   }
 }
 
 // Export singleton
-export const dataService = DataServiceFactory.create();
+export const dataService = DataServiceFactory.create('startup-xyz');
