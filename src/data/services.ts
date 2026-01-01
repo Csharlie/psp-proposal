@@ -447,6 +447,41 @@ const serviceDefinitions: ServiceBase[] = [
       basic: 45000,
     },
   },
+
+  // AutoZeno specifikus szolgáltatások
+  {
+    id: 'landing-page',
+    category: 'Webfejlesztési szolgáltatások',
+    name: 'Konverzió-központú Landing Page',
+    description: 'Egyoldalas, konverzióra optimalizált bemutatkozó oldal mobilra optimalizálva',
+    prices: {
+      premium: 220000,
+      standard: 180000,
+      basic: 140000,
+    },
+  },
+  {
+    id: 'car-catalog-system',
+    category: 'E-commerce szolgáltatások',
+    name: 'Autókatalógus Rendszer',
+    description: 'Járműadatbázis haladó szűrőkkel, részletes járműadatokkal és érdeklődési űrlappal',
+    prices: {
+      premium: 400000,
+      standard: 320000,
+      basic: 250000,
+    },
+  },
+  {
+    id: 'domain-hosting',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Domain & Tárhely Beállítás',
+    description: 'Egyedi domain regisztráció, 1 év prémium tárhely, SSL tanúsítvány, email címek',
+    prices: {
+      premium: 30000,
+      standard: 25000,
+      basic: 20000,
+    },
+  },
   {
     id: 'custom-web-dev',
     category: 'Kiegészítő szolgáltatások',
