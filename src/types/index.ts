@@ -27,6 +27,12 @@ export interface QuoteInfo {
   projectInfo: ProjectInfo;
   pricingVersion: PricingVersion;
   notes?: string;
+  customTexts?: {
+    introduction?: string;
+    conclusion?: string;
+    paymentTerms?: string;
+    additionalTerms?: string;
+  };
 }
 
 export interface ServiceItem {

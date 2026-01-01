@@ -26,7 +26,7 @@ export const autozenoConfig: ClientConfig = {
   },
   
   quote: {
-    id: 'PSP-2026-003',
+    id: 'PSP-2026-001',
     issueDate: new Date().toISOString(),
     validityDays: 30
   },
@@ -42,10 +42,10 @@ export const autozenoConfig: ClientConfig = {
   
   // Egyedi árak az AutoZeno projektre
   customPrices: {
-    'landing-page': 180000,           // Konverzió-központú landing page
-    'car-catalog-system': 320000,     // Autókatalógus rendszer szűrőkkel
-    'domain-hosting': 25000,          // Domain + 1 év tárhely + SSL
-    'maintenance-monthly': 35000      // Havi karbantartás (kezdő ár)
+    'landing-page': 119000,           // Konverzió-központú landing page
+    'car-catalog-system': 219000,     // Autókatalógus rendszer szűrőkkel
+    'domain-hosting': 29000,          // Domain + 1 év tárhely + SSL
+    'maintenance-monthly': 9900     // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
   },
   
   customTexts: {

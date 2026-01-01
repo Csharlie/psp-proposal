@@ -12,6 +12,7 @@ import Terms from './components/Terms';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import PrintableQuote from './components/PrintableQuote';
+import { CustomContent } from './components/CustomContent';
 import type { ServiceItem, QuoteInfo } from './types';
 
 function App() {
@@ -89,30 +90,36 @@ function App() {
         
         <ClientDetails clientInfo={quoteInfo.clientInfo} />
         
-        <ProjectSummary projectInfo={quoteInfo.projectInfo} />        
+        <ProjectSummary projectInfo={quoteInfo.projectInfo} />
         
-        {/* Packages és egyedi szolgáltatás kiválasztás később kerül hozzáadásra */}
-        {/*
-        <Packages 
-          pricingVersion={pricingVersion}
-          onSelectPackage={(serviceIds) => {
-            setServices(prev =>
-              prev.map(service =>
-                serviceIds.includes(service.id)
-                  ? { ...service, selected: true }
-                  : service
-              )
-            );
-          }}
-        />
+        {/* Egyedi bevezető szöveg megjelenítése - IDEIGLENESEN ELREJTVE */}
+        {/* {quoteInfo.customTexts?.introduction && (
+          <CustomContent content={quoteInfo.customTexts.introduction} className="mt-8" />
+        )} */}
         
-        <ServicesList 
-          services={services}
-          onToggle={handleServiceToggle}
-        />
-        */}
+        {/* Szolgáltatások listája - kártya szerű megjelenés */}
+        {selectedServices.length > 0 && (
+          <div className="mt-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Kiválasztott Szolgáltatások</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              {selectedServices.map(service => (
+                <div key={service.id} className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 className="font-semibold text-xl text-gray-900 mb-3">{service.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4 flex-grow">{service.description}</p>
+                  <div className="mt-auto pt-4 border-t border-gray-100">
+                    <p className="font-bold text-2xl text-blue-600">
+                      {service.price.toLocaleString('hu-HU')} Ft
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-        <div className="mt-8 mb-8 bg-white rounded-lg border border-gray-200 p-6 ">
+        {/* Árazási összesítő - teljes szélességű */}
+        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Árazási Összesítő</h2>
           <div className="flex justify-between mb-2">
             <span className="text-gray-600">Összesen:</span>
             <span className="font-semibold">{totalPrice.toLocaleString('hu-HU')} Ft</span>
@@ -121,17 +128,33 @@ function App() {
             <span className="text-gray-600">ÁFA (27%):</span>
             <span className="font-semibold">{vatAmount.toLocaleString('hu-HU')} Ft</span>
           </div>
-          <div className="flex justify-between border-t pt-2">
+          <div className="flex justify-between border-t pt-2 mt-2">
             <span className="font-bold text-lg">Összesen ÁFA-val:</span>
             <span className="font-bold text-lg text-blue-600">{totalWithVat.toLocaleString('hu-HU')} Ft</span>
           </div>
         </div>
         
-        <Timeline />
+        {/* Egyedi záró szöveg megjelenítése - IDEIGLENESEN ELREJTVE */}
+        {/* {quoteInfo.customTexts?.conclusion && (
+          <CustomContent content={quoteInfo.customTexts.conclusion} className="mt-8" />
+        )} */}
         
-        <PaymentTerms />
+        {/* Projekt ütemezés - IDEIGLENESEN ELREJTVE */}
+        {/* <Timeline /> */}
         
-        <Terms />
+        {/* Fizetési feltételek - IDEIGLENESEN ELREJTVE */}
+        {/* {quoteInfo.customTexts?.paymentTerms ? (
+          <CustomContent content={quoteInfo.customTexts.paymentTerms} className="mt-8" />
+        ) : (
+          <PaymentTerms />
+        )} */}
+        
+        {/* További feltételek - IDEIGLENESEN ELREJTVE */}
+        {/* {quoteInfo.customTexts?.additionalTerms ? (
+          <CustomContent content={quoteInfo.customTexts.additionalTerms} className="mt-8" />
+        ) : (
+          <Terms />
+        )} */}
         
         <ContactSection />
         

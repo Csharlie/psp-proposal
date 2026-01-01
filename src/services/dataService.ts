@@ -20,7 +20,23 @@ class LocalDataProvider implements IDataProvider {
   async getServices(): Promise<ServiceItem[]> {
     const config = getConfig(this.clientKey);
     const { createServices } = await import('../data/services');
-    return createServices(config.pricingVersion);
+    let services = createServices(config.pricingVersion);
+    
+    // Csak a kiválasztott szolgáltatásokat tartjuk meg, a selectedServices sorrendjében
+    services = config.selectedServices
+      .map(id => services.find(s => s.id === id))
+      .filter((s): s is ServiceItem => s !== undefined);
+    
+    // Egyedi árak alkalmazása, ha vannak
+    if (config.customPrices) {
+      services = services.map(service => ({
+        ...service,
+        price: config.customPrices?.[service.id] ?? service.price,
+        selected: true, // AutoZeno esetében minden szolgáltatás kiválasztva
+      }));
+    }
+    
+    return services;
   }
 
   async getQuoteInfo(): Promise<QuoteInfo> {
@@ -45,6 +61,7 @@ class LocalDataProvider implements IDataProvider {
         timeline: config.project.timeline || '',
         deliverables: config.project.deliverables || [],
       },
+      customTexts: config.customTexts,
     };
   }
 

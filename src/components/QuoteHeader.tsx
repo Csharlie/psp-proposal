@@ -16,8 +16,8 @@ export default function QuoteHeader({ quoteNumber, date, validityDays, quoteInfo
   validUntil.setDate(validUntil.getDate() + (info.validityDays || 0));
 
   return (
-    <div className="mb-8 pb-8 border-b-2 border-gray-200">
-      <div className="flex items-start justify-between mb-6">
+    <div className="mb-8">
+      <div className="flex items-start justify-between">
         <div>
           <div className="flex items-center gap-3 mb-3">
             <FileText className="w-8 h-8 text-blue-600" />
@@ -56,7 +56,7 @@ export default function QuoteHeader({ quoteNumber, date, validityDays, quoteInfo
           <div className="text-sm text-gray-600 space-y-1">
             <p>Peter Sardy Productions</p>
             <p>Email: hello@pspro.hu</p>
-            <p>Tel: +36 30 123 4567</p>
+            <p>Tel: +36 30 512 8221</p>
           </div>
         </div>
       </div>
