@@ -13,7 +13,7 @@ export interface IDataProvider {
 class LocalDataProvider implements IDataProvider {
   private clientKey: string;
   
-  constructor(clientKey: string = 'startup-xyz') {
+  constructor(clientKey: string = 'autozeno') {
     this.clientKey = clientKey;
   }
 
@@ -84,7 +84,7 @@ class WordPressDataProvider implements IDataProvider {
 
 // Factory pattern
 export class DataServiceFactory {
-  static create(clientKey: string = 'startup-xyz'): IDataProvider {
+  static create(clientKey: string = 'autozeno'): IDataProvider {
     const useWordPress = import.meta.env.VITE_USE_WORDPRESS === 'true';
     
     if (useWordPress) {
@@ -96,4 +96,4 @@ export class DataServiceFactory {
 }
 
 // Export singleton
-export const dataService = DataServiceFactory.create('startup-xyz');
+export const dataService = DataServiceFactory.create('autozeno');
