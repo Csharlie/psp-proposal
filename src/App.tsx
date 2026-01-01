@@ -91,6 +91,8 @@ function App() {
         
         <ProjectSummary projectInfo={quoteInfo.projectInfo} />        
         
+        {/* Packages és egyedi szolgáltatás kiválasztás később kerül hozzáadásra */}
+        {/*
         <Packages 
           pricingVersion={pricingVersion}
           onSelectPackage={(serviceIds) => {
@@ -108,6 +110,7 @@ function App() {
           services={services}
           onToggle={handleServiceToggle}
         />
+        */}
 
         <div className="mt-8 mb-8 bg-white rounded-lg border border-gray-200 p-6 ">
           <div className="flex justify-between mb-2">
