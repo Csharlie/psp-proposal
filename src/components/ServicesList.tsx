@@ -10,6 +10,7 @@ interface ServicesListProps {
 export default function ServicesList({ services, onToggle, interactive }: ServicesListProps) {
   const VAT_RATE = 0.27;
 
+  // Szolgáltatások melletti bruttó árak kiszámítása (nettó + ÁFA) 
   const calculatePrices = (netPrice: number) => {
     const vat = netPrice * VAT_RATE;
     const gross = netPrice + vat;
