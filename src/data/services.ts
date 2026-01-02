@@ -428,7 +428,7 @@ const serviceDefinitions: ServiceBase[] = [
   {
     id: 'maintenance-monthly',
     category: 'Kiegészítő szolgáltatások',
-    name: 'Havi karbantartás (1 év)',
+    name: 'Havi karbantartás (opcionális)',
     description: 'Frissítések, biztonsági mentések, kisebb módosítások',
     prices: {
       premium: 180000,

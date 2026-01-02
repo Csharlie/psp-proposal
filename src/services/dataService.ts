@@ -2,6 +2,8 @@
 import { ServiceItem, QuoteInfo } from '../types';
 import { getConfig } from '../clients';
 
+const DEFAULT_CLIENT_KEY = 'autozeno';
+
 // Adapter interfész
 export interface IDataProvider {
   getServices(): Promise<ServiceItem[]>;
@@ -13,7 +15,7 @@ export interface IDataProvider {
 class LocalDataProvider implements IDataProvider {
   private clientKey: string;
   
-  constructor(clientKey: string = 'autozeno') {
+  constructor(clientKey: string = DEFAULT_CLIENT_KEY) {
     this.clientKey = clientKey;
   }
 
@@ -101,7 +103,7 @@ class WordPressDataProvider implements IDataProvider {
 
 // Factory pattern
 export class DataServiceFactory {
-  static create(clientKey: string = 'autozeno'): IDataProvider {
+  static create(clientKey: string = DEFAULT_CLIENT_KEY): IDataProvider {
     const useWordPress = import.meta.env.VITE_USE_WORDPRESS === 'true';
     
     if (useWordPress) {
@@ -113,4 +115,4 @@ export class DataServiceFactory {
 }
 
 // Export singleton
-export const dataService = DataServiceFactory.create('autozeno');
+export const dataService = DataServiceFactory.create(DEFAULT_CLIENT_KEY);

@@ -13,7 +13,7 @@ export interface ClientInfo {
 export interface ProjectInfo {
   title: string;
   description: string;
-  timeline: string;
+  timeline: string | string[];
   deliverables: string[];
 }
 

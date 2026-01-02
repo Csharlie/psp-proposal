@@ -5,7 +5,7 @@ import Footer from './Footer';
 import { QRCodeSVG } from 'qrcode.react';
 import ServicesList from './ServicesList';
 import PaymentTerms from './PaymentTerms';
-import { Timeline } from './Timeline';
+import { Timeline, ProjectStartConditions } from './Timeline';
 import { forwardRef } from 'react';
 import ClientDetails from './ClientDetails';
 import { QuoteInfo, ServiceItem } from '../types';
@@ -58,6 +58,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
 
         <PaymentTerms />
         <Timeline />
+        <ProjectStartConditions />
         <Terms />
 
         <div className="my-8 p-6 border-2 border-gray-200 rounded-lg text-center print:break-inside-avoid">

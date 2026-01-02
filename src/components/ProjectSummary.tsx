@@ -27,7 +27,15 @@ export default function ProjectSummary({ projectInfo }: ProjectSummaryProps) {
         
         <div>
           <h3 className="font-semibold text-gray-900 mb-2">Időkeret</h3>
-          <p className="text-gray-700">{projectInfo.timeline || 'Nincs megadva'}</p>
+          {Array.isArray(projectInfo.timeline) ? (
+            <ul className="list-disc list-inside space-y-1">
+              {projectInfo.timeline.map((item, index) => (
+                <li key={index} className="text-gray-700">{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-gray-700">{projectInfo.timeline || 'Nincs megadva'}</p>
+          )}
         </div>
         
         {projectInfo.deliverables && projectInfo.deliverables.length > 0 && (

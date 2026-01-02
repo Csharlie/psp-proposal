@@ -10,18 +10,24 @@ export const autozenoConfig: ClientConfig = {
   },
   
   project: {
-    title: "Autókereskedés Online Jelenléte - Landing Page & Katalógus",
-    description: "Konverzió-központú landing oldal és autókatalógus rendszer fejlesztése, mobilra optimalizálva, érdeklődési CTA-val.",
-    timeline: "4-6 hét",
+    title: "AutoZeno - Autókereskedés Online Jelenléte",
+    description: "Konverzió-központú landing oldal és autókatalógus rendszer fejlesztése, mobilra optimalizálva.",
+    timeline:  [
+      "Landing page: 5-7 munkanap",
+      "Autókatalógus rendszer: 7-10 munkanap"
+    ],
     deliverables: [
-      "Konverzió-központú landing page (1 oldal, mobilra optimalizálva)",
-      "Autókatalógus rendszer (szűrők, részletes járműadatok)",
-      "Érdeklődési űrlap integráció",
-      "Domain regisztráció és tárhely beállítás",
-      "SSL tanúsítvány",
-      "Havi műszaki karbantartás és támogatás",
-      "Képzés és dokumentáció",
-      "30 napos garanciális támogatás"
+        "Konverzióra optimalizált landing oldal",
+        "Átlátható autókatalógus rendszer",
+        "Professzionális online megjelenés"
+      // "Konverzió-központú landing page (1 oldal, mobilra optimalizálva)",
+      // "Autókatalógus rendszer (szűrők, részletes járműadatok)",
+      // "Érdeklődési űrlap integráció",
+      // "Domain regisztráció és tárhely beállítás",
+      // "SSL tanúsítvány",
+      // "Havi műszaki karbantartás és támogatás",
+      // "Képzés és dokumentáció",
+      // "30 napos garanciális támogatás"
     ]
   },
   
@@ -42,10 +48,10 @@ export const autozenoConfig: ClientConfig = {
   
   // Egyedi árak az AutoZeno projektre
   customPrices: {
-    'landing-page': 119000,           // Konverzió-központú landing page
-    'car-catalog-system': 219000,     // Autókatalógus rendszer szűrőkkel
-    'domain-hosting': 29000,          // Domain + 1 év tárhely + SSL
-    'maintenance-monthly': 9900     // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
+    'landing-page': 119000,             // Konverzió-központú landing page
+    'car-catalog-system': 219000,       // Autókatalógus rendszer szűrőkkel
+    'domain-hosting': 29000,            // Domain + 1 év tárhely + SSL
+    'maintenance-monthly': 9900         // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
   },
   
   customTexts: {
