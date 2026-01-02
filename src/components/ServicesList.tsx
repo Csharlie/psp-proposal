@@ -82,7 +82,7 @@ export default function ServicesList({ services, onToggle, interactive }: Servic
                         text-sm font-bold whitespace-nowrap flex-shrink-0
                         ${service.selected ? 'text-blue-600' : 'text-gray-700'}
                       `}>
-                        {service.price} Ft
+                        {service.price} Ft{service.billingPeriod && service.billingType !== 'one-time' ? `/${service.billingPeriod === 'havi' ? 'hó' : 'év'}` : ''}
                       </span>
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed">

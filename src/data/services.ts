@@ -9,6 +9,8 @@ interface ServiceBase {
   description: string;
   category: string;
   prices: Record<PricingVersion, number>;
+  billingType: 'one-time' | 'monthly' | 'yearly';
+  billingPeriod?: string;
 }
 
 
@@ -231,6 +233,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 59900,
       basic: 39900,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'wordpress-dev',
@@ -242,6 +246,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 59900,
       basic: 39900,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'responsive-design',
@@ -253,6 +259,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 0,
       basic: 0,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'seo-basics',
@@ -264,6 +272,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 0,
       basic: 0,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'seo-optimization',
@@ -275,6 +285,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 80000,
       basic: 50000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
 
   // E-commerce szolgáltatások
@@ -288,6 +300,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 350000,
       basic: 250000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'payment-integration',
@@ -299,6 +313,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 100000,
       basic: 70000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'product-management',
@@ -310,6 +326,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 80000,
       basic: 50000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'shipping-integration',
@@ -321,6 +339,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 60000,
       basic: 40000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
 
   // Grafikai tervezés
@@ -334,6 +354,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 100000,
       basic: 60000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'brand-identity',
@@ -345,6 +367,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 200000,
       basic: 120000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'social-media-graphics',
@@ -356,6 +380,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 60000,
       basic: 40000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'banner-design',
@@ -367,6 +393,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 45000,
       basic: 30000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
 
   // Kiegészítő szolgáltatások
@@ -380,6 +408,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 70000,
       basic: 45000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'google-analytics',
@@ -391,6 +421,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 35000,
       basic: 25000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'ssl-certificate',
@@ -402,6 +434,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 25000,
       basic: 20000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'backup-setup',
@@ -413,6 +447,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 30000,
       basic: 20000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'training',
@@ -424,6 +460,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 60000,
       basic: 40000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'maintenance-monthly',
@@ -435,6 +473,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 120000,
       basic: 72000,
     },
+    billingType: 'monthly',
+    billingPeriod: 'havi',
   },
   {
     id: 'performance-optimization',
@@ -446,6 +486,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 70000,
       basic: 45000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
 
   // AutoZeno specifikus szolgáltatások
@@ -458,8 +500,8 @@ const serviceDefinitions: ServiceBase[] = [
       premium: 220000,
       standard: 180000,
       basic: 140000,
-    },
-  },
+    },    billingType: 'one-time',
+    billingPeriod: 'egyszeri',  },
   {
     id: 'car-catalog-system',
     category: 'E-commerce szolgáltatások',
@@ -470,6 +512,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 320000,
       basic: 250000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'domain-hosting',
@@ -481,6 +525,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 25000,
       basic: 20000,
     },
+    billingType: 'yearly',
+    billingPeriod: 'éves',
   },
   {
     id: 'custom-web-dev',
@@ -492,6 +538,8 @@ const serviceDefinitions: ServiceBase[] = [
       standard: 400000,
       basic: 300000,
     },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
 ];
 
@@ -501,6 +549,8 @@ export function createServices(pricingVersion: PricingVersion): ServiceItem[] {
     ...service,
     price: service.prices[pricingVersion],
     selected: false,
+    billingType: service.billingType,
+    billingPeriod: service.billingPeriod,
   }));
 }
 
@@ -610,7 +660,9 @@ export const graphicServices: ServiceItem[] = [
     name: 'Logótervezés',
     description: 'Egyedi logó koncepcióktól a végső kivitelezésig, több verzióval',
     price: 150000,
-    selected: false
+    selected: false,
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'brand-identity',
@@ -618,7 +670,9 @@ export const graphicServices: ServiceItem[] = [
     name: 'Teljes arculat kialakítása',
     description: 'Logó, színvilág, tipográfia, arculati kézikönyv',
     price: 450000,
-    selected: false
+    selected: false,
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'print-materials',
@@ -626,7 +680,9 @@ export const graphicServices: ServiceItem[] = [
     name: 'Névjegykártya és nyomdai grafika',
     description: 'Névjegy, levélpapír, mappák, szórólapok tervezése',
     price: 80000,
-    selected: false
+    selected: false,
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'social-media',
@@ -634,7 +690,9 @@ export const graphicServices: ServiceItem[] = [
     name: 'Social media vizuálok',
     description: 'Facebook, Instagram, LinkedIn posztok és borítóképek',
     price: 60000,
-    selected: false
+    selected: false,
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'creative-design',
@@ -642,7 +700,9 @@ export const graphicServices: ServiceItem[] = [
     name: 'Kreatív design anyagok',
     description: 'Prezentációk, infografikák, marketing anyagok',
     price: 120000,
-    selected: false
+    selected: false,
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'workshop-templates',
@@ -650,7 +710,9 @@ export const graphicServices: ServiceItem[] = [
     name: 'Workshop vizuális sablonok',
     description: 'Egyedi PowerPoint és Keynote sablonok',
     price: 90000,
-    selected: false
+    selected: false,
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   }
 ];
 
