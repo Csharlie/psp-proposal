@@ -97,24 +97,14 @@ function App() {
           <CustomContent content={quoteInfo.customTexts.introduction} className="mt-8" />
         )} */}
         
-        {/* Szolgáltatások listája - kártya szerű megjelenés */}
+        {/* Szolgáltatások listája */}
         {selectedServices.length > 0 && (
-          <div className="mt-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Kiválasztott Szolgáltatások</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {selectedServices.map(service => (
-                <div key={service.id} className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 className="font-semibold text-xl text-gray-900 mb-3">{service.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4 flex-grow">{service.description}</p>
-                  <div className="mt-auto pt-4 border-t border-gray-100">
-                    <p className="font-bold text-2xl text-blue-600">
-                      {service.price.toLocaleString('hu-HU')} Ft
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ServicesList 
+            services={selectedServices} 
+            interactive={false}
+            title="Kiválasztott Szolgáltatások"
+            showDescription={false}
+          />
         )}
 
         {/* Árazási összesítő - teljes szélességű */}

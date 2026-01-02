@@ -5,9 +5,11 @@ interface ServicesListProps {
   services: ServiceItem[];
   onToggle?: (serviceId: string) => void;
   interactive?: boolean;
+  title?: string;
+  showDescription?: boolean;
 }
 
-export default function ServicesList({ services, onToggle, interactive }: ServicesListProps) {
+export default function ServicesList({ services, onToggle, interactive, title = 'Elérhető szolgáltatások', showDescription = true }: ServicesListProps) {
   const VAT_RATE = 0.27;
 
   // Szolgáltatások melletti bruttó árak kiszámítása (nettó + ÁFA) 
@@ -29,10 +31,10 @@ export default function ServicesList({ services, onToggle, interactive }: Servic
   return (
     <div className="mb-8 border-b border-gray-200">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">
-        Elérhető szolgáltatások
+        {title}
       </h2>
 
-      {interactive !== false && (
+      {interactive !== false && showDescription && (
         <p className="text-gray-600 mb-6">
           Válassza ki a projekthez szükséges szolgáltatásokat. Kattintson a szolgáltatásra 
           a kiválasztáshoz vagy eltávolításhoz.
