@@ -523,14 +523,14 @@ const serviceDefinitions: ServiceBase[] = [
     id: 'domain-hosting',
     category: 'Kiegészítő szolgáltatások',
     name: 'Domain & Tárhely Beállítás',
-    description: 'Egyedi domain regisztráció, 1 év prémium tárhely, SSL tanúsítvány, email címek',
+    description: 'Domain regisztárció, tárhely költöztetés',
     prices: {
       premium: 30000,
       standard: 25000,
       basic: 20000,
     },
-    billingType: 'yearly',
-    billingPeriod: 'éves',
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
   },
   {
     id: 'custom-web-dev',
@@ -544,6 +544,32 @@ const serviceDefinitions: ServiceBase[] = [
     },
     billingType: 'one-time',
     billingPeriod: 'egyszeri',
+  },
+  {
+    id: 'domain-hosting-monthly',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Tárhely szolgáltatás havi díj',
+    description: '1 havi prémium tárhely, SSL tanúsítvány, email címek',
+    prices: {
+      premium: 30000,
+      standard: 25000,
+      basic: 20000,
+    },
+    billingType: 'monthly',
+    billingPeriod: 'havi',
+  },
+  {
+    id: 'domain-hosting-yearly',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Tárhely szolgáltatás éves díj',
+    description: '1 év prémium tárhely, SSL tanúsítvány, email címek',
+    prices: {
+      premium: 30000,
+      standard: 25000,
+      basic: 20000,
+    },
+    billingType: 'yearly',
+    billingPeriod: 'éves',
   },
 ];
 

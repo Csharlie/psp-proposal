@@ -35,7 +35,7 @@ export default function PricingSummary({ services }: PricingSummaryProps) {
       <div className="space-y-4">
         {/* Egyszeri költségek blokk */}
         {oneTimeTotal > 0 && (
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200">
             <h3 className="font-semibold text-gray-900 mb-4 text-lg">Egyszeri költségek</h3>
             <div className="space-y-3">
               <div className="flex justify-between text-gray-700">
@@ -56,7 +56,7 @@ export default function PricingSummary({ services }: PricingSummaryProps) {
 
         {/* Éves díjak blokk */}
         {yearlyTotal > 0 && (
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
             <h3 className="font-semibold text-gray-900 mb-4 text-lg">Éves díjak</h3>
             <div className="space-y-3">
               <div className="flex justify-between text-gray-700">
@@ -77,7 +77,7 @@ export default function PricingSummary({ services }: PricingSummaryProps) {
 
         {/* Havi díjak blokk */}
         {monthlyTotal > 0 && (
-          <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-lg border border-orange-200">
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-4 rounded-lg border border-orange-200">
             <h3 className="font-semibold text-gray-900 mb-4 text-lg">Havi díjak</h3>
             <div className="space-y-3">
               <div className="flex justify-between text-gray-700">

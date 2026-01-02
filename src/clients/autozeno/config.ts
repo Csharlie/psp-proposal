@@ -41,17 +41,21 @@ export const autozenoConfig: ClientConfig = {
     'landing-page',
     'car-catalog-system',
     'domain-hosting',
-    'maintenance-monthly'
+    'maintenance-monthly',
+    'domain-hosting-monthly',
+    'domain-hosting-yearly'
   ],
   
   pricingVersion: 'standard',
   
   // Egyedi árak az AutoZeno projektre
   customPrices: {
-    'landing-page': 119000,             // Konverzió-központú landing page
-    'car-catalog-system': 219000,       // Autókatalógus rendszer szűrőkkel
-    'domain-hosting': 29000,            // Domain + 1 év tárhely + SSL
-    'maintenance-monthly': 9900         // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
+    'landing-page': 119000,            // Konverzió-központú landing page
+    'car-catalog-system': 219000,      // Autókatalógus rendszer szűrőkkel
+    'domain-hosting': 9900,            // Domain + 1 év tárhely + SSL
+    'maintenance-monthly': 9900,       // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
+    'domain-hosting-monthly': 3900,    // Domain + 1 év tárhely + SSL
+    'domain-hosting-yearly': 39000,    // Domain + 1 év tárhely + SSL
   },
   
   customTexts: {
