@@ -1,4 +1,4 @@
-import { ClientConfig } from './types';
+import { ClientConfig } from '../clients/types';
 
 export const peldaKftConfig: ClientConfig = {
   client: {
