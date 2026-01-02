@@ -56,17 +56,18 @@ export default function ServicesList({ services, onToggle, interactive, title = 
                   p-5 rounded-lg border-2 transition-all
                   ${interactive === false || service.selectable === false ? 'cursor-default' : 'cursor-pointer'}
                   ${
-                    service.selected
+                    service.selectable === false
+                      ? 'border-gray-400 bg-gray-100 shadow-sm'
+                      : service.selected
                       ? 'border-blue-500 bg-blue-50 shadow-md'
                       : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm'
                   }
-                  ${service.selectable === false ? 'opacity-75' : ''}
                 `}
               >
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 mt-1">
                     {service.selected ? (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-blue-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-6 h-6 ${service.selectable === false ? 'text-gray-500' : 'text-blue-600'}`}>
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                       </svg>
@@ -84,7 +85,7 @@ export default function ServicesList({ services, onToggle, interactive, title = 
                       </h4>
                       <span className={`
                         text-sm font-bold whitespace-nowrap flex-shrink-0
-                        ${service.selected ? 'text-blue-600' : 'text-gray-700'}
+                        ${service.selectable === false ? 'text-gray-600' : service.selected ? 'text-blue-600' : 'text-gray-700'}
                       `}>
                         {service.price} Ft{service.billingPeriod && service.billingType !== 'one-time' ? `/${service.billingPeriod === 'havi' ? 'hó' : 'év'}` : ''}
                       </span>
