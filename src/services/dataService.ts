@@ -22,19 +22,31 @@ class LocalDataProvider implements IDataProvider {
   async getServices(): Promise<ServiceItem[]> {
     const config = getConfig(this.clientKey);
     const { createServices } = await import('../data/services');
-    let services = createServices(config.pricingVersion);
+    let allServices = createServices(config.pricingVersion);
     
-    // Csak a kiválasztott szolgáltatásokat tartjuk meg, a selectedServices sorrendjében
-    services = config.selectedServices
-      .map(id => services.find(s => s.id === id))
+    // Elérhető szolgáltatások ID-k (selectedServices + tárhely opciók)
+    const availableServiceIds = [...new Set([
+      ...config.selectedServices,
+      'domain-hosting-monthly',
+      'domain-hosting-yearly',
+    ])];
+    
+    // Szolgáltatások betöltése az availableServiceIds sorrendjében
+    let services = availableServiceIds
+      .map(id => allServices.find(s => s.id === id))
       .filter((s): s is ServiceItem => s !== undefined);
     
-    // Egyedi árak alkalmazása, ha vannak
+    // Egyedi árak és kiválasztási állapot alkalmazása
     if (config.customPrices) {
       services = services.map(service => ({
         ...service,
         price: config.customPrices?.[service.id] ?? service.price,
-        selected: true, // AutoZeno esetében minden szolgáltatás kiválasztva
+        selected: config.selectedServices.includes(service.id),
+      }));
+    } else {
+      services = services.map(service => ({
+        ...service,
+        selected: config.selectedServices.includes(service.id),
       }));
     }
     

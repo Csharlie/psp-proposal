@@ -42,7 +42,6 @@ export const autozenoConfig: ClientConfig = {
     'car-catalog-system',
     'domain-hosting',
     'maintenance-monthly',
-    'domain-hosting-monthly',
     'domain-hosting-yearly'
   ],
   
