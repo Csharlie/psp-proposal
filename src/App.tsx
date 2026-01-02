@@ -4,6 +4,7 @@ import { dataService } from './services/dataService';
 import QuoteHeader from './components/QuoteHeader';
 import ClientDetails from './components/ClientDetails';
 import ServicesList from './components/ServicesList';
+import PricingSummary from './components/PricingSummary';
 import ProjectSummary from './components/ProjectSummary';
 import { Timeline } from './components/Timeline';
 import Packages from './components/Packages';
@@ -57,9 +58,6 @@ function App() {
   };
 
   const selectedServices = services.filter(s => s.selected);
-  const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0);
-  const vatAmount = totalPrice * 0.27;
-  const totalWithVat = totalPrice + vatAmount;
 
   if (loading) {
     return (
@@ -107,22 +105,10 @@ function App() {
           />
         )}
 
-        {/* Árazási összesítő - teljes szélességű */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Árazási Összesítő</h2>
-          <div className="flex justify-between mb-2">
-            <span className="text-gray-600">Összesen:</span>
-            <span className="font-semibold">{totalPrice.toLocaleString('hu-HU')} Ft</span>
-          </div>
-          <div className="flex justify-between mb-2">
-            <span className="text-gray-600">ÁFA (27%):</span>
-            <span className="font-semibold">{vatAmount.toLocaleString('hu-HU')} Ft</span>
-          </div>
-          <div className="flex justify-between border-t pt-2 mt-2">
-            <span className="font-bold text-lg">Összesen ÁFA-val:</span>
-            <span className="font-bold text-lg text-blue-600">{totalWithVat.toLocaleString('hu-HU')} Ft</span>
-          </div>
-        </div>
+        {/* Árazási összesítő */}
+        {selectedServices.length > 0 && (
+          <PricingSummary services={selectedServices} />
+        )}
         
         {/* Egyedi záró szöveg megjelenítése - IDEIGLENESEN ELREJTVE */}
         {/* {quoteInfo.customTexts?.conclusion && (
