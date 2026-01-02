@@ -522,8 +522,8 @@ const serviceDefinitions: ServiceBase[] = [
   {
     id: 'domain-hosting',
     category: 'Kiegészítő szolgáltatások',
-    name: 'Domain & Tárhely Beállítás',
-    description: 'Domain regisztárció, tárhely költöztetés',
+    name: 'Domain & Tárhely Beállítás (egyszeri)',
+    description: 'Domain regisztráció, tárhely költöztetés, SSL tanúsítvány',
     prices: {
       premium: 30000,
       standard: 25000,
@@ -548,12 +548,12 @@ const serviceDefinitions: ServiceBase[] = [
   {
     id: 'domain-hosting-monthly',
     category: 'Kiegészítő szolgáltatások',
-    name: 'Tárhely szolgáltatás havi díj',
-    description: '1 havi prémium tárhely, SSL tanúsítvány, email címek',
+    name: 'Domain & Tárhely (havi díj)',
+    description: 'Prémium tárhely, SSL tanúsítvány, email címek - havi előfizetéssel',
     prices: {
-      premium: 30000,
-      standard: 25000,
-      basic: 20000,
+      premium: 4000,
+      standard: 3500,
+      basic: 3000,
     },
     billingType: 'monthly',
     billingPeriod: 'havi',
@@ -561,12 +561,12 @@ const serviceDefinitions: ServiceBase[] = [
   {
     id: 'domain-hosting-yearly',
     category: 'Kiegészítő szolgáltatások',
-    name: 'Tárhely szolgáltatás éves díj',
-    description: '1 év prémium tárhely, SSL tanúsítvány, email címek',
+    name: 'Domain & Tárhely (éves díj)',
+    description: 'Prémium tárhely, SSL tanúsítvány, email címek - éves előfizetéssel',
     prices: {
-      premium: 30000,
-      standard: 25000,
-      basic: 20000,
+      premium: 40000,
+      standard: 35000,
+      basic: 30000,
     },
     billingType: 'yearly',
     billingPeriod: 'éves',

@@ -48,12 +48,28 @@ function App() {
   }, []);
 
   const handleServiceToggle = (serviceId: string) => {
+    // Kölcsönösen kizáró tárhely szolgáltatások (csak havi és éves között)
+    const recurringHostingServices = ['domain-hosting-monthly', 'domain-hosting-yearly'];
+    const isRecurringHosting = recurringHostingServices.includes(serviceId);
+    
     setServices(prev =>
-      prev.map(service =>
-        service.id === serviceId
-          ? { ...service, selected: !service.selected }
-          : service
-      )
+      prev.map(service => {
+        // Ha havi vagy éves tárhely szolgáltatást választunk
+        if (isRecurringHosting && recurringHostingServices.includes(service.id)) {
+          if (service.id === serviceId) {
+            // Az aktuális szolgáltatás toggle-ölése
+            return { ...service, selected: !service.selected };
+          } else {
+            // A másik ismétlődő tárhely szolgáltatás kikapcsolása
+            return { ...service, selected: false };
+          }
+        }
+        // Minden más szolgáltatás normál toggle
+        if (service.id === serviceId) {
+          return { ...service, selected: !service.selected };
+        }
+        return service;
+      })
     );
   };
 
