@@ -34,7 +34,7 @@ export const autozenoConfig: ClientConfig = {
   quote: {
     id: 'PSP-2026-001',
     issueDate: new Date().toISOString(),
-    validityDays: 30
+    validityDays: 14
   },
   
   selectedServices: [

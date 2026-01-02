@@ -3,10 +3,10 @@ import { Calendar, Clock } from 'lucide-react';
 
 export function Timeline() {
   const phases = [
-    { name: 'Tervezés', duration: '1-2 hét', description: 'Koncepció, wireframe, design' },
-    { name: 'Fejlesztés', duration: '2-4 hét', description: 'Kódolás, funkciók implementálása' },
-    { name: 'Tesztelés', duration: '1 hét', description: 'Minőségbiztosítás, hibajavítás' },
-    { name: 'Átadás', duration: '1 hét', description: 'Oktatás, dokumentáció, éles indítás' },
+    { name: 'Előkészítés', duration: '2-3 munkanap', description: 'Igényfeltárás, üzleti célok meghatározása' },
+    { name: 'Vizuális megjelenés', duration: '3-5 munkanap', description: 'Oldalstruktúra és szekciók megtervezése' },
+    { name: 'Technikai megvalósítás', duration: '2-3 munkanap', description: 'Működő, élesíthető landing oldal' },
+    { name: 'Átadás', duration: '1-2 munkanap', description: 'Tesztelés, végső finomhangolás, éles indítás' },
   ];
 
   return (

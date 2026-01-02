@@ -11,8 +11,8 @@ export default function Footer() {
       </div>
       
       <div className="space-y-1 mb-4">
-        <p>Email: hello@pspro.hu | Telefon: +36 30 123 4567</p>
-        <p>Székhely: Budapest, Magyarország</p>
+        <p>Email: hello@pspro.hu | Telefon: +36 30 512 8221</p>
+        <p>Székhely: Kiskunfélegyháza, Magyarország</p>
       </div>
 
       <div className="pt-4 border-t border-gray-200">
