@@ -501,8 +501,11 @@ const serviceDefinitions: ServiceBase[] = [
       premium: 220000,
       standard: 180000,
       basic: 140000,
-    },    billingType: 'one-time',
-    billingPeriod: 'egyszeri',  },
+    },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
+    selectable: false,
+  },
   {
     id: 'car-catalog-system',
     category: 'E-commerce szolgáltatások',
@@ -549,10 +552,10 @@ export function createServices(pricingVersion: PricingVersion): ServiceItem[] {
   return serviceDefinitions.map(service => ({
     ...service,
     price: service.prices[pricingVersion],
-    selected: false,
+    selected: service.selectable === false,
     billingType: service.billingType,
     billingPeriod: service.billingPeriod,
-    selectable: service.selectable !== true,
+    selectable: service.selectable !== false,
   }));
 }
 

@@ -51,15 +51,16 @@ export default function ServicesList({ services, onToggle, interactive, title = 
             {categoryServices.map((service) => (
               <div
                 key={service.id}
-                onClick={() => interactive !== false && onToggle?.(service.id)}
+                onClick={() => interactive !== false && service.selectable !== false && onToggle?.(service.id)}
                 className={`
                   p-5 rounded-lg border-2 transition-all
-                  ${interactive === false ? 'cursor-default' : 'cursor-pointer'}
+                  ${interactive === false || service.selectable === false ? 'cursor-default' : 'cursor-pointer'}
                   ${
                     service.selected
                       ? 'border-blue-500 bg-blue-50 shadow-md'
                       : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm'
                   }
+                  ${service.selectable === false ? 'opacity-75' : ''}
                 `}
               >
                 <div className="flex items-start gap-3">
