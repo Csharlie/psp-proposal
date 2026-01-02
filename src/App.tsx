@@ -95,12 +95,20 @@ function App() {
           <CustomContent content={quoteInfo.customTexts.introduction} className="mt-8" />
         )} */}
         
-        {/* Szolgáltatások választása */}
+        {/* Alap szolgáltatás */}
         <ServicesList 
-          services={services} 
+          services={services.filter(s => s.selectable === false)} 
+          interactive={false}
+          title="A projekt alapja"
+          showDescription={true}
+        />
+        
+        {/* Választható szolgáltatások */}
+        <ServicesList 
+          services={services.filter(s => s.selectable !== false)} 
           interactive={true}
           onToggle={handleServiceToggle}
-          title="Elérhető Szolgáltatások"
+          title="Elérhető szolgáltatások"
           showDescription={true}
         />        
 
