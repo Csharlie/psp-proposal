@@ -28,7 +28,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
 
         {/* Ár összegzés */}
         <div className="my-8">
-          <PricingSummary services={services} />
+          <PricingSummary services={services} showTotal={true} />
         </div>
 
         <PaymentTerms />

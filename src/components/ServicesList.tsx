@@ -29,7 +29,7 @@ export default function ServicesList({ services, onToggle, interactive, title = 
   }, {} as Record<string, ServiceItem[]>);
 
   return (
-    <div className="mb-8 border-b border-gray-200">
+    <div className="mb-8">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">
         {title}
       </h2>
@@ -43,7 +43,7 @@ export default function ServicesList({ services, onToggle, interactive, title = 
 
       {Object.entries(groupedServices).map(([category, categoryServices]) => (
         <div key={category} className="mb-8">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-blue-200">
+          <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-blue-200">
             {category}
           </h3>
           
