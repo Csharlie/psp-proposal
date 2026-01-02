@@ -95,15 +95,14 @@ function App() {
           <CustomContent content={quoteInfo.customTexts.introduction} className="mt-8" />
         )} */}
         
-        {/* Szolgáltatások listája */}
-        {selectedServices.length > 0 && (
-          <ServicesList 
-            services={selectedServices} 
-            interactive={false}
-            title="Kiválasztott Szolgáltatások"
-            showDescription={false}
-          />
-        )}
+        {/* Szolgáltatások választása */}
+        <ServicesList 
+          services={services} 
+          interactive={true}
+          onToggle={handleServiceToggle}
+          title="Elérhető Szolgáltatások"
+          showDescription={true}
+        />        
 
         {/* Árazási összesítő */}
         {selectedServices.length > 0 && (

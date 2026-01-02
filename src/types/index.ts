@@ -44,6 +44,7 @@ export interface ServiceItem {
   selected: boolean;
   billingType: 'one-time' | 'monthly' | 'yearly';
   billingPeriod?: string; // "egyszeri", "havi", "éves"
+  selectable?: boolean;
 }
 
 export interface QuoteData {

@@ -29,47 +29,98 @@ export default function PricingSummary({ services }: PricingSummaryProps) {
   };
 
   return (
-    <div className="bg-gray-50 rounded-lg border border-gray-200 p-6 print:break-inside-avoid">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">Árazási Összesítő</h2>
-      <div className="space-y-3">
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Árazási Összesítő</h2>
+      
+      <div className="space-y-4">
+        {/* Egyszeri költségek blokk */}
         {oneTimeTotal > 0 && (
-          <div className="flex justify-between text-gray-700">
-            <span>Egyszeri költségek:</span>
-            <span className="font-semibold">{formatPrice(oneTimeTotal)}</span>
-          </div>
-        )}
-        {yearlyTotal > 0 && (
-          <div className="flex justify-between text-gray-700">
-            <span>Éves díjak (1. év):</span>
-            <span className="font-semibold">{formatPrice(yearlyTotal)}</span>
-          </div>
-        )}
-        {monthlyTotal > 0 && (
-          <div className="flex justify-between text-gray-700 pb-3 border-b">
-            <span>Havi díjak:</span>
-            <span className="font-semibold">{formatPrice(monthlyTotal)} / hó</span>
-          </div>
-        )}
-        <div className="flex justify-between text-gray-700">
-          <span>Összesen (nettó):</span>
-          <span className="font-semibold">{formatPrice(totalPrice)}</span>
-        </div>
-        <div className="flex justify-between text-gray-700">
-          <span>ÁFA (27%):</span>
-          <span className="font-semibold">{formatPrice(vatAmount)}</span>
-        </div>
-        <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
-          <span>Összesen (bruttó):</span>
-          <span>{formatPrice(totalWithVat)}</span>
-        </div>
-        {monthlyTotal > 0 && (
-          <div className="mt-2 pt-2 border-t border-gray-300">
-            <div className="flex justify-between text-sm text-gray-600">
-              <span>+ Havi díj (bruttó):</span>
-              <span className="font-semibold">{formatPrice(monthlyTotal * 1.27)} / hó</span>
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+            <h3 className="font-semibold text-gray-900 mb-4 text-lg">Egyszeri költségek</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between text-gray-700">
+                <span>Nettó:</span>
+                <span className="font-semibold">{formatPrice(oneTimeTotal)}</span>
+              </div>
+              <div className="flex justify-between text-gray-700">
+                <span>ÁFA (27%):</span>
+                <span className="font-semibold">{formatPrice(oneTimeTotal * 0.27)}</span>
+              </div>
+              <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
+                <span>Bruttó:</span>
+                <span>{formatPrice(oneTimeTotal * 1.27)}</span>
+              </div>
             </div>
           </div>
         )}
+
+        {/* Éves díjak blokk */}
+        {yearlyTotal > 0 && (
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-lg border border-green-200">
+            <h3 className="font-semibold text-gray-900 mb-4 text-lg">Éves díjak</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between text-gray-700">
+                <span>Nettó / év:</span>
+                <span className="font-semibold">{formatPrice(yearlyTotal)}</span>
+              </div>
+              <div className="flex justify-between text-gray-700">
+                <span>ÁFA (27%):</span>
+                <span className="font-semibold">{formatPrice(yearlyTotal * 0.27)}</span>
+              </div>
+              <div className="flex justify-between text-lg font-bold border-t pt-3 text-green-600">
+                <span>Bruttó / év:</span>
+                <span>{formatPrice(yearlyTotal * 1.27)}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Havi díjak blokk */}
+        {monthlyTotal > 0 && (
+          <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-lg border border-orange-200">
+            <h3 className="font-semibold text-gray-900 mb-4 text-lg">Havi díjak</h3>
+            <div className="space-y-3">
+              <div className="flex justify-between text-gray-700">
+                <span>Nettó / hó:</span>
+                <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
+              </div>
+              <div className="flex justify-between text-gray-700">
+                <span>ÁFA (27%):</span>
+                <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
+              </div>
+              <div className="flex justify-between text-lg font-bold border-t pt-3 text-orange-600">
+                <span>Bruttó / hó:</span>
+                <span>{formatPrice(monthlyTotal * 1.27)}</span>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Összesített végösszeg */}
+      <div className="mt-6 bg-gray-50 rounded-lg border border-gray-200 p-6">
+        <div className="space-y-3">
+          <div className="flex justify-between text-gray-700">
+            <span>Összes egyszeri költség (nettó):</span>
+            <span className="font-semibold">{formatPrice(totalPrice)}</span>
+          </div>
+          <div className="flex justify-between text-gray-700">
+            <span>ÁFA (27%):</span>
+            <span className="font-semibold">{formatPrice(vatAmount)}</span>
+          </div>
+          <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
+            <span>Fizetendő most (bruttó):</span>
+            <span>{formatPrice(totalWithVat)}</span>
+          </div>
+          {monthlyTotal > 0 && (
+            <div className="mt-2 pt-2 border-t border-gray-300">
+              <div className="flex justify-between text-sm text-gray-600">
+                <span>+ Folyamatos havi költség:</span>
+                <span className="font-semibold">{formatPrice(monthlyTotal * 1.27)} / hó</span>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

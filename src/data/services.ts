@@ -11,6 +11,7 @@ interface ServiceBase {
   prices: Record<PricingVersion, number>;
   billingType: 'one-time' | 'monthly' | 'yearly';
   billingPeriod?: string;
+  selectable?: boolean;
 }
 
 
@@ -551,6 +552,7 @@ export function createServices(pricingVersion: PricingVersion): ServiceItem[] {
     selected: false,
     billingType: service.billingType,
     billingPeriod: service.billingPeriod,
+    selectable: service.selectable !== true,
   }));
 }
 
