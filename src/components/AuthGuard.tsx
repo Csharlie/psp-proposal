@@ -10,7 +10,7 @@ const AUTH_ENABLED = true;
 // Bejelentkezési adatok
 const CREDENTIALS = {
   username: 'autozeno',
-  password: 'AZ-Offer-26!'
+  password: 'AZPSP26!'
 };
 
 export default function AuthGuard({ children }: AuthGuardProps) {
