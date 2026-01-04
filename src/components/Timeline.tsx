@@ -5,7 +5,7 @@ export function Timeline() {
   const phases = [
     { name: 'Előkészítés', duration: '2-3 munkanap', description: 'Igényfeltárás, üzleti célok meghatározása' },
     { name: 'Vizuális megjelenés', duration: '3-5 munkanap', description: 'Oldalstruktúra és szekciók megtervezése' },
-    { name: 'Technikai megvalósítás', duration: '2-3 munkanap', description: 'Működő, élesíthető landing oldal' },
+    { name: 'Technikai megvalósítás', duration: '7-10 munkanap', description: 'Működő, élesíthető landing oldal' },
     { name: 'Átadás', duration: '1-2 munkanap', description: 'Tesztelés, végső finomhangolás, éles indítás' },
   ];
 
