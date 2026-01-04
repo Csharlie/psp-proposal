@@ -7,9 +7,10 @@ interface ServicesListProps {
   interactive?: boolean;
   title?: string;
   showDescription?: boolean;
+  printable?: boolean;
 }
 
-export default function ServicesList({ services, onToggle, interactive, title = 'Elérhető szolgáltatások', showDescription = true }: ServicesListProps) {
+export default function ServicesList({ services, onToggle, interactive, title = 'Elérhető szolgáltatások', showDescription = true, printable = false }: ServicesListProps) {
   const VAT_RATE = 0.27;
 
   // Szolgáltatások melletti bruttó árak kiszámítása (nettó + ÁFA) 
@@ -57,10 +58,10 @@ export default function ServicesList({ services, onToggle, interactive, title = 
                   ${interactive === false || service.selectable === false ? 'cursor-default' : 'cursor-pointer'}
                   ${
                     service.selectable === false
-                      ? 'border-gray-400 bg-gray-100 shadow-sm'
+                      ? printable ? 'border-gray-400 bg-gray-100' : 'border-gray-400 bg-gray-100 shadow-sm'
                       : service.selected
-                      ? 'border-blue-500 bg-blue-50 shadow-md'
-                      : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm'
+                      ? printable ? 'border-blue-500 bg-blue-50' : 'border-blue-500 bg-blue-50 shadow-md'
+                      : printable ? 'border-gray-200 bg-white' : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-sm'
                   }
                 `}
               >

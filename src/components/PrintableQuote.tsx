@@ -23,9 +23,9 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
     return (
       <div ref={ref} className="bg-white mt-8 p-8 print:p-8 max-w-4xl mx-auto">
         <QuoteHeader quoteInfo={quoteInfo} />
-        <ClientDetails clientInfo={quoteInfo.clientInfo} />
-        <ProjectSummary projectInfo={quoteInfo.projectInfo} />
-        <ServicesList services={services} interactive={false} />
+        <ClientDetails clientInfo={quoteInfo.clientInfo} printable={true} />
+        <ProjectSummary projectInfo={quoteInfo.projectInfo} printable={true} />
+        <ServicesList services={services} interactive={false} printable={true} />
 
         {/* Ár összegzés */}
         <div className="my-8">
@@ -34,7 +34,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
 
         <PaymentTerms />
         <PaymentBreakdown services={services} showDetails={true} />
-        <Timeline />
+        <Timeline printable={true} />
         <ProjectStartConditions />
         <Terms />
 

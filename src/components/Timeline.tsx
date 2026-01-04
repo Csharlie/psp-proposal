@@ -1,16 +1,20 @@
 
 import { Calendar, Clock } from 'lucide-react';
 
-export function Timeline() {
+interface TimelineProps {
+  printable?: boolean;
+}
+
+export function Timeline({ printable = false }: TimelineProps) {
   const phases = [
-    { name: 'Előkészítés', duration: '2-3 munkanap', description: 'Igényfeltárás, üzleti célok meghatározása' },
+    { name: 'Előkészítés', duration: '2-3 munkanap', description: 'Igényfelmérés, üzleti célok meghatározása' },
     { name: 'Vizuális megjelenés', duration: '3-5 munkanap', description: 'Oldalstruktúra és szekciók megtervezése' },
     { name: 'Technikai megvalósítás', duration: '7-10 munkanap', description: 'Működő, élesíthető landing oldal' },
     { name: 'Átadás', duration: '1-2 munkanap', description: 'Tesztelés, végső finomhangolás, éles indítás' },
   ];
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className={printable ? "bg-white rounded-lg border border-gray-300 p-6 mb-6" : "bg-white rounded-lg shadow-md p-6 mb-6"}>
       <div className="flex items-center gap-3 mb-6">
         <Calendar className="w-6 h-6 text-blue-600" />
         <h2 className="text-xl font-bold text-gray-900">Projekt ütemterv</h2>

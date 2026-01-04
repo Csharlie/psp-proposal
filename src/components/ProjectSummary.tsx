@@ -4,11 +4,12 @@ import type { ProjectInfo } from '../types';
 
 interface ProjectSummaryProps {
   projectInfo: ProjectInfo;
+  printable?: boolean;
 }
 
-export default function ProjectSummary({ projectInfo }: ProjectSummaryProps) {
+export default function ProjectSummary({ projectInfo, printable = false }: ProjectSummaryProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+    <div className={printable ? "bg-white rounded-lg border border-gray-300 p-6 mb-6" : "bg-white rounded-lg shadow-md p-6 mb-6"}>
       <div className="flex items-center gap-3 mb-4">
         <Briefcase className="w-6 h-6 text-blue-600" />
         <h2 className="text-xl font-bold text-gray-900">Projekt összefoglaló</h2>
