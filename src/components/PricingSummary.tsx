@@ -102,32 +102,6 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
             </div>
           </div>
         )}
-
-        {/* Teljes összesítő */}        
-        {showTotal && (        
-            <div className="bg-gradient-to-br from-gray-50 to-slate-100 p-6 rounded-lg border border-gray-300 mt-6">
-          <h3 className="font-bold text-gray-900 mb-4 text-xl">Összesített kezdeti beruházás</h3>
-          <div className="space-y-3">
-            <div className="flex justify-between text-gray-700">
-              <span>Összes nettó (egyszeri + éves):</span>
-              <span className="font-semibold">{formatPrice(totalPrice)}</span>
-            </div>
-            <div className="flex justify-between text-gray-700">
-              <span>ÁFA (27%):</span>
-              <span className="font-semibold">{formatPrice(vatAmount)}</span>
-            </div>
-            <div className="flex justify-between text-2xl font-bold border-t-2 pt-4 text-gray-900">
-              <span>Teljes bruttó:</span>
-              <span>{formatPrice(totalWithVat)}</span>
-            </div>
-          </div>
-          {monthlyTotal > 0 && (
-            <p className="text-sm text-gray-600 mt-4 pt-4 border-t border-gray-300">
-              + {formatPrice(monthlyTotal * 1.27)} / hó folyamatos szolgáltatások
-            </p>
-          )}
-        </div>
-        )}
       </div>
     </div>
   );

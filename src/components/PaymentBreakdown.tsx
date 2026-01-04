@@ -45,7 +45,9 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
   return (
     <div className="mb-8">
       <div className="bg-gradient-to-br from-gray-50 to-slate-100 p-6 rounded-lg border border-gray-300">
-        <h3 className="font-bold text-gray-900 mb-4 text-xl">Fizetési ütemezés összesítő</h3>
+        <h3 className="font-bold text-gray-900 mb-6 text-xl">Összesített beruházás és fizetési ütemezés</h3>
+        
+        <h4 className="font-semibold text-gray-900 mb-4 text-lg">Fizetési ütemezés</h4>
         <div className="space-y-4">
           {/* Előleg */}
           <div className="bg-white p-4 rounded-lg border border-gray-200">
@@ -55,33 +57,22 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
               </div>
               <span className="font-semibold text-gray-900">Előleg (20%)</span>
             </div>
-            {showDetails ? (
-              <div className="ml-10 space-y-2 text-sm">
-                <div className="flex justify-between text-gray-700">
-                  <span>Nettó:</span>
-                  <span className="font-semibold">{formatPrice(advancePaymentNet)}</span>
-                </div>
+            <div className="ml-10 space-y-2 text-sm">
+              <div className="flex justify-between text-gray-700">
+                <span>Nettó:</span>
+                <span className="font-semibold">{formatPrice(advancePaymentNet)}</span>
+              </div>
+              {showDetails && (
                 <div className="flex justify-between text-gray-700">
                   <span>ÁFA (27%):</span>
                   <span className="font-semibold">{formatPrice(advancePaymentVat)}</span>
                 </div>
-                <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
-                  <span>Bruttó:</span>
-                  <span>{formatPrice(advancePayment)}</span>
-                </div>
+              )}
+              <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
+                <span>Bruttó:</span>
+                <span>{formatPrice(advancePayment)}</span>
               </div>
-            ) : (
-              <div className="ml-10">
-                <div className="flex justify-between text-gray-700">
-                  <span>Nettó:</span>
-                  <span className="font-semibold">{formatPrice(advancePaymentNet)}</span>
-                </div>
-                <div className="flex justify-between font-bold text-blue-600">
-                  <span>Bruttó:</span>
-                  <span>{formatPrice(advancePayment)}</span>
-                </div>
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Végösszeg */}
@@ -92,51 +83,64 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
               </div>
               <span className="font-semibold text-gray-900">Végösszeg (80%)</span>
             </div>
-            {showDetails ? (
-              <div className="ml-10 space-y-2 text-sm">
-                <div className="flex justify-between text-gray-700">
-                  <span>Nettó:</span>
-                  <span className="font-semibold">{formatPrice(finalPaymentNet)}</span>
-                </div>
+            <div className="ml-10 space-y-2 text-sm">
+              <div className="flex justify-between text-gray-700">
+                <span>Nettó:</span>
+                <span className="font-semibold">{formatPrice(finalPaymentNet)}</span>
+              </div>
+              {showDetails && (
                 <div className="flex justify-between text-gray-700">
                   <span>ÁFA (27%):</span>
                   <span className="font-semibold">{formatPrice(finalPaymentVat)}</span>
                 </div>
-                <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
-                  <span>Bruttó:</span>
-                  <span>{formatPrice(finalPayment)}</span>
-                </div>
+              )}
+              <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
+                <span>Bruttó:</span>
+                <span>{formatPrice(finalPayment)}</span>
               </div>
-            ) : (
-              <div className="ml-10">
-                <div className="flex justify-between text-gray-700">
-                  <span>Nettó:</span>
-                  <span className="font-semibold">{formatPrice(finalPaymentNet)}</span>
-                </div>
-                <div className="flex justify-between font-bold text-blue-600">
-                  <span>Bruttó:</span>
-                  <span>{formatPrice(finalPayment)}</span>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Teljes összesítő */}
-          <div className="border-t-2 pt-4 space-y-2">
-            <div className="flex justify-between text-gray-700">
-              <span className="font-semibold">Teljes beruházás (nettó):</span>
-              <span className="font-semibold">{formatPrice(totalPrice)}</span>
-            </div>
-            <div className="flex justify-between text-2xl font-bold text-gray-900">
-              <span>Teljes beruházás (bruttó):</span>
-              <span>{formatPrice(totalWithVat)}</span>
             </div>
           </div>
         </div>
+
+        {/* Összesített összegek */}
+        <div className="mt-6 pt-6 border-t-2 border-gray-300 space-y-3">
+          <div className="flex justify-between text-gray-700">
+            <span className="font-semibold">Összesített nettó (egyszeri + éves):</span>
+            <span className="font-semibold">{formatPrice(totalPrice)}</span>
+          </div>
+          {showDetails && (
+            <div className="flex justify-between text-gray-700">
+              <span className="font-semibold">ÁFA (27%):</span>
+              <span className="font-semibold">{formatPrice(vatAmount)}</span>
+            </div>
+          )}
+          <div className="flex justify-between text-2xl font-bold text-gray-900 border-t-2 pt-3">
+            <span>Összesített bruttó (egyszeri + éves):</span>
+            <span>{formatPrice(totalWithVat)}</span>
+          </div>
+        </div>
+
+        {/* Havi díjak */}
         {monthlyTotal > 0 && (
-          <p className="text-sm text-gray-600 mt-4 pt-4 border-t border-gray-300">
-            + {formatPrice(monthlyTotal * 1.27)} / hó folyamatos szolgáltatások
-          </p>
+          <div className="mt-6 pt-6 border-t-2 border-gray-300">
+            <h4 className="font-semibold text-gray-900 mb-3">Havi díjak</h4>
+            <div className="space-y-2">
+              <div className="flex justify-between text-gray-700">
+                <span>Nettó / hó:</span>
+                <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
+              </div>
+              {showDetails && (
+                <div className="flex justify-between text-gray-700">
+                  <span>ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold text-blue-600">
+                <span>Bruttó / hó:</span>
+                <span>{formatPrice(monthlyTotal * 1.27)}</span>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
