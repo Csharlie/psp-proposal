@@ -14,6 +14,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import PrintableQuote from './components/PrintableQuote';
 import { CustomContent } from './components/CustomContent';
+import AuthGuard from './components/AuthGuard';
 import type { ServiceItem, QuoteInfo } from './types';
 
 function App() {
@@ -98,8 +99,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 print:bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 print:px-0 print:py-0 print:max-w-none">
+    <AuthGuard>
+      <div className="min-h-screen bg-gray-50 print:bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 print:px-0 print:py-0 print:max-w-none">
         <div className="print:hidden">
           <QuoteHeader quoteInfo={quoteInfo} />
           
@@ -186,8 +188,9 @@ function App() {
             quoteUrl={window.location.href}
           />
         </div>
+        </div>
       </div>
-    </div>
+    </AuthGuard>
   );
 }
 
