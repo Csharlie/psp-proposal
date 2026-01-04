@@ -103,29 +103,9 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
         </div>
 
         {/* Összesített összegek */}
-        <div className="mt-6 pt-6 border-t-2 border-gray-300 space-y-3">
-          {/* Havi díjak */}
-          {monthlyTotal > 0 && (
-            <>
-              <div className="flex justify-between text-gray-700">
-                <span className="font-semibold">Összesített nettó / hó:</span>
-                <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
-              </div>
-              {showDetails && (
-                <div className="flex justify-between text-gray-700">
-                  <span className="font-semibold">ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
-                </div>
-              )}
-              <div className="flex justify-between font-bold text-blue-600 pb-3 border-b-2 border-gray-300">
-                <span>Összesített bruttó / hó:</span>
-                <span>{formatPrice(monthlyTotal * 1.27)}</span>
-              </div>
-            </>
-          )}
-          
+        <div className="mt-6 space-y-3">
           {/* Egyszeri + éves */}
-          <div className="flex justify-between text-gray-700 pt-3">
+          <div className="flex justify-between text-gray-700">
             <span className="font-semibold">Összesített nettó / egyszeri + éves:</span>
             <span className="font-semibold">{formatPrice(totalPrice)}</span>
           </div>
@@ -135,10 +115,30 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
               <span className="font-semibold">{formatPrice(vatAmount)}</span>
             </div>
           )}
-          <div className="flex justify-between text-2xl font-bold text-gray-900 border-t-2 pt-3">
+          <div className={`flex justify-between text-2xl font-bold text-gray-900 ${monthlyTotal > 0 ? 'border-t pt-3 pb-4 border-b border-gray-300' : 'border-t-2 pt-3'}`}>
             <span>Összesített bruttó / egyszeri + éves:</span>
             <span>{formatPrice(totalWithVat)}</span>
           </div>
+
+          {/* Havi díjak */}
+          {monthlyTotal > 0 && (
+            <>
+              <div className="flex justify-between text-gray-700 pt-3">
+                <span className="font-semibold">Összesített nettó / hó:</span>
+                <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
+              </div>
+              {showDetails && (
+                <div className="flex justify-between text-gray-700">
+                  <span className="font-semibold">ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold text-blue-600 border-t-2 pt-3">
+                <span>Összesített bruttó / hó:</span>
+                <span>{formatPrice(monthlyTotal * 1.27)}</span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
