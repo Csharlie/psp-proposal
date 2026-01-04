@@ -1,0 +1,144 @@
+import { ServiceItem } from '../types';
+
+interface PaymentBreakdownProps {
+  services: ServiceItem[];
+  showDetails?: boolean;
+}
+
+export default function PaymentBreakdown({ services, showDetails = false }: PaymentBreakdownProps) {
+  // Szolgáltatások szétválasztása díjtípus szerint
+  const oneTimeServices = services.filter(s => s.billingType === 'one-time');
+  const monthlyServices = services.filter(s => s.billingType === 'monthly');
+  const yearlyServices = services.filter(s => s.billingType === 'yearly');
+
+  const oneTimeTotal = oneTimeServices.reduce((sum, s) => sum + s.price, 0);
+  const monthlyTotal = monthlyServices.reduce((sum, s) => sum + s.price, 0);
+  const yearlyTotal = yearlyServices.reduce((sum, s) => sum + s.price, 0);
+
+  // Teljes egyszeri költség (egyszeri + éves díjak az első évre)
+  const totalPrice = oneTimeTotal + yearlyTotal;
+  const vatAmount = totalPrice * 0.27;
+  const totalWithVat = totalPrice + vatAmount;
+
+  // Előleg (20%) és végösszeg (80%)
+  const advancePaymentNet = totalPrice * 0.20;
+  const advancePaymentVat = vatAmount * 0.20;
+  const advancePayment = totalWithVat * 0.20;
+  
+  const finalPaymentNet = totalPrice * 0.80;
+  const finalPaymentVat = vatAmount * 0.80;
+  const finalPayment = totalWithVat * 0.80;
+
+  const formatPrice = (price: number): string => {
+    return price.toLocaleString('hu-HU', {
+      style: 'currency',
+      currency: 'HUF',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+  };
+
+  if (services.length === 0 || totalWithVat === 0) {
+    return null;
+  }
+
+  return (
+    <div className="mb-8">
+      <div className="bg-gradient-to-br from-gray-50 to-slate-100 p-6 rounded-lg border border-gray-300">
+        <h3 className="font-bold text-gray-900 mb-4 text-xl">Fizetési ütemezés összesítő</h3>
+        <div className="space-y-4">
+          {/* Előleg */}
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                1
+              </div>
+              <span className="font-semibold text-gray-900">Előleg (20%)</span>
+            </div>
+            {showDetails ? (
+              <div className="ml-10 space-y-2 text-sm">
+                <div className="flex justify-between text-gray-700">
+                  <span>Nettó:</span>
+                  <span className="font-semibold">{formatPrice(advancePaymentNet)}</span>
+                </div>
+                <div className="flex justify-between text-gray-700">
+                  <span>ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(advancePaymentVat)}</span>
+                </div>
+                <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
+                  <span>Bruttó:</span>
+                  <span>{formatPrice(advancePayment)}</span>
+                </div>
+              </div>
+            ) : (
+              <div className="ml-10">
+                <div className="flex justify-between text-gray-700">
+                  <span>Nettó:</span>
+                  <span className="font-semibold">{formatPrice(advancePaymentNet)}</span>
+                </div>
+                <div className="flex justify-between font-bold text-blue-600">
+                  <span>Bruttó:</span>
+                  <span>{formatPrice(advancePayment)}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Végösszeg */}
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                2
+              </div>
+              <span className="font-semibold text-gray-900">Végösszeg (80%)</span>
+            </div>
+            {showDetails ? (
+              <div className="ml-10 space-y-2 text-sm">
+                <div className="flex justify-between text-gray-700">
+                  <span>Nettó:</span>
+                  <span className="font-semibold">{formatPrice(finalPaymentNet)}</span>
+                </div>
+                <div className="flex justify-between text-gray-700">
+                  <span>ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(finalPaymentVat)}</span>
+                </div>
+                <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
+                  <span>Bruttó:</span>
+                  <span>{formatPrice(finalPayment)}</span>
+                </div>
+              </div>
+            ) : (
+              <div className="ml-10">
+                <div className="flex justify-between text-gray-700">
+                  <span>Nettó:</span>
+                  <span className="font-semibold">{formatPrice(finalPaymentNet)}</span>
+                </div>
+                <div className="flex justify-between font-bold text-blue-600">
+                  <span>Bruttó:</span>
+                  <span>{formatPrice(finalPayment)}</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Teljes összesítő */}
+          <div className="border-t-2 pt-4 space-y-2">
+            <div className="flex justify-between text-gray-700">
+              <span className="font-semibold">Teljes beruházás (nettó):</span>
+              <span className="font-semibold">{formatPrice(totalPrice)}</span>
+            </div>
+            <div className="flex justify-between text-2xl font-bold text-gray-900">
+              <span>Teljes beruházás (bruttó):</span>
+              <span>{formatPrice(totalWithVat)}</span>
+            </div>
+          </div>
+        </div>
+        {monthlyTotal > 0 && (
+          <p className="text-sm text-gray-600 mt-4 pt-4 border-t border-gray-300">
+            + {formatPrice(monthlyTotal * 1.27)} / hó folyamatos szolgáltatások
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}

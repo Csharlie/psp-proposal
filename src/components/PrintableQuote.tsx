@@ -5,6 +5,7 @@ import Footer from './Footer';
 import { QRCodeSVG } from 'qrcode.react';
 import ServicesList from './ServicesList';
 import PaymentTerms from './PaymentTerms';
+import PaymentBreakdown from './PaymentBreakdown';
 import PricingSummary from './PricingSummary';
 import { Timeline, ProjectStartConditions } from './Timeline';
 import { forwardRef } from 'react';
@@ -32,6 +33,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
         </div>
 
         <PaymentTerms />
+        <PaymentBreakdown services={services} showDetails={true} />
         <Timeline />
         <ProjectStartConditions />
         <Terms />

@@ -3,7 +3,7 @@ import { CreditCard } from 'lucide-react';
 
 export default function PaymentTerms() {
   return (
-    <div className="mb-8 pb-8 border-b border-gray-200">
+    <div className="mb-8">
       <div className="flex items-center gap-2 mb-4">
         <CreditCard className="w-6 h-6 text-blue-600" />
         <h2 className="text-2xl font-bold text-gray-900">

@@ -43,10 +43,12 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
                 <span>Nettó:</span>
                 <span className="font-semibold">{formatPrice(oneTimeTotal)}</span>
               </div>
-              <div className="flex justify-between text-gray-700">
-                <span>ÁFA (27%):</span>
-                <span className="font-semibold">{formatPrice(oneTimeTotal * 0.27)}</span>
-              </div>
+              {showTotal && (
+                <div className="flex justify-between text-gray-700">
+                  <span>ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(oneTimeTotal * 0.27)}</span>
+                </div>
+              )}
               <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
                 <span>Bruttó:</span>
                 <span>{formatPrice(oneTimeTotal * 1.27)}</span>
@@ -64,10 +66,12 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
                 <span>Nettó / hó:</span>
                 <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
               </div>
-              <div className="flex justify-between text-gray-700">
-                <span>ÁFA (27%):</span>
-                <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
-              </div>
+              {showTotal && (
+                <div className="flex justify-between text-gray-700">
+                  <span>ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
+                </div>
+              )}
               <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
                 <span>Bruttó / hó:</span>
                 <span>{formatPrice(monthlyTotal * 1.27)}</span>
@@ -85,10 +89,12 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
                 <span>Nettó / év:</span>
                 <span className="font-semibold">{formatPrice(yearlyTotal)}</span>
               </div>
-              <div className="flex justify-between text-gray-700">
-                <span>ÁFA (27%):</span>
-                <span className="font-semibold">{formatPrice(yearlyTotal * 0.27)}</span>
-              </div>
+              {showTotal && (
+                <div className="flex justify-between text-gray-700">
+                  <span>ÁFA (27%):</span>
+                  <span className="font-semibold">{formatPrice(yearlyTotal * 0.27)}</span>
+                </div>
+              )}
               <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
                 <span>Bruttó / év:</span>
                 <span>{formatPrice(yearlyTotal * 1.27)}</span>
