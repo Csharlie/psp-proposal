@@ -11,15 +11,13 @@ export const autozenoConfig: ClientConfig = {
   
   project: {
     title: "AutoZeno - Autókereskedés Online Jelenléte",
-    description: "Konverzió-központú landing oldal és autókatalógus rendszer fejlesztése, mobilra optimalizálva.",
+    description: "Mobilra optimalizált landing oldal és autókatalógus rendszer, opcionális domain és tárhely szolgáltatással, valamint havi karbantartással.",
     timeline:  [
       "Landing page: 5-7 munkanap",
       "Autókatalógus rendszer: 7-10 munkanap"
     ],
     deliverables: [
-        "Konverzióra optimalizált landing oldal",
-        "Átlátható autókatalógus rendszer",
-        "Professzionális online megjelenés"
+        "Professzionális online megjelenés, amely támogatja az AutoZeno értékesítési folyamatait."
       // "Konverzió-központú landing page (1 oldal, mobilra optimalizálva)",
       // "Autókatalógus rendszer (szűrők, részletes járműadatok)",
       // "Érdeklődési űrlap integráció",
@@ -50,9 +48,9 @@ export const autozenoConfig: ClientConfig = {
   // Egyedi árak az AutoZeno projektre
   customPrices: {
     'landing-page': 119000,            // Konverzió-központú landing page
-    'car-catalog-system': 219000,      // Autókatalógus rendszer szűrőkkel
-    'domain-hosting': 9900,            // Domain + 1 év tárhely + SSL
-    'maintenance-monthly': 9900,       // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
+    'car-catalog-system': 259000,      // Autókatalógus rendszer szűrőkkel
+    'domain-hosting': 14900,            // Domain + 1 év tárhely + SSL
+    'maintenance-monthly': 14900,       // Havi karbantartás éves díja (35,000 Ft/hó × 12 hó)
     'domain-hosting-monthly': 3900,    // Domain + 1 év tárhely + SSL
     'domain-hosting-yearly': 39000,    // Domain + 1 év tárhely + SSL
   },
