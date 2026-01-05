@@ -20,7 +20,7 @@ export default function Terms({ customText }: TermsProps) {
     },
     {
       title: 'Módosítások',
-      content: 'A projekt során 2 körös módosítási lehetőség biztosított. További módosítások óradíj alapján kerülnek számlázásra (15.000 Ft/óra).',
+      content: 'Az elfogadást követően felmerülő, új vagy módosított igények már külön megbeszélés és óradíjas elszámolás szerint kerülnek megvalósításra (15.000 Ft / óra).',
     },
     {
       title: 'Szerzői jogok',

@@ -50,28 +50,22 @@ export default function EmailQuote({ quoteInfo, services }: EmailQuoteProps) {
                       <tbody>
                         <tr>
                           <td style={{ padding: '8px 0', width: '50%', verticalAlign: 'top' }}>
-                            <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 4px 0' }}>Név</p>
-                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.name}</p>
-                          </td>
-                          <td style={{ padding: '8px 0', width: '50%', verticalAlign: 'top' }}>
                             <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 4px 0' }}>Cég</p>
-                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.company}</p>
+                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.company || 'Nincs megadva'}</p>
                           </td>
-                        </tr>
-                        <tr>
                           <td style={{ padding: '8px 0', width: '50%', verticalAlign: 'top' }}>
                             <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 4px 0' }}>Email</p>
-                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.email}</p>
-                          </td>
-                          <td style={{ padding: '8px 0', width: '50%', verticalAlign: 'top' }}>
-                            <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 4px 0' }}>Telefon</p>
-                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.phone}</p>
+                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.email || 'Nincs megadva'}</p>
                           </td>
                         </tr>
                         <tr>
-                          <td colSpan={2} style={{ padding: '8px 0' }}>
+                          <td style={{ padding: '8px 0', width: '50%', verticalAlign: 'top' }}>
+                            <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 4px 0' }}>Telefon</p>
+                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.phone || 'Nincs megadva'}</p>
+                          </td>
+                          <td style={{ padding: '8px 0', width: '50%', verticalAlign: 'top' }}>
                             <p style={{ fontSize: '12px', color: '#6b7280', margin: '0 0 4px 0' }}>Cím</p>
-                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.address}</p>
+                            <p style={{ fontSize: '14px', fontWeight: '500', color: '#111827', margin: '0' }}>{quoteInfo.clientInfo.address || 'Nincs megadva'}</p>
                           </td>
                         </tr>
                       </tbody>

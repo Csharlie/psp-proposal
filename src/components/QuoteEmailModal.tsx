@@ -45,7 +45,7 @@ export default function QuoteEmailModal({ isOpen, onClose, clientName, clientEma
           </div>
           
           <h2 className="text-2xl font-bold text-gray-900 mb-3">
-            Köszönjük az érdeklődést, {clientName}!
+            Köszönjük az érdeklődést!
           </h2>
           
           <p className="text-gray-600 mb-4">
@@ -53,20 +53,15 @@ export default function QuoteEmailModal({ isOpen, onClose, clientName, clientEma
           </p>
           
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-blue-900 mb-2">
-              Töltse le az ajánlatot PDF formátumban:
+            <p className="text-blue-900 mb-2">
+              A rövid ajánlatáttekintőt kiküldtük az Ügyféladatok között szereplő email címre.
             </p>
-            <button
-              onClick={handleDownloadPDF}
-              disabled={downloading}
-              className="w-full px-4 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <Download size={20} />
-              {downloading ? 'Generálás...' : 'Ajánlat letöltése PDF-ben'}
-            </button>
+            <p className="text-blue-700 font-semibold">
+              {clientEmail}
+            </p>
           </div>
           
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-gray-500 mb-6">
             Hamarosan felvesszük Önnel a kapcsolatot!
           </p>
           

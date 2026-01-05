@@ -4,7 +4,7 @@ export const autozenoConfig: ClientConfig = {
   client: {
     name: "AutoZeno",
     contact: "Ügyvezető",
-    email: "lakoautozeno@gmail.com",
+    email: "info@pspro.hu",
     phone: "+36 70 616 8080",
     address: "Budapest, Magyarország"
   },

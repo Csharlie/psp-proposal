@@ -27,7 +27,7 @@ export function Timeline({ printable = false }: TimelineProps) {
               <span className="text-blue-600 font-semibold">{index + 1}</span>
             </div>
             <div className="flex-1">
-              <div className={printable ? "mb-1 flex flex-col sm:flex-row sm:items-center sm:gap-2" : "flex items-center gap-2 mb-1"}>
+              <div className={printable ? "mb-1 flex items-center justify-between gap-2" : "flex items-center gap-2 mb-1"}>
                 <h3 className="font-semibold text-gray-900">{phase.name}</h3>
                 <div className="flex pt-2 pb-1 items-center gap-1 text-sm text-gray-600">
                   <Clock className="w-4 h-4" />
