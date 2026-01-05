@@ -115,7 +115,7 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
               <span className="font-semibold">{formatPrice(vatAmount)}</span>
             </div>
           )}
-          <div className={`flex justify-between text-2xl font-bold text-gray-900 ${monthlyTotal > 0 ? 'border-t pt-3 pb-4 border-b border-gray-300' : 'border-t-2 pt-3'}`}>
+          <div className={`flex flex-col sm:flex-row sm:justify-between text-2xl font-bold text-gray-900 pt-4 sm:pt-3 ${monthlyTotal > 0 ? 'border-t pb-4 border-b border-gray-300' : 'border-t-2'}`}>
             <span>Összesített bruttó / egyszeri + éves:</span>
             <span>{formatPrice(totalWithVat)}</span>
           </div>
