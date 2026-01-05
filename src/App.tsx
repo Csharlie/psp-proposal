@@ -15,6 +15,8 @@ import Footer from './components/Footer';
 import PrintableQuote from './components/PrintableQuote';
 import { CustomContent } from './components/CustomContent';
 import AuthGuard from './components/AuthGuard';
+import QuoteEmailModal from './components/QuoteEmailModal';
+import { emailService } from './services/emailService';
 import type { ServiceItem, QuoteInfo } from './types';
 
 function App() {
@@ -23,6 +25,31 @@ function App() {
   const [quoteInfo, setQuoteInfo] = useState<QuoteInfo | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
+  const [emailSending, setEmailSending] = useState(false);
+
+  const handleInterestClick = async () => {
+    if (!quoteInfo) return;
+    
+    setEmailSending(true);
+    
+    try {
+      await emailService.sendQuoteEmail({
+        clientName: quoteInfo.clientInfo.name,
+        clientEmail: quoteInfo.clientInfo.email,
+        companyName: quoteInfo.clientInfo.company,
+        projectName: quoteInfo.projectInfo.title,
+        quoteUrl: window.location.href,
+      });
+      
+      setIsEmailModalOpen(true);
+    } catch (err) {
+      console.error('Email sending failed:', err);
+      alert('Hiba történt az email küldése közben. Kérjük, próbálja újra később.');
+    } finally {
+      setEmailSending(false);
+    }
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -158,6 +185,27 @@ function App() {
             <Terms />
           )} */}
           
+          {/* CTA gomb */}
+          <div className="mt-12 mb-12">
+            <button
+              onClick={handleInterestClick}
+              disabled={emailSending}
+              className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-xl font-bold rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {emailSending ? (
+                <>
+                  <svg className="animate-spin h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Küldés folyamatban...
+                </>
+              ) : (
+                'Érdekel az ajánlat!'
+              )}
+            </button>
+          </div>
+          
           <ContactSection />
           
           <Footer />
@@ -189,6 +237,15 @@ function App() {
           />
         </div>
         </div>
+
+        {/* Email Modal */}
+        <QuoteEmailModal
+          isOpen={isEmailModalOpen}
+          onClose={() => setIsEmailModalOpen(false)}
+          clientName={quoteInfo.clientInfo.name}
+          clientEmail={quoteInfo.clientInfo.email}
+          success={true}
+        />
       </div>
     </AuthGuard>
   );

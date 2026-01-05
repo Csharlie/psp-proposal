@@ -30,7 +30,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <div className="mb-8">
+    <div id="contact-section" className="mb-8">
 
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg p-8 mt-8 text-white">
         <div className="w-full">

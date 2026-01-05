@@ -21,7 +21,7 @@ interface PrintableQuoteProps {
 const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
   ({ quoteInfo, services, quoteUrl }, ref) => {
     return (
-      <div ref={ref} className="bg-white mt-8 p-8 print:mt-0 print:p-0 max-w-4xl print:max-w-none mx-auto print:mx-0">
+      <div ref={ref} className="printable-quote bg-white mt-8 p-8 print:mt-0 print:p-0 max-w-4xl print:max-w-none mx-auto print:mx-0">
         <QuoteHeader quoteInfo={quoteInfo} />
         <ClientDetails clientInfo={quoteInfo.clientInfo} printable={true} />
         <ProjectSummary projectInfo={quoteInfo.projectInfo} printable={true} />
