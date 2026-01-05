@@ -466,7 +466,7 @@ const serviceDefinitions: ServiceBase[] = [
   },
   {
     id: 'maintenance-monthly',
-    category: 'Kiegészítő szolgáltatások',
+    category: 'Karbantartási szolgáltatások',
     name: 'Havi karbantartás (opcionális)',
     description: 'Frissítések, biztonsági mentések, kisebb módosítások',
     prices: {
@@ -495,8 +495,8 @@ const serviceDefinitions: ServiceBase[] = [
   {
     id: 'landing-page',
     category: 'Webfejlesztési szolgáltatások',
-    name: 'Konverzió-központú Landing Page',
-    description: 'Egyoldalas, konverzióra optimalizált bemutatkozó oldal mobilra optimalizálva',
+    name: 'Landing Page',
+    description: 'Egyoldalas, konverzió-központú bemutatkozó oldal mobilra optimalizálva',
     prices: {
       premium: 220000,
       standard: 180000,
@@ -510,7 +510,7 @@ const serviceDefinitions: ServiceBase[] = [
     id: 'car-catalog-system',
     category: 'E-commerce szolgáltatások',
     name: 'Autókatalógus Rendszer',
-    description: 'Járműadatbázis haladó szűrőkkel, részletes járműadatokkal és érdeklődési űrlappal',
+    description: 'Járműadatbázis rendezési lehetőségekkel és részletes járműadatokkal',
     prices: {
       premium: 400000,
       standard: 320000,
@@ -521,9 +521,9 @@ const serviceDefinitions: ServiceBase[] = [
   },
   {
     id: 'domain-hosting',
-    category: 'Kiegészítő szolgáltatások',
+    category: 'Domain & Tárhely szolgáltatások',
     name: 'Domain & Tárhely Beállítás (egyszeri)',
-    description: 'Domain regisztráció, tárhely költöztetés, SSL tanúsítvány',
+    description: 'Domain és tárhely technikai beállítása, SSL tanúsítvány aktiválása',
     prices: {
       premium: 30000,
       standard: 25000,
@@ -547,9 +547,9 @@ const serviceDefinitions: ServiceBase[] = [
   },
   {
     id: 'domain-hosting-monthly',
-    category: 'Kiegészítő szolgáltatások',
+    category: 'Domain & Tárhely szolgáltatások',
     name: 'Domain & Tárhely (havi díj)',
-    description: 'Prémium tárhely, SSL tanúsítvány, email címek - havi előfizetéssel',
+    description: 'Prémium tárhely (1 GB), aktív SSL tanúsítvány és céges email címek',
     prices: {
       premium: 4000,
       standard: 3500,
@@ -560,9 +560,9 @@ const serviceDefinitions: ServiceBase[] = [
   },
   {
     id: 'domain-hosting-yearly',
-    category: 'Kiegészítő szolgáltatások',
+    category: 'Domain & Tárhely szolgáltatások',
     name: 'Domain & Tárhely (éves díj)',
-    description: 'Prémium tárhely, SSL tanúsítvány, email címek - éves előfizetéssel',
+    description: 'Prémium tárhely (1 GB), aktív SSL tanúsítvány és céges email címek',
     prices: {
       premium: 40000,
       standard: 35000,
