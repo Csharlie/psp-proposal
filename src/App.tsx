@@ -35,10 +35,8 @@ function App() {
     
     try {
       await emailService.sendQuoteEmail({
-        clientName: quoteInfo.clientInfo.name,
-        clientEmail: quoteInfo.clientInfo.email,
-        companyName: quoteInfo.clientInfo.company,
-        projectName: quoteInfo.projectInfo.title,
+        quoteInfo,
+        services: services.filter(s => s.selected),
         quoteUrl: window.location.href,
       });
       
