@@ -16,6 +16,13 @@ export interface ProjectInfo {
   features?: string;
   timeline: string | string[];
   deliverables: string[];
+  gallery?: GalleryImage[];
+}
+
+export interface GalleryImage {
+  url: string;
+  title?: string;
+  description?: string;
 }
 
 export interface QuoteInfo {

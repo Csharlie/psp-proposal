@@ -1,4 +1,5 @@
 import { ClientConfig } from '../types';
+import { galleryImages } from './gallery';
 
 export const autozenoConfig: ClientConfig = {
   client: {
@@ -26,7 +27,8 @@ export const autozenoConfig: ClientConfig = {
       // "Havi műszaki karbantartás és támogatás",
       // "Képzés és dokumentáció",
       // "30 napos garanciális támogatás"
-    ]
+    ],
+    gallery: galleryImages
   },
   
   quote: {

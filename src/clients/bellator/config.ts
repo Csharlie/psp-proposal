@@ -1,4 +1,5 @@
 import { ClientConfig } from '../types';
+import { galleryImages } from './gallery';
 
 export const bellatorConfig: ClientConfig = {
   client: {
@@ -59,7 +60,8 @@ export const bellatorConfig: ClientConfig = {
     ],
     // deliverables: [
     //   "Professzionális online megjelenés"
-    // ]
+    // ],
+    gallery: galleryImages
   },
   
   quote: {

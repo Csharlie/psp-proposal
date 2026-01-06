@@ -16,6 +16,7 @@ import PrintableQuote from './components/PrintableQuote';
 import { CustomContent } from './components/CustomContent';
 import AuthGuard from './components/AuthGuard';
 import QuoteEmailModal from './components/QuoteEmailModal';
+import ImageGallery from './components/ImageGallery';
 import { emailService } from './services/emailService';
 import type { ServiceItem, QuoteInfo } from './types';
 
@@ -133,6 +134,11 @@ function App() {
           <ClientDetails clientInfo={quoteInfo.clientInfo} />
           
           <ProjectSummary projectInfo={quoteInfo.projectInfo} />
+          
+          {/* Látványtervek galéria */}
+          {quoteInfo.projectInfo.gallery && quoteInfo.projectInfo.gallery.length > 0 && (
+            <ImageGallery images={quoteInfo.projectInfo.gallery} />
+          )}
           
           {/* Információs szöveg */}
           <div className="mt-8 mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">

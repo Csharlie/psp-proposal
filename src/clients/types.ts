@@ -15,6 +15,7 @@ export interface ClientConfig {
     features?: string;
     timeline?: string | string[];
     deliverables?: string[];
+    gallery?: import('../types').GalleryImage[];
   };
   
   // Ajánlat beállítások

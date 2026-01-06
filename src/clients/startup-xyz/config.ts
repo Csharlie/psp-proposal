@@ -1,5 +1,6 @@
 
 import { ClientConfig } from '../types';
+import { galleryImages } from './gallery';
 
 export const startupXyzConfig: ClientConfig = {
   client: {
@@ -23,7 +24,8 @@ export const startupXyzConfig: ClientConfig = {
       "Számlázási integráció",
       "Admin képzés",
       "2 hónap support"
-    ]
+    ],
+    gallery: galleryImages
   },
   
   quote: {

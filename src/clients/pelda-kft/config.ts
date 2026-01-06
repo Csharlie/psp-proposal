@@ -1,5 +1,6 @@
 
 import { ClientConfig } from '../types';
+import { galleryImages } from './gallery';
 
 export const peldaKftConfig: ClientConfig = {
   client: {
@@ -22,7 +23,8 @@ export const peldaKftConfig: ClientConfig = {
       "Tartalomfeltöltés (max 10 oldal)",
       "Admin képzés",
       "1 hónap ingyenes support"
-    ]
+    ],
+    gallery: galleryImages
   },
   
   quote: {
