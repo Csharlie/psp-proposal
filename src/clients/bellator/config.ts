@@ -11,55 +11,55 @@ export const bellatorConfig: ClientConfig = {
   
   project: {
     title: "Bellator Gym – Fitness Landing Page",
-    description: "Egy üzletileg hatékony, mobilra optimalizált fitness weboldal, modern megjelenéssel, strukturált tartalommal és felhasználóbarát felépítéssel.",
+    description: "Üzletileg hatékony, mobilra optimalizált fitness weboldal, modern megjelenéssel, strukturált tartalommal, felhasználóbarát és konverzió-központú felépítéssel.",
     features: `
 <div class="space-y-4">
-  <p class="text-gray-700 mb-4">A weboldal egy landing page alapú, szekcionált felépítésre épül:</p>
+  <p class="text-gray-700 mb-4">A weboldal landing page jellegű, logikusan tagolt szekciókra épülő struktúrával készül:</p>
   
-  <ul class="space-y-2 text-gray-700 ml-4">
-    <li>
-      <span class="italic font-semibold text-gray-700">Hero szekció</span><br/>
-      <span class="text-gray-700 text-sm">Figyelemfelkeltő, vizuálisan erős, kettéválasztott hero szekció, külön fókuszált üzenetekkel az eltérő edzésirányok bemutatására</span>
-    </li>
+  <div class="space-y-3">
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Hero szekció</h4>
+      <p class="text-gray-600 text-sm">Figyelemfelkeltő, vizuálisan erős, kettéválasztott hero szekció célzott üzenetekkel</p>
+    </div>
     
-    <li>
-      <span class="italic font-semibold text-gray-700">Edzésprogramok bemutatása</span><br/>
-      <span class="text-gray-700 text-sm">Strukturált, kártyás rendszerrel, gyors áttekinthetőséggel</span>
-    </li>
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Edzésprogramok bemutatása</h4>
+      <p class="text-gray-600 text-sm">Strukturált, kártyás rendszerrel, gyors áttekinthetőséggel</p>
+    </div>
     
-    <li>
-      <span class="italic font-semibold text-gray-700">Edzők bemutatása</span><br/>
-      <span class="text-gray-700 text-sm">Bizalomépítés, szakmai hitelesség hangsúlyozása</span>
-    </li>
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Edzők bemutatása</h4>
+      <p class="text-gray-600 text-sm">Bizalomépítés, szakmai hitelesség hangsúlyozása</p>
+    </div>
     
-    <li>
-      <span class="italic font-semibold text-gray-700">Galéria</span><br/>
-      <span class="text-gray-700 text-sm">Életképek, hangulat, közösségi élmény vizuális megerősítése</span>
-    </li>
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Galéria</h4>
+      <p class="text-gray-600 text-sm">Életképek, hangulat, közösségi élmény vizuális megerősítése</p>
+    </div>
     
-    <li>
-      <span class="italic font-semibold text-gray-700">Bérlet- és csomagstruktúra</span><br/>
-      <span class="text-gray-700 text-sm">Átlátható árképzés, kiemelt ajánlatokkal</span>
-    </li>
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Bérlet- és csomagstruktúra</h4>
+      <p class="text-gray-600 text-sm">Átlátható árképzés, kiemelt ajánlatokkal</p>
+    </div>
     
-    <li>
-      <span class="italic font-semibold text-gray-700">Vélemények</span><br/>
-      <span class="text-gray-700 text-sm">Social proof (társadalmi bizonyíték) a döntési kockázat csökkentésére</span>
-    </li>
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Vélemények</h4>
+      <p class="text-gray-600 text-sm">Valós vendégvisszajelzések, amelyek segítenek a választásban</p>
+    </div>
     
-    <li>
-      <span class="italic font-semibold text-gray-700">Kapcsolati szekció</span><br/>
-      <span class="text-gray-700 text-sm">Űrlap, elérhetőségek, térkép – gyors és egyszerű kapcsolatfelvétel</span>
-    </li>
-  </ul>
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+      <h4 class="font-semibold text-gray-900 mb-1">Kapcsolati szekció</h4>
+      <p class="text-gray-600 text-sm">Űrlap, elérhetőségek, térkép – gyors és egyszerű kapcsolatfelvétel</p>
+    </div>
+  </div>
 </div>`,
     timeline:  [
       "Tervezés: 3-5 munkanap",
       "Fejlesztés: 5-7 munkanap"
     ],
-    deliverables: [
-      "Professzionális online megjelenés"
-    ]
+    // deliverables: [
+    //   "Professzionális online megjelenés"
+    // ]
   },
   
   quote: {
@@ -69,15 +69,13 @@ export const bellatorConfig: ClientConfig = {
   },
   
   selectedServices: [
-    'landing-page'
+    'landing-page-bellator'
   ],
   
-  pricingVersion: 'standard',
+  pricingVersion: 'basic',
   
-  // Egyedi árak
-  customPrices: {
-    'landing-page': 150000
-  },
+  // Megjelenítési beállítások
+  showYearlyCosts: false,
   
   customTexts: {
     introduction: `# VEZETŐI ÖSSZEFOGLALÓ – Bellator

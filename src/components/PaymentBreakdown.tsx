@@ -3,9 +3,10 @@ import { ServiceItem } from '../types';
 interface PaymentBreakdownProps {
   services: ServiceItem[];
   showDetails?: boolean;
+  showYearlyCosts?: boolean;
 }
 
-export default function PaymentBreakdown({ services, showDetails = false }: PaymentBreakdownProps) {
+export default function PaymentBreakdown({ services, showDetails = false, showYearlyCosts = true }: PaymentBreakdownProps) {
   // Szolgáltatások szétválasztása díjtípus szerint
   const oneTimeServices = services.filter(s => s.billingType === 'one-time');
   const monthlyServices = services.filter(s => s.billingType === 'monthly');
@@ -106,7 +107,7 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
         <div className="mt-6 space-y-3">
           {/* Egyszeri + éves */}
           <div className="flex justify-between text-gray-700">
-            <span className="font-semibold">Összesített nettó / egyszeri + éves:</span>
+            <span className="font-semibold">Összesített nettó{showYearlyCosts ? ' / egyszeri + éves' : ''}:</span>
             <span className="font-semibold">{formatPrice(totalPrice)}</span>
           </div>
           {showDetails && (
@@ -116,7 +117,7 @@ export default function PaymentBreakdown({ services, showDetails = false }: Paym
             </div>
           )}
           <div className={`flex flex-col sm:flex-row sm:justify-between text-2xl font-bold text-gray-900 pt-4 sm:pt-3 ${monthlyTotal > 0 ? 'border-t pb-4 border-b border-gray-300' : 'border-t-2'}`}>
-            <span>Összesített bruttó / egyszeri + éves:</span>
+            <span>Összesített bruttó{showYearlyCosts ? ' / egyszeri + éves' : ''}:</span>
             <span>{formatPrice(totalWithVat)}</span>
           </div>
 

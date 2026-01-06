@@ -33,7 +33,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
         </div>
 
         <PaymentTerms />
-        <PaymentBreakdown services={services} showDetails={true} />
+        <PaymentBreakdown services={services} showDetails={true} showYearlyCosts={quoteInfo.showYearlyCosts} />
         <Timeline printable={true} />
         <ProjectStartConditions />
         <Terms />
@@ -49,6 +49,19 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
             Olvassa be a QR-kódot az online ajánlatért
           </p>
         </div>
+        
+        {/* Nyomtatás gomb QR kód alatt */}
+        <button
+          onClick={() => window.print()}
+          className="print:hidden w-full mb-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Nyomtatás
+        </button>
 
         <Footer />
       </div>

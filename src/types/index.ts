@@ -27,6 +27,7 @@ export interface QuoteInfo {
   clientInfo: ClientInfo;
   projectInfo: ProjectInfo;
   pricingVersion: PricingVersion;
+  showYearlyCosts?: boolean;
   notes?: string;
   customTexts?: {
     introduction?: string;

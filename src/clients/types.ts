@@ -29,8 +29,9 @@ export interface ClientConfig {
   
   // Árváltozat
   pricingVersion: 'premium' | 'standard' | 'basic';
-  
-  // Egyedi árak (opcionális felülírás)
+    // Megjelenítési beállítások
+  showYearlyCosts?: boolean;
+    // Egyedi árak (opcionális felülírás)
   customPrices?: Record<string, number>;
   
   // Kedvezmény

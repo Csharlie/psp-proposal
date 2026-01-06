@@ -134,6 +134,16 @@ function App() {
           
           <ProjectSummary projectInfo={quoteInfo.projectInfo} />
           
+          {/* Információs szöveg */}
+          <div className="mt-8 mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+            <p className="text-sm text-gray-700 flex items-start gap-2">
+              <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              <span>A szolgáltatások részletes leírását, az árazást és a fizetési feltételeket a dokumentum alsó részében találja.</span>
+            </p>
+          </div>
+          
           {/* Egyedi bevezető szöveg megjelenítése - IDEIGLENESEN ELREJTVE */}
           {/* {quoteInfo.customTexts?.introduction && (
             <CustomContent content={quoteInfo.customTexts.introduction} className="mt-8" />
@@ -147,14 +157,14 @@ function App() {
             showDescription={true}
           />
           
-          {/* Választható szolgáltatások */}
-          <ServicesList 
+          {/* Választható szolgáltatások - IDEIGLENESEN ELREJTVE */}
+          {/* <ServicesList 
             services={services.filter(s => s.selectable !== false)} 
             interactive={true}
             onToggle={handleServiceToggle}
             title="Elérhető szolgáltatások"
             showDescription={true}
-          />        
+          /> */}        
 
           {/* Árazási összesítő */}
           {selectedServices.length > 0 && (
@@ -185,6 +195,14 @@ function App() {
           
           {/* CTA gomb */}
           <div className="mt-12 mb-12">
+            <div className="mb-4 p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+              <p className="text-sm text-gray-700 flex items-start gap-2">
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+                <span>Az ajánlat elfogadása nem jár azonnali kötelezettséggel – a projekt indítása előtt minden részletet egyeztetünk.</span>
+              </p>
+            </div>
             <button
               onClick={handleInterestClick}
               disabled={emailSending}
@@ -209,16 +227,29 @@ function App() {
           <Footer />
           
           {/* Nyomtatható dokumentáció fejléc */}
-          <div className="mt-16 mb-16">
-            <h2 className="text-2xl font-bold text-gray-900 text-center">Részletes és nyomtatható dokumentáció</h2>
+          <div className="mt-16 mb-8 md:mb-16">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-4 md:mb-0">Részletes és nyomtatható dokumentáció</h2>
+            
+            {/* Nyomtatás gomb - mobil nézet */}
+            <button
+              onClick={() => window.print()}
+              className="print:hidden md:hidden w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Nyomtatás
+            </button>
           </div>
         </div>
         
         <div className="print:mt-0 relative max-w-4xl mx-auto">
-          {/* Nyomtatás gomb */}
+          {/* Nyomtatás gomb - desktop nézet */}
           <button
             onClick={() => window.print()}
-            className="print:hidden absolute -top-20 right-0 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2"
+            className="print:hidden hidden md:flex absolute -top-20 right-0 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors items-center gap-2"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="6 9 6 2 18 2 18 9"></polyline>

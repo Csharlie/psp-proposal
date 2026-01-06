@@ -44,7 +44,7 @@ export default function QuoteHeader({ quoteNumber, date, validityDays, quoteInfo
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
-              })}-ig
+              })}
             </p>
           </div>
         </div>
