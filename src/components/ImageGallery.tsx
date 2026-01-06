@@ -123,6 +123,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
         <h2 className="text-xl font-bold text-gray-900">{title}</h2>
       </div>
       
+      
       {/* Grid Layout */}
       <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
         {images.map((image, index) => (
@@ -144,7 +145,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
           </button>
         ))}
       </div>
-
+        <p className="text-sm text-gray-600 mt-4">Előzetes koncepció és vizuális irány (nem végleges)</p>
       {/* Lightbox Modal */}
       {selectedImage !== null && (
         <div
