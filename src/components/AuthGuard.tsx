@@ -5,12 +5,12 @@ interface AuthGuardProps {
 }
 
 // Jelszavas védelem ki/be kapcsolása
-const AUTH_ENABLED = true;
+const AUTH_ENABLED = false;
 
 // Bejelentkezési adatok
 const CREDENTIALS = {
-  username: 'autozeno',
-  password: 'AZPSP26!'
+  username: 'bellator',
+  password: 'BGPSP26!'
 };
 
 export default function AuthGuard({ children }: AuthGuardProps) {

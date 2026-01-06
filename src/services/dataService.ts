@@ -2,7 +2,7 @@
 import { ServiceItem, QuoteInfo } from '../types';
 import { getConfig } from '../clients';
 
-const DEFAULT_CLIENT_KEY = 'autozeno';
+const DEFAULT_CLIENT_KEY = 'bellator';
 
 // Adapter interfész
 export interface IDataProvider {

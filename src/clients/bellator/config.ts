@@ -2,15 +2,15 @@ import { ClientConfig } from '../types';
 
 export const bellatorConfig: ClientConfig = {
   client: {
-    name: "Bellator",
-    contact: "Ügyvezető",
-    email: "info@bellator.hu",
+    name: "Bellator Gym",
+    contact: "Makány Balázs",
+    email: "info@pspro.hu",
     phone: "+36 XX XXX XXXX",
-    address: "Budapest, Magyarország"
+    address: "Kiskunfélegyháza, Magyarország"
   },
   
   project: {
-    title: "Bellator - Projekt Cím",
+    title: "Bellator Gym Landing Page",
     description: "Projekt leírás.",
     timeline:  [
       "Tervezés: X munkanap",
