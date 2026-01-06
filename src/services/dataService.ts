@@ -72,6 +72,7 @@ class LocalDataProvider implements IDataProvider {
       projectInfo: {
         title: config.project.title,
         description: config.project.description,
+        features: config.project.features,
         timeline: config.project.timeline || '',
         deliverables: config.project.deliverables || [],
       },

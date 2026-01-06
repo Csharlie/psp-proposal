@@ -12,6 +12,7 @@ export interface ClientConfig {
   project: {
     title: string;
     description: string;
+    features?: string;
     timeline?: string | string[];
     deliverables?: string[];
   };

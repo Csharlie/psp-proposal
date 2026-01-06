@@ -1,5 +1,7 @@
 
 import { Briefcase } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import type { ProjectInfo } from '../types';
 
 interface ProjectSummaryProps {
@@ -25,6 +27,13 @@ export default function ProjectSummary({ projectInfo, printable = false }: Proje
           <h3 className="font-semibold text-gray-900 mb-2">Leírás</h3>
           <p className="text-gray-700">{projectInfo.description || 'Nincs megadva'}</p>
         </div>
+        
+        {projectInfo.features && (
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-2">Funkciók</h3>
+            <div dangerouslySetInnerHTML={{ __html: projectInfo.features }} />
+          </div>
+        )}
         
         <div>
           <h3 className="font-semibold text-gray-900 mb-2">Időkeret</h3>

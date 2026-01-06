@@ -10,8 +10,49 @@ export const bellatorConfig: ClientConfig = {
   },
   
   project: {
-    title: "Bellator Gym Landing Page",
-    description: "Projekt leírás.",
+    title: "Bellator Gym – Fitness Landing Page",
+    description: "Egy üzletileg hatékony, mobilra optimalizált fitness weboldal, modern megjelenéssel, strukturált tartalommal és felhasználóbarát felépítéssel.",
+    features: `
+<div class="space-y-4">
+  <p class="text-gray-700 mb-4">A weboldal egy landing page alapú, szekcionált felépítésre épül:</p>
+  
+  <ul class="space-y-2 list-disc text-gray-700 ml-8">
+    <li>
+      <span class="font-semibold text-gray-700">Hero szekciók</span><br/>
+      <span class="text-gray-700">Azonnali értékajánlat, vizuális erő és egyértelmű CTA (Call to Action – cselekvésre ösztönzés)</span>
+    </li>
+    
+    <li>
+      <span class="font-semibold text-gray-700">Edzésprogramok bemutatása</span><br/>
+      <span class="text-gray-700">Strukturált, kártyás rendszerrel, gyors áttekinthetőséggel</span>
+    </li>
+    
+    <li>
+      <span class="font-semibold text-gray-700">Edzők bemutatása</span><br/>
+      <span class="text-gray-700">Bizalomépítés, szakmai hitelesség hangsúlyozása</span>
+    </li>
+    
+    <li>
+      <span class="font-semibold text-gray-700">Galéria</span><br/>
+      <span class="text-gray-700">Életképek, hangulat, közösségi élmény vizuális megerősítése</span>
+    </li>
+    
+    <li>
+      <span class="font-semibold text-gray-700">Bérlet- és csomagstruktúra</span><br/>
+      <span class="text-gray-700">Átlátható árképzés, kiemelt ajánlatokkal</span>
+    </li>
+    
+    <li>
+      <span class="font-semibold text-gray-700">Vélemények</span><br/>
+      <span class="text-gray-700">Social proof (társadalmi bizonyíték) a döntési kockázat csökkentésére</span>
+    </li>
+    
+    <li>
+      <span class="font-semibold text-gray-700">Kapcsolati szekció</span><br/>
+      <span class="text-gray-700">Űrlap, elérhetőségek, térkép – gyors és egyszerű kapcsolatfelvétel</span>
+    </li>
+  </ul>
+</div>`,
     timeline:  [
       "Tervezés: X munkanap",
       "Fejlesztés: X munkanap"
