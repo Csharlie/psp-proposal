@@ -14,8 +14,7 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ images, title = "Látványtervek" }: ImageGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const [zoom, setZoom] = useState<number>(1);
-  const [useActualSize, setUseActualSize] = useState(false);
+  const [viewMode, setViewMode] = useState<'height' | 'actual'>('height');
   const [isDragging, setIsDragging] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -51,8 +50,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
   const handlePrevious = () => {
     if (selectedImage !== null && selectedImage > 0) {
       setSelectedImage(selectedImage - 1);
-      setZoom(1);
-      setUseActualSize(false);
+      setViewMode('height');
       setPosition({ x: 0, y: 0 });
     }
   };
@@ -60,62 +58,21 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
   const handleNext = () => {
     if (selectedImage !== null && selectedImage < images.length - 1) {
       setSelectedImage(selectedImage + 1);
-      setZoom(1);
-      setUseActualSize(false);
+      setViewMode('height');
       setPosition({ x: 0, y: 0 });
     }
   };
 
-  const handleZoomIn = () => {
-    setUseActualSize(false);
-    setZoom(prev => Math.min(prev + 0.25, 3));
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-    }
-  };
-
-  const handleZoomOut = () => {
-    setUseActualSize(false);
-    setZoom(prev => {
-      const newZoom = Math.max(prev - 0.25, 0.5);
-      if (newZoom === 1) {
-        setPosition({ x: 0, y: 0 });
-      }
-      return newZoom;
-    });
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0;
-    }
-  };
-
-  const handleResetZoom = () => {
-    setZoom(1);
-    setUseActualSize(false);
+  const handleToggleView = () => {
+    setViewMode(prev => prev === 'height' ? 'actual' : 'height');
     setPosition({ x: 0, y: 0 });
-  };
-
-  const handleActualSize = () => {
-    if (useActualSize) {
-      // Ha már eredeti méretben van, visszaváltunk fit-to-screen nézetbe
-      setUseActualSize(false);
-      setZoom(1);
-      setPosition({ x: 0, y: 0 });
-    } else {
-      // Eredeti méretre váltás
-      setUseActualSize(true);
-      setZoom(1);
-      setPosition({ x: 0, y: 0 });
-      // Scroll a tetejére
-      setTimeout(() => {
-        if (containerRef.current) {
-          containerRef.current.scrollTop = 0;
-        }
-      }, 0);
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
     }
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (zoom > 1 || useActualSize) {
+    if (viewMode === 'actual') {
       e.preventDefault();
       setIsDragging(true);
       setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
@@ -123,7 +80,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging && (zoom > 1 || useActualSize)) {
+    if (isDragging && viewMode === 'actual') {
       e.preventDefault();
       setPosition({
         x: e.clientX - dragStart.x,
@@ -138,7 +95,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
 
   const handleWheel = (e: React.WheelEvent) => {
     // Megakadályozza a háttér görgetését
-    if (zoom > 1 || useActualSize) {
+    if (viewMode === 'actual') {
       e.stopPropagation();
     }
   };
@@ -146,8 +103,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Escape') {
       setSelectedImage(null);
-      setZoom(1);
-      setUseActualSize(false);
+      setViewMode('height');
       setPosition({ x: 0, y: 0 });
     } else if (e.key === 'ArrowLeft') {
       handlePrevious();
@@ -194,9 +150,9 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
         <div
           className="fixed inset-0 bg-black z-50 flex items-center justify-center"
           onClick={(e) => {
-            if (e.target === e.currentTarget && zoom === 1) {
+            if (e.target === e.currentTarget) {
               setSelectedImage(null);
-              setZoom(1);
+              setViewMode('height');
               setPosition({ x: 0, y: 0 });
             }
           }}
@@ -205,59 +161,22 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
         >
           {/* Top Controls */}
           <div className="absolute top-4 right-4 flex items-center gap-2 z-20">
-            {/* Zoom Controls */}
+            {/* View Toggle */}
             <div className="flex items-center gap-1 bg-gray-900 bg-opacity-90 rounded-lg p-1">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  handleZoomOut();
+                  handleToggleView();
                 }}
-                disabled={zoom <= 0.5}
-                className="p-2 text-white hover:bg-gray-700 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                title="Kicsinyítés"
+                className="p-2 text-white hover:bg-gray-700 rounded transition-colors"
+                title={viewMode === 'height' ? 'Eredeti méret' : 'Képernyőhöz igazít'}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
-                </svg>
-              </button>
-              
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleResetZoom();
-                }}
-                className="px-3 py-2 text-white hover:bg-gray-700 rounded text-sm font-medium min-w-[60px] transition-colors"
-                title="Képernyőhöz igazít"
-              >
-                {useActualSize ? '---' : `${Math.round(zoom * 100)}%`}
-              </button>
-              
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleZoomIn();
-                }}
-                disabled={zoom >= 3 && !useActualSize}
-                className="p-2 text-white hover:bg-gray-700 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                title="Nagyítás"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-                </svg>
-              </button>
-              
-              <div className="w-px h-6 bg-gray-700 mx-1"></div>
-              
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleActualSize();
-                }}
-                className={`p-2 text-white hover:bg-gray-700 rounded transition-colors ${useActualSize ? 'bg-blue-600' : ''}`}
-                title={useActualSize ? "Képernyőhöz igazít" : "Eredeti méret (100%)"}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  {viewMode === 'height' ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  )}
                 </svg>
               </button>
             </div>
@@ -286,7 +205,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
               onClick={(e) => {
                 e.stopPropagation();
                 setSelectedImage(null);
-                setZoom(1);
+                setViewMode('height');
                 setPosition({ x: 0, y: 0 });
               }}
               className="p-2 bg-gray-900 bg-opacity-90 text-white hover:bg-gray-700 rounded-lg transition-colors"
@@ -340,23 +259,23 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
             style={{ 
-              cursor: (zoom > 1 || useActualSize) ? (isDragging ? 'grabbing' : 'grab') : 'default'
+              cursor: viewMode === 'actual' ? (isDragging ? 'grabbing' : 'grab') : 'default'
             }}
           >
             <img
               src={images[selectedImage].url}
               alt={images[selectedImage].title || `Látványterv ${selectedImage + 1}`}
-              className={`transition-transform duration-200 select-none ${useActualSize ? 'block' : 'object-contain'}`}
+              className="transition-transform duration-200 select-none object-contain"
               draggable={false}
               style={{ 
-                transform: `translate(${position.x}px, ${position.y}px) ${useActualSize ? 'scale(1)' : `scale(${zoom})`}`,
+                transform: `translate(${position.x}px, ${position.y}px)`,
                 transformOrigin: 'top center',
-                maxWidth: useActualSize ? 'none' : '100%',
-                maxHeight: useActualSize ? 'none' : '100%',
-                width: useActualSize ? 'auto' : 'auto',
-                height: useActualSize ? 'auto' : '100%',
-                marginTop: (zoom === 1 && !useActualSize) ? 'auto' : '0',
-                marginBottom: (zoom === 1 && !useActualSize) ? 'auto' : '0'
+                maxWidth: '100%',
+                maxHeight: viewMode === 'height' ? '100%' : 'none',
+                width: 'auto',
+                height: viewMode === 'height' ? '100%' : 'auto',
+                marginTop: viewMode === 'height' ? 'auto' : '0',
+                marginBottom: viewMode === 'height' ? 'auto' : '0'
               }}
             />
           </div>
