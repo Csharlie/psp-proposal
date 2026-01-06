@@ -8,4 +8,7 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  define: {
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
+  },
 });

@@ -4,9 +4,9 @@ export const autozenoConfig: ClientConfig = {
   client: {
     name: "AutoZeno",
     contact: "Ügyvezető",
-    email: "info@pspro.hu",
+    email: "lakoautozeno@gmail.com",
     phone: "+36 70 616 8080",
-    address: "Budapest, Magyarország"
+    address: "Kiskunfélegyháza, Magyarország"
   },
   
   project: {
@@ -32,7 +32,7 @@ export const autozenoConfig: ClientConfig = {
   quote: {
     id: 'PSP-2026-001',
     issueDate: new Date().toISOString(),
-    validityDays: 14
+    validityDays: 30
   },
   
   selectedServices: [

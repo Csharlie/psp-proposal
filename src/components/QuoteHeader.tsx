@@ -10,8 +10,8 @@ interface QuoteHeaderProps {
 }
 
 export default function QuoteHeader({ quoteNumber, date, validityDays, quoteInfo }: QuoteHeaderProps) {
-  const info = quoteInfo || { quoteNumber, date, validityDays, issueDate: new Date().toISOString() };
-  const issueDate = new Date(info.issueDate || info.date || new Date());
+  const info = quoteInfo || { quoteNumber, date, validityDays, issueDate: __BUILD_DATE__ };
+  const issueDate = new Date(info.issueDate || info.date || __BUILD_DATE__);
   const validUntil = new Date(issueDate);
   validUntil.setDate(validUntil.getDate() + (info.validityDays || 0));
 

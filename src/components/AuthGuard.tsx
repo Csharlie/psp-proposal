@@ -5,7 +5,7 @@ interface AuthGuardProps {
 }
 
 // Jelszavas védelem ki/be kapcsolása
-const AUTH_ENABLED = false;
+const AUTH_ENABLED = true;
 
 // Bejelentkezési adatok
 const CREDENTIALS = {
