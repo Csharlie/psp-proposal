@@ -10,13 +10,18 @@ import { GalleryImage } from '../../../types';
  */
 
 // Importáld ide a képeket:
-// import image1 from './image1.jpg';
+import desktopMockup from './bellator-mockup-desktop.png';
+import mobileMockup from './bellator-mockup-mobile.png';
 
 export const galleryImages: GalleryImage[] = [
-  // Példa:
-  // {
-  //   url: image1,
-  //   title: 'Kezdőlap terv',
-  //   description: 'Desktop nézet'
-  // },
+  {
+    url: desktopMockup,
+    title: 'Desktop Mockup',
+    description: 'Bellator Gym weboldal - Desktop nézet'
+  },
+  {
+    url: mobileMockup,
+    title: 'Mobile Mockup',
+    description: 'Bellator Gym weboldal - Mobil nézet'
+  }
 ];
