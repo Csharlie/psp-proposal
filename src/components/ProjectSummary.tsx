@@ -46,11 +46,15 @@ export default function ProjectSummary({ projectInfo, printable = false }: Proje
         <div>
           <h3 className="font-bold text-gray-900 mb-2">Időkeret</h3>
           {Array.isArray(projectInfo.timeline) ? (
-            <ul className="list-disc list-inside space-y-1">
+            <div className="space-y-3">
               {projectInfo.timeline.map((item, index) => (
-                <li key={index} className="text-gray-700">{item}</li>
+                typeof item === 'string' && item.includes('<div') ? (
+                  <div key={index} dangerouslySetInnerHTML={{ __html: item }} />
+                ) : (
+                  <li key={index} className="text-gray-700">{item}</li>
+                )
               ))}
-            </ul>
+            </div>
           ) : (
             <p className="text-gray-700">{projectInfo.timeline || 'Nincs megadva'}</p>
           )}

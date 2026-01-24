@@ -42,7 +42,7 @@ export const benettcarConfig: ClientConfig = {
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
       <h4 class="font-semibold text-gray-900 mb-1">Útmenti segítség</h4>
-      <p class="text-gray-600 text-sm">Nonstop elérhetőség és gyors reagálási lehetőség autópálya mellett vagy útközben</p>
+      <p class="text-gray-600 text-sm">Kiemelt szekció az útmenti segítségnyújtás bemutatására</p>
     </div>
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
@@ -90,8 +90,14 @@ export const benettcarConfig: ClientConfig = {
 </div>`
     ],
     timeline:  [
-      "Tervezés: 3-5 munkanap",
-      "Fejlesztés: 5-7 munkanap"
+      `<div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
+        <h5 class="font-semibold text-gray-900 mb-2">Landing Page</h5>
+        <p class="text-gray-700 text-sm">Tervezés: <span class="font-medium">3-5 munkanap</span> | Fejlesztés: <span class="font-medium">5-7 munkanap</span></p>
+      </div>`,
+      `<div class="bg-green-50 border border-green-100 rounded-lg p-4">
+        <h5 class="font-semibold text-gray-900 mb-2">Online Időpontfoglaló Rendszer</h5>
+        <p class="text-gray-700 text-sm">Tervezés: <span class="font-medium">5-7 munkanap</span> | Fejlesztés: <span class="font-medium">7-10 munkanap</span></p>
+      </div>`
     ],
     // deliverables: [
     //   "Professzionális online megjelenés"
@@ -106,10 +112,25 @@ export const benettcarConfig: ClientConfig = {
   },
   
   selectedServices: [
-    'landing-page-benettcar'
+    'landing-page-benettcar',
+    'online-booking-benettcar',
+    'domain-hosting',
+    'ssl-certificate',
+    'google-analytics',
+    'training',
   ],
   
   pricingVersion: 'basic',
+  
+  // Egyedi árak (opcionális felülírás)
+  customPrices: {
+    'landing-page-benettcar': 159000,     // basic
+    'online-booking-benettcar': 279000,   // basic
+    'domain-hosting': 14900,              // basic
+    'ssl-certificate': 20000,             // basic
+    'google-analytics': 25000,            // basic
+    'training': 40000,                    // basic
+  },
   
   // Megjelenítési beállítások
   showYearlyCosts: false,

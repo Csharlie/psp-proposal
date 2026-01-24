@@ -163,14 +163,14 @@ function App() {
             showDescription={true}
           />
           
-          {/* Választható szolgáltatások - IDEIGLENESEN ELREJTVE */}
-          {/* <ServicesList 
+          {/* Választható szolgáltatások */}
+          <ServicesList 
             services={services.filter(s => s.selectable !== false)} 
             interactive={true}
             onToggle={handleServiceToggle}
-            title="Elérhető szolgáltatások"
+            title="Választható kiegészítő szolgáltatások"
             showDescription={true}
-          /> */}        
+          />        
 
           {/* Árazási összesítő */}
           {selectedServices.length > 0 && (
