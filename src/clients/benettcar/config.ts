@@ -5,7 +5,7 @@ export const benettcarConfig: ClientConfig = {
   client: {
     name: "Benett Car Business Kft.",
     contact: "László Béla",
-    email: "info@pspro.hu",
+    email: "benett.car.business.kft@gmail.com",
     phone: "+36 20 240 1601",
     address: "Cegléd, Magyarország"
   },
@@ -92,11 +92,11 @@ export const benettcarConfig: ClientConfig = {
     timeline:  [
       `<div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
         <h5 class="font-semibold text-gray-900 mb-2">Landing Page</h5>
-        <p class="text-gray-700 text-sm">Tervezés: <span class="font-medium">3-5 munkanap</span> | Fejlesztés: <span class="font-medium">5-7 munkanap</span></p>
+        <p class="text-gray-700 text-sm">Tervezés: <span class="font-medium">2-5 munkanap</span> | Fejlesztés: <span class="font-medium">5-7 munkanap</span></p>
       </div>`,
       `<div class="bg-green-50 border border-green-100 rounded-lg p-4">
         <h5 class="font-semibold text-gray-900 mb-2">Online Időpontfoglaló Rendszer</h5>
-        <p class="text-gray-700 text-sm">Tervezés: <span class="font-medium">5-7 munkanap</span> | Fejlesztés: <span class="font-medium">7-10 munkanap</span></p>
+        <p class="text-gray-700 text-sm">Tervezés: <span class="font-medium">4-6 munkanap</span> | Fejlesztés: <span class="font-medium">8-10 munkanap</span></p>
       </div>`
     ],
     // deliverables: [
@@ -115,9 +115,8 @@ export const benettcarConfig: ClientConfig = {
     'landing-page-benettcar',
     'online-booking-benettcar',
     'domain-hosting',
-    'ssl-certificate',
-    'google-analytics',
-    'training',
+    'domain-hosting-yearly',
+    'training-basic',
   ],
   
   pricingVersion: 'basic',
@@ -125,11 +124,12 @@ export const benettcarConfig: ClientConfig = {
   // Egyedi árak (opcionális felülírás)
   customPrices: {
     'landing-page-benettcar': 159000,     // basic
-    'online-booking-benettcar': 279000,   // basic
+    'online-booking-benettcar': 259000,   // basic
     'domain-hosting': 14900,              // basic
-    'ssl-certificate': 20000,             // basic
-    'google-analytics': 25000,            // basic
-    'training': 40000,                    // basic
+    'domain-hosting-yearly': 39000,       // basic
+    'training-basic': 0,                  // basic - ingyenes
+    'training': 29000,                    // basic
+    'maintenance-monthly': 14900,         // basic
   },
   
   // Megjelenítési beállítások
@@ -176,6 +176,18 @@ Ajánlatunk összefoglalása.
 3. **Tesztelés & Finomhangolás**: X hét
 4. **Átadás & Képzés**: X hét
 
-**Teljes átfutási idő: X hét**`
+**Teljes átfutási idő: X hét**
+
+---
+
+### További Feltételek
+
+**9. Domain és tárhely szolgáltatás**
+
+A domain és tárhely külső szolgáltatótól kerül biztosításra. A vállalkozó viszonteladóként végzi a beszerzést, beállítást és SSL aktiválást. A tárhelyszolgáltató infrastruktúrájából eredő problémák (szerverleállás, e-mail hiba, adat-visszaállítás) kezelése külön egyeztetés és óradíjas elszámolás alapján történik.
+
+**10. Felelősség és garancia**
+
+A vállalkozó a külső szolgáltató (tárhely, domain) rendelkezésre állásáért és működéséért felelősséget nem vállal. A technikai egyeztetéseket elvégzi, de a szolgáltatói infrastruktúra meghibásodásából eredő problémák nem képezik a projekt hatókörét.`
   }
 };

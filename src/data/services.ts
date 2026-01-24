@@ -452,10 +452,23 @@ const serviceDefinitions: ServiceBase[] = [
     billingPeriod: 'egyszeri',
   },
   {
+    id: 'training-basic',
+    category: 'Kiegészítő szolgáltatások',
+    name: 'Rendszerbemutatás és oktatás (60 perc)',
+    description: 'Személyes vagy online rendszerbemutatás, alapvető használat ismertetése',
+    prices: {
+      premium: 0,
+      standard: 0,
+      basic: 0,
+    },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
+  },
+  {
     id: 'training',
     category: 'Kiegészítő szolgáltatások',
-    name: 'Oktatás és átadás',
-    description: 'Személyes oktatás a weboldal kezeléséhez',
+    name: 'Részletes oktatás és dokumentáció',
+    description: 'Alapos oktatás az időpontfoglaló rendszer használatához, dokumentáció átadása, több órás személyes támogatás',
     prices: {
       premium: 80000,
       standard: 60000,

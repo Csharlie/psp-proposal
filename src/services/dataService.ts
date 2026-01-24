@@ -24,11 +24,13 @@ class LocalDataProvider implements IDataProvider {
     const { createServices } = await import('../data/services');
     let allServices = createServices(config.pricingVersion);
     
-    // Elérhető szolgáltatások ID-k (selectedServices + tárhely opciók)
+    // Elérhető szolgáltatások ID-k (selectedServices + tárhely opciók + opcionális szolgáltatások)
     const availableServiceIds = [...new Set([
       ...config.selectedServices,
       'domain-hosting-monthly',
       'domain-hosting-yearly',
+      'training',
+      'maintenance-monthly',
     ])];
     
     // Szolgáltatások betöltése az availableServiceIds sorrendjében

@@ -8,8 +8,8 @@ interface TimelineProps {
 export function Timeline({ printable = false }: TimelineProps) {
   const phases = [
     { name: 'Előkészítés', duration: '2-3 munkanap', description: 'Igényfelmérés, üzleti célok meghatározása' },
-    { name: 'Vizuális megjelenés', duration: '3-5 munkanap', description: 'Oldalstruktúra és szekciók megtervezése' },
-    { name: 'Technikai megvalósítás', duration: '7-10 munkanap', description: 'Működő, élesíthető landing oldal' },
+    { name: 'Landing Page', duration: '7-12 munkanap', description: 'Működő, élesíthető landing oldal' },
+    { name: 'Booking', duration: '10-16 munkanap', description: 'Működő, élesíthető landing oldal' },
     { name: 'Átadás', duration: '1-2 munkanap', description: 'Tesztelés, végső finomhangolás, éles indítás' },
   ];
 
@@ -27,12 +27,10 @@ export function Timeline({ printable = false }: TimelineProps) {
               <span className="text-blue-600 font-semibold">{index + 1}</span>
             </div>
             <div className="flex-1">
-              <div className={printable ? "mb-1 flex items-center justify-between gap-2" : "flex items-center gap-2 mb-1"}>
-                <h3 className="font-semibold text-gray-900">{phase.name}</h3>
-                <div className="flex pt-2 pb-1 items-center gap-1 text-sm text-gray-600">
-                  <Clock className="w-4 h-4" />
-                  <span>{phase.duration}</span>
-                </div>
+              <h3 ui-data-id="phase-name" className="font-semibold text-gray-900 mb-1">{phase.name}</h3>
+              <div ui-data-id="phase-duration" className="flex items-center gap-1 text-sm text-gray-600 mb-2">
+                <Clock className="w-4 h-4" />
+                <span>{phase.duration}</span>
               </div>
               <p className="text-gray-600 text-sm">{phase.description}</p>
             </div>

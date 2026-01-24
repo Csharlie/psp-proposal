@@ -38,6 +38,14 @@ export default function Terms({ customText }: TermsProps) {
       title: 'Lemondás',
       content: 'A projekt indítása után lemondás esetén a már elvégzett munka arányos díja számlázásra kerül, minimum az előleg összege.',
     },
+    {
+      title: 'Domain és tárhely',
+      content: 'Külső szolgáltatótól biztosítva, viszonteladóként. Infrastruktúra problémák kezelése külön egyeztetés és óradíjas elszámolás szerint.',
+    },
+    {
+      title: 'Külső szolgáltatók',
+      content: 'A tárhely és domain szolgáltató rendelkezésre állásáért felelősséget nem vállalunk. Infrastruktúra meghibásodás nem képezi a projekt hatókörét.',
+    },
   ];
 
   return (

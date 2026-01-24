@@ -10,18 +10,18 @@ import { GalleryImage } from '../../../types';
  */
 
 // Importáld ide a képeket:
-// import desktopMockup from './benettcar-desktop.png';
-// import mobileMockup from './benettcar-mobile.png';
+import desktopMockup from './benettcar-desktop.png';
+import mobileMockup from './benettcar-mobile.png';
 
 export const galleryImages: GalleryImage[] = [
-  // {
-  //   url: desktopMockup,
-  //   title: 'Desktop Mockup',
-  //   description: 'Benett Car Business weboldal - Desktop nézet'
-  // },
-  // {
-  //   url: mobileMockup,
-  //   title: 'Mobile Mockup',
-  //   description: 'Benett Car Business weboldal - Mobil nézet'
-  // }
+  {
+    url: desktopMockup,
+    title: 'Desktop Mockup',
+    description: 'Benett Car Business weboldal - Desktop nézet'
+  },
+  {
+    url: mobileMockup,
+    title: 'Mobile Mockup',
+    description: 'Benett Car Business weboldal - Mobil nézet'
+  }
 ];

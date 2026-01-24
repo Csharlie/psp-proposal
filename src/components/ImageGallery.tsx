@@ -135,7 +135,7 @@ export default function ImageGallery({ images, title = "Látványtervek" }: Imag
             <img
               src={image.url}
               alt={image.title || `Látványterv ${index + 1}`}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-200 flex items-center justify-center">
               <svg className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
