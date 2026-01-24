@@ -12,7 +12,7 @@ export interface ClientConfig {
   project: {
     title: string;
     description: string;
-    features?: string;
+    features?: string | string[];
     timeline?: string | string[];
     deliverables?: string[];
     gallery?: import('../types').GalleryImage[];

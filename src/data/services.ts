@@ -507,6 +507,22 @@ const serviceDefinitions: ServiceBase[] = [
     selectable: false,
   },
 
+  // Benettcar specifikus szolgáltatások
+  {
+    id: 'landing-page-benettcar',
+    category: 'Webfejlesztés',
+    name: 'Landing Page',
+    description: 'Egyoldalas, konverzió-központú bemutatkozó oldal mobilra optimalizálva',
+    prices: {
+      premium: 219000,
+      standard: 179000,
+      basic: 139000,
+    },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
+    selectable: false,
+  },
+
   // AutoZeno specifikus szolgáltatások
   {
     id: 'landing-page',

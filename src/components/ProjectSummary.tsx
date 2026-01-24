@@ -19,24 +19,32 @@ export default function ProjectSummary({ projectInfo, printable = false }: Proje
       
       <div className="space-y-4">
         <div>
-          <h3 className="font-semibold text-gray-900 mb-2">Projekt címe</h3>
+          <h3 className="font-bold text-gray-900 mb-2">Projekt címe</h3>
           <p className="text-gray-700">{projectInfo.title || 'Nincs megadva'}</p>
         </div>
         
         <div>
-          <h3 className="font-semibold text-gray-900 mb-2">Leírás</h3>
-          <p className="text-gray-700">{projectInfo.description || 'Nincs megadva'}</p>
+          <h3 className="font-bold text-gray-900 mb-2">Leírás</h3>
+          <div className="text-gray-700" dangerouslySetInnerHTML={{ __html: projectInfo.description || 'Nincs megadva' }} />
         </div>
         
         {projectInfo.features && (
           <div>
-            <h3 className="font-semibold text-gray-900 mb-2">Funkciók</h3>
-            <div dangerouslySetInnerHTML={{ __html: projectInfo.features }} />
+            <h3 className="font-bold text-gray-900 mb-2">Funkciók</h3>
+            {Array.isArray(projectInfo.features) ? (
+              <div className="space-y-4">
+                {projectInfo.features.map((feature, index) => (
+                  <div key={index} dangerouslySetInnerHTML={{ __html: feature }} />
+                ))}
+              </div>
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: projectInfo.features }} />
+            )}
           </div>
         )}
         
         <div>
-          <h3 className="font-semibold text-gray-900 mb-2">Időkeret</h3>
+          <h3 className="font-bold text-gray-900 mb-2">Időkeret</h3>
           {Array.isArray(projectInfo.timeline) ? (
             <ul className="list-disc list-inside space-y-1">
               {projectInfo.timeline.map((item, index) => (
