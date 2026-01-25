@@ -25,13 +25,13 @@ export const anettpappConfig: ClientConfig = {
     </div>
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
-      <h4 class="font-semibold text-gray-900 mb-1">Bemutatkozás</h4>
-      <p class="text-gray-600 text-sm">Rövid személyes bemutatkozó szekció képpel és szöveggel, amely az egyedi megközelítést hangsúlyozza</p>
+      <h4 class="font-semibold text-gray-900 mb-1">Szolgáltatások</h4>
+      <p class="text-gray-600 text-sm">Három különböző élethelyzet kiemelése: Esküvői szertartás, Fogadalom megerősítése, Névadó</p>
     </div>
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
-      <h4 class="font-semibold text-gray-900 mb-1">Szolgáltatások</h4>
-      <p class="text-gray-600 text-sm">Három különböző élethelyzet kiemelése kártyás elrendezésben ikonokkal: Esküvői szertartás, Fogadalom megerősítése, Névadó</p>
+      <h4 class="font-semibold text-gray-900 mb-1">Bemutatkozás</h4>
+      <p class="text-gray-600 text-sm">Rövid személyes bemutatkozó szekció képpel és szöveggel, amely az egyedi megközelítést hangsúlyozza</p>
     </div>
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
@@ -41,12 +41,12 @@ export const anettpappConfig: ClientConfig = {
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
       <h4 class="font-semibold text-gray-900 mb-1">Folyamat bemutatása</h4>
-      <p class="text-gray-600 text-sm">Számozott lépésekben bemutatva a közös munka ritmusa - a megismerkedéstől a szertartás pillanatáig</p>
+      <p class="text-gray-600 text-sm">A közös munka ritmusa - világos lépések és mérföldkövek a megismerkedéstől a szertartás pillanatáig</p>
     </div>
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
       <h4 class="font-semibold text-gray-900 mb-1">No Go zóna</h4>
-      <p class="text-gray-600 text-sm">Rövid, őszinte állítások arról, mi nem része a szertartásvezetésnek</p>
+      <p class="text-gray-600 text-sm">Röviden arról, mi nem része a szertartásvezetésnek - egyértelmű határok és átlátható elvárások a megfelelő együttműködés érdekében</p>
     </div>
     
     <div class="bg-blue-50 border border-blue-100 rounded-lg p-4">
@@ -65,6 +65,36 @@ export const anettpappConfig: ClientConfig = {
     </div>
   </div>
 </div>`
+    ],
+    timeline: [
+      `<div class="border-l-4 border-blue-500 pl-6 py-3">
+        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+          <h5 class="font-bold text-gray-900">Előkészítés</h5>
+          <span class="text-sm font-semibold text-blue-600">2-3 munkanap</span>
+        </div>
+        <p class="text-gray-600 text-sm">Igényfelmérés, üzleti célok meghatározása, dizájn koncepció, vizuális irány kialakítása</p>
+      </div>`,
+      `<div class="border-l-4 border-blue-500 pl-6 py-3">
+        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+          <h5 class="font-bold text-gray-900">Látványterv</h5>
+          <span class="text-sm font-semibold text-blue-600">5-7 munkanap</span>
+        </div>
+        <p class="text-gray-600 text-sm">Oldal vizuális megjelenésének kialakítása, színvilág és tipográfia véglegesítése, tartalom egyeztetés és jóváhagyás</p>
+      </div>`,
+      `<div class="border-l-4 border-blue-500 pl-6 py-3">
+        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+          <h5 class="font-bold text-gray-900">Fejlesztés</h5>
+          <span class="text-sm font-semibold text-blue-600">5-7 munkanap</span>
+        </div>
+        <p class="text-gray-600 text-sm">Frontend kódolás, mobilra optimalizált megjelenés kialakítása, galéria és kapcsolati űrlap implementálása</p>
+      </div>`,
+      `<div class="border-l-4 border-blue-500 pl-6 py-3">
+        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-2">
+          <h5 class="font-bold text-gray-900">Átadás</h5>
+          <span class="text-sm font-semibold text-blue-600">1-2 munkanap</span>
+        </div>
+        <p class="text-gray-600 text-sm">Tesztelés, végső finomhangolás, éles indítás</p>
+      </div>`
     ],
     gallery: galleryImages
   },
