@@ -100,19 +100,26 @@ export const anettpappConfig: ClientConfig = {
   },
   
   quote: {
-    id: "AP-2026-003",
+    id: "PSP-2026-003",
     issueDate: "2026-01-25",
     validityDays: 30
   },
   
   selectedServices: [
     'landing-page',
-    'responsive-design',
-    'custom-design',
-    'seo'
+    'domain-hosting',
+    'domain-hosting-yearly'
   ],
   
-  pricingVersion: 'standard',
+  pricingVersion: 'basic',
+  
+  // Egyedi árak (opcionális felülírás)
+  customPrices: {
+    'landing-page': 219000,              // basic
+    'domain-hosting': 14900,             // basic
+    'domain-hosting-monthly': 3900,      // basic
+    'domain-hosting-yearly': 39000,      // basic
+  },
   
   showYearlyCosts: false,
   

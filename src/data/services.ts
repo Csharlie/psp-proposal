@@ -590,6 +590,7 @@ const serviceDefinitions: ServiceBase[] = [
     },
     billingType: 'one-time',
     billingPeriod: 'egyszeri',
+    selectable: false,
   },
   {
     id: 'custom-web-dev',
@@ -616,6 +617,7 @@ const serviceDefinitions: ServiceBase[] = [
     },
     billingType: 'monthly',
     billingPeriod: 'havi',
+    selectable: true,
   },
   {
     id: 'domain-hosting-yearly',
@@ -629,6 +631,7 @@ const serviceDefinitions: ServiceBase[] = [
     },
     billingType: 'yearly',
     billingPeriod: 'éves',
+    selectable: true,
   },
 ];
 

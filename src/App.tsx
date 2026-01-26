@@ -79,8 +79,23 @@ function App() {
     const recurringHostingServices = ['domain-hosting-monthly', 'domain-hosting-yearly'];
     const isRecurringHosting = recurringHostingServices.includes(serviceId);
     
-    setServices(prev =>
-      prev.map(service => {
+    setServices(prev => {
+      // Ellenőrizzük, hogy az adott tárhely szolgáltatás ki van-e választva
+      const currentService = prev.find(s => s.id === serviceId);
+      const isCurrentlySelected = currentService?.selected;
+      
+      // Ha tárhely szolgáltatást szeretnénk kikapcsolni, de ez az egyetlen aktív, ne engedjük
+      if (isRecurringHosting && isCurrentlySelected) {
+        const otherHostingSelected = prev.some(s => 
+          recurringHostingServices.includes(s.id) && s.id !== serviceId && s.selected
+        );
+        // Ha nincs másik tárhely szolgáltatás kiválasztva, ne kapcsoljuk ki
+        if (!otherHostingSelected) {
+          return prev; // Ne változtasson semmit
+        }
+      }
+      
+      return prev.map(service => {
         // Ha havi vagy éves tárhely szolgáltatást választunk
         if (isRecurringHosting && recurringHostingServices.includes(service.id)) {
           if (service.id === serviceId) {
@@ -96,8 +111,8 @@ function App() {
           return { ...service, selected: !service.selected };
         }
         return service;
-      })
-    );
+      });
+    });
   };
 
   const selectedServices = services.filter(s => s.selected);

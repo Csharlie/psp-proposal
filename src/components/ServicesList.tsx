@@ -47,18 +47,20 @@ export default function ServicesList({ services, onToggle, interactive, title = 
       `}
     >
       <div className="flex items-start gap-3">
-        <div className="flex-shrink-0 mt-1">
-          {service.selected ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-6 h-6 ${service.selectable === false ? 'text-gray-500' : 'text-blue-600'}`}>
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-gray-400">
-              <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-          )}
-        </div>
+        {!printable && (
+          <div className="flex-shrink-0 mt-1">
+            {service.selected ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-6 h-6 ${service.selectable === false ? 'text-gray-500' : 'text-blue-600'}`}>
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 text-gray-400">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+            )}
+          </div>
+        )}
         
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2 mb-2">
@@ -124,6 +126,14 @@ export default function ServicesList({ services, onToggle, interactive, title = 
                     </div>
                   )}
                 </>
+              )}
+              
+              {/* Ha nincs oneTimeHosting (mert külön szekcióban van), akkor is megjelenítjük a havi/éves tárhely szolgáltatásokat */}
+              {!oneTimeHosting && (monthlyHosting || yearlyHosting) && (
+                <div className="md:col-span-2 grid md:grid-cols-2 gap-4">
+                  {yearlyHosting && renderService(yearlyHosting)}
+                  {monthlyHosting && renderService(monthlyHosting)}
+                </div>
               )}
               
               {/* Többi szolgáltatás */}

@@ -10,18 +10,18 @@ import { GalleryImage } from '../../../types';
  */
 
 // Importáld ide a képeket:
-import desktopMockup from './anett-papp-desktop.png';
-import mobileMockup from './anett-papp-mobile.png';
+import desktopConcept from './anett-papp-desktop.png';
+import mobileConcept from './anett-papp-mobile.png';
 
 export const galleryImages: GalleryImage[] = [
   {
-    url: desktopMockup,
-    title: 'Desktop Mockup',
-    description: 'Papp Anett weboldal - Desktop nézet'
+    url: desktopConcept,
+    title: 'Desktop Concept',
+    description: 'Papp Anett weboldal - Asztali nézet'
   },
   {
-    url: mobileMockup,
-    title: 'Mobile Mockup',
+    url: mobileConcept,
+    title: 'Mobile Concept',
     description: 'Papp Anett weboldal - Mobil nézet'
   }
 ];

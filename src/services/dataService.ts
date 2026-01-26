@@ -29,8 +29,6 @@ class LocalDataProvider implements IDataProvider {
       ...config.selectedServices,
       'domain-hosting-monthly',
       'domain-hosting-yearly',
-      'training',
-      'maintenance-monthly',
     ])];
     
     // Szolgáltatások betöltése az availableServiceIds sorrendjében
