@@ -34,7 +34,7 @@ const PrintableQuote = forwardRef<HTMLDivElement, PrintableQuoteProps>(
 
         <PaymentTerms />
         <PaymentBreakdown services={services} showDetails={true} showYearlyCosts={quoteInfo.showYearlyCosts} />
-        <Timeline printable={true} />
+        {/* <Timeline printable={true} /> */}
         <ProjectStartConditions />
         <Terms />
 

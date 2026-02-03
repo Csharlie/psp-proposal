@@ -13,10 +13,10 @@ export default function ClientDetails({ clientInfo, printable = false }: ClientD
       <h2 className="text-xl font-bold text-gray-900 mb-4">Ügyfél adatai</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="flex items-center gap-3">
-          <Building2 className="w-5 h-5 text-gray-400" />
+          <User className="w-5 h-5 text-gray-400" />
           <div>
-            <p className="text-sm text-gray-600">Cég</p>
-            <p className="font-medium">{clientInfo.company || 'Nincs megadva'}</p>
+            <p className="text-sm text-gray-600">Név</p>
+            <p className="font-medium">{clientInfo.name || 'Nincs megadva'}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">

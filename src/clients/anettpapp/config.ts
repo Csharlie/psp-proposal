@@ -5,9 +5,9 @@ export const anettpappConfig: ClientConfig = {
   client: {
     name: "Papp Anett",
     contact: "Papp Anett",
-    email: "info@pappanett.hu",
+    email: "boszorka85@gmail.hu",
     phone: "+36 XX XXX XXXX",
-    address: "Magyarország"
+    address: "Kiskunfélegyháza, Magyarország"
   },
   
   project: {
