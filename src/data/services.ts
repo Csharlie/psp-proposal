@@ -426,6 +426,19 @@ const serviceDefinitions: ServiceBase[] = [
     billingPeriod: 'egyszeri',
   },
   {
+    id: 'website-usage-baseline-3m',
+    category: 'Weboldal használati elemzés',
+    name: 'Weboldal használati alapmérés (3 hónap)',
+    description: '3 hónapos alapmérés az indulás után. • Havi 1 jelentés • Mennyien látogatják az oldalt • Mobilról vagy számítógépről érkeznek-e',
+    prices: {
+      premium: 19000,
+      standard: 19000,
+      basic: 19000,
+    },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
+  },
+  {
     id: 'ssl-certificate',
     category: 'Kiegészítő szolgáltatások',
     name: 'SSL tanúsítvány telepítés',

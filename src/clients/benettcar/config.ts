@@ -117,6 +117,7 @@ export const benettcarConfig: ClientConfig = {
     'domain-hosting',
     'domain-hosting-yearly',
     'training-basic',
+    'website-usage-baseline-3m',
   ],
   
   pricingVersion: 'basic',
