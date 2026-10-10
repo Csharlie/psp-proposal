@@ -12,7 +12,7 @@ export const farkasklaraConfig: ClientConfig = {
 
   project: {
     title: "Farkas Klára Könyvelőiroda – Többoldalas céges weboldal",
-    description: `Szakmai hitelességet sugárzó, <span class="font-semibold text-black">mobilra optimalizált céges weboldal</span> a könyvelőiroda számára, amely érthetően mutatja be a szolgáltatásokat egyéni vállalkozóknak, kis- és középvállalkozásoknak és nagyobb cégeknek. Minden szolgáltatás <span class="font-semibold text-black">saját aloldalt</span> kap, az érdeklődők pedig egy <span class="font-semibold text-black">ajánlatkérő űrlapon</span> keresztül, a kívánt szolgáltatás előválasztásával vehetik fel a kapcsolatot.`,
+    description: `Szakmai hitelességet sugárzó, <span class="font-semibold text-black">mobilra optimalizált céges weboldal</span> a könyvelőiroda számára, amely érthetően mutatja be a szolgáltatásokat egyéni vállalkozóknak, kis- és középvállalkozásoknak és nagyobb cégeknek. Minden szolgáltatás <span class="font-semibold text-black">saját aloldalt</span> kap, az érdeklődők pedig egy <span class="font-semibold text-black">ajánlatkérő űrlapon</span> keresztül, a kívánt szolgáltatás előválasztásával vehetik fel a kapcsolatot. A weboldalt kiegészíti a <span class="font-semibold text-black">Google Cégprofil</span> és a <span class="font-semibold text-black">Facebook-jelenlét</span>, hogy az iroda ott is megtalálható legyen, ahol a leendő ügyfelek keresnek.`,
     features: [
       // Első features szekció - Főoldal szerkezete
       `
@@ -106,6 +106,8 @@ export const farkasklaraConfig: ClientConfig = {
 
   selectedServices: [
     'website-farkasklara',
+    'google-business-profile-farkasklara',
+    'facebook-marketing-farkasklara',
     'domain-hosting',
     'domain-hosting-yearly',
     'training-basic',
@@ -116,7 +118,9 @@ export const farkasklaraConfig: ClientConfig = {
 
   // Egyedi árak (opcionális felülírás)
   customPrices: {
-    'website-farkasklara': 199000,        // basic
+    'website-farkasklara': 179000,        // basic - a projekt alapja
+    'google-business-profile-farkasklara': 19000, // egyszeri
+    'facebook-marketing-farkasklara': 19000,      // havi
     'domain-hosting': 14900,              // basic
     'domain-hosting-yearly': 39000,       // basic
     'training-basic': 0,                  // basic - ingyenes
