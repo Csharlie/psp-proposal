@@ -174,7 +174,7 @@ function App() {
 
           {/* Árazási összesítő */}
           {selectedServices.length > 0 && (
-            <PricingSummary services={selectedServices} />
+            <PricingSummary services={selectedServices} vatRate={quoteInfo.vatRate} />
           )}
           
           {/* Egyedi záró szöveg megjelenítése - IDEIGLENESEN ELREJTVE */}

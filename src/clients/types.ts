@@ -32,6 +32,10 @@ export interface ClientConfig {
   pricingVersion: 'premium' | 'standard' | 'basic';
     // Megjelenítési beállítások
   showYearlyCosts?: boolean;
+    // ÁFA kulcs (alapértelmezés: 0.27; 0 esetén nettó = bruttó, ÁFA sorok rejtve)
+  vatRate?: number;
+    // Fizetési ütemezés (alapértelmezés: 'advance' = 20% előleg + 80% végösszeg)
+  paymentSchedule?: import('../utils/paymentSchedule').PaymentSchedule;
     // Egyedi árak (opcionális felülírás)
   customPrices?: Record<string, number>;
   

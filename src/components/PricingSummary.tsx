@@ -1,11 +1,13 @@
 import { ServiceItem } from '../types';
+import { DEFAULT_VAT_RATE, formatVatLabel } from '../utils/vat';
 
 interface PricingSummaryProps {
   services: ServiceItem[];
   showTotal?: boolean;
+  vatRate?: number;
 }
 
-export default function PricingSummary({ services, showTotal = false }: PricingSummaryProps) {
+export default function PricingSummary({ services, showTotal = false, vatRate = DEFAULT_VAT_RATE }: PricingSummaryProps) {
   // Szolgáltatások szétválasztása díjtípus szerint
   const oneTimeServices = services.filter(s => s.billingType === 'one-time');
   const monthlyServices = services.filter(s => s.billingType === 'monthly');
@@ -17,7 +19,7 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
 
   // Teljes egyszeri költség (egyszeri + éves díjak az első évre)
   const totalPrice = oneTimeTotal + yearlyTotal;
-  const vatAmount = totalPrice * 0.27;
+  const vatAmount = totalPrice * vatRate;
   const totalWithVat = totalPrice + vatAmount;
 
   const formatPrice = (price: number): string => {
@@ -43,15 +45,15 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
                 <span>Nettó:</span>
                 <span className="font-semibold">{formatPrice(oneTimeTotal)}</span>
               </div>
-              {showTotal && (
+              {showTotal && vatRate > 0 && (
                 <div className="flex justify-between text-gray-700">
-                  <span>ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(oneTimeTotal * 0.27)}</span>
+                  <span>{formatVatLabel(vatRate)}:</span>
+                  <span className="font-semibold">{formatPrice(oneTimeTotal * vatRate)}</span>
                 </div>
               )}
               <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
                 <span>Bruttó:</span>
-                <span>{formatPrice(oneTimeTotal * 1.27)}</span>
+                <span>{formatPrice(oneTimeTotal * (1 + vatRate))}</span>
               </div>
             </div>
           </div>
@@ -66,15 +68,15 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
                 <span>Nettó / hó:</span>
                 <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
               </div>
-              {showTotal && (
+              {showTotal && vatRate > 0 && (
                 <div className="flex justify-between text-gray-700">
-                  <span>ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
+                  <span>{formatVatLabel(vatRate)}:</span>
+                  <span className="font-semibold">{formatPrice(monthlyTotal * vatRate)}</span>
                 </div>
               )}
               <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
                 <span>Bruttó / hó:</span>
-                <span>{formatPrice(monthlyTotal * 1.27)}</span>
+                <span>{formatPrice(monthlyTotal * (1 + vatRate))}</span>
               </div>
             </div>
           </div>
@@ -89,15 +91,15 @@ export default function PricingSummary({ services, showTotal = false }: PricingS
                 <span>Nettó / év:</span>
                 <span className="font-semibold">{formatPrice(yearlyTotal)}</span>
               </div>
-              {showTotal && (
+              {showTotal && vatRate > 0 && (
                 <div className="flex justify-between text-gray-700">
-                  <span>ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(yearlyTotal * 0.27)}</span>
+                  <span>{formatVatLabel(vatRate)}:</span>
+                  <span className="font-semibold">{formatPrice(yearlyTotal * vatRate)}</span>
                 </div>
               )}
               <div className="flex justify-between text-lg font-bold border-t pt-3 text-blue-600">
                 <span>Bruttó / év:</span>
-                <span>{formatPrice(yearlyTotal * 1.27)}</span>
+                <span>{formatPrice(yearlyTotal * (1 + vatRate))}</span>
               </div>
             </div>
           </div>

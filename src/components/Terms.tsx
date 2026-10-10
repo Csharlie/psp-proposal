@@ -1,10 +1,17 @@
 interface TermsProps {
   customText?: string;
+  paymentSchedule?: PaymentSchedule;
 }
 
 import { FileCheck } from 'lucide-react';
+import {
+  CANCELLATION_TEXTS,
+  DEFAULT_PAYMENT_SCHEDULE,
+  PROJECT_START_TEXTS,
+  PaymentSchedule,
+} from '../utils/paymentSchedule';
 
-export default function Terms({ customText }: TermsProps) {
+export default function Terms({ customText, paymentSchedule = DEFAULT_PAYMENT_SCHEDULE }: TermsProps) {
   const terms = [
     {
       title: 'Érvényesség',
@@ -12,7 +19,7 @@ export default function Terms({ customText }: TermsProps) {
     },
     {
       title: 'Projekt indítás',
-      content: 'A projekt megkezdése az előleg beérkezése és a szerződés aláírása után történik.',
+      content: PROJECT_START_TEXTS[paymentSchedule],
     },
     {
       title: 'Tartalom biztosítása',
@@ -36,7 +43,7 @@ export default function Terms({ customText }: TermsProps) {
     },
     {
       title: 'Lemondás',
-      content: 'A projekt indítása után lemondás esetén a már elvégzett munka arányos díja számlázásra kerül, minimum az előleg összege.',
+      content: CANCELLATION_TEXTS[paymentSchedule],
     },
     {
       title: 'Domain és tárhely',

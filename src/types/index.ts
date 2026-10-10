@@ -35,6 +35,8 @@ export interface QuoteInfo {
   projectInfo: ProjectInfo;
   pricingVersion: PricingVersion;
   showYearlyCosts?: boolean;
+  vatRate?: number;
+  paymentSchedule?: import('../utils/paymentSchedule').PaymentSchedule;
   notes?: string;
   customTexts?: {
     introduction?: string;

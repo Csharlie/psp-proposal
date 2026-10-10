@@ -1,5 +1,6 @@
 
 import { Calendar, Clock } from 'lucide-react';
+import { DEFAULT_PAYMENT_SCHEDULE, PaymentSchedule, WORK_START_CONDITION_TEXTS } from '../utils/paymentSchedule';
 
 interface TimelineProps {
   printable?: boolean;
@@ -41,12 +42,12 @@ export function Timeline({ printable = false }: TimelineProps) {
   );
 }
 
-export function ProjectStartConditions() {
+export function ProjectStartConditions({ paymentSchedule = DEFAULT_PAYMENT_SCHEDULE }: { paymentSchedule?: PaymentSchedule }) {
   return (
     <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200 mb-6">
       <h3 className="font-semibold text-gray-900 mb-3">Projektindítás és feltételek</h3>
       <div className="space-y-2 text-sm text-gray-700">
-        <p>A projekt megvalósítása a megrendelés írásos visszaigazolása és a vállalkozási díj beérkezése után kezdődik.</p>
+        <p>{WORK_START_CONDITION_TEXTS[paymentSchedule]}</p>
         <p>A megjelölt határidők az indulás időpontjától számítandók.</p>
         <p>Az ajánlatban szereplő tartalom fix scope-nak minősül, az azon felüli igények külön egyeztetés és árazás tárgyát képezik.</p>
       </div>

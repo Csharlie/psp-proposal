@@ -80,6 +80,8 @@ class LocalDataProvider implements IDataProvider {
         gallery: config.project.gallery || [],
       },
       showYearlyCosts: config.showYearlyCosts,
+      vatRate: config.vatRate,
+      paymentSchedule: config.paymentSchedule,
       customTexts: config.customTexts,
     };
   }

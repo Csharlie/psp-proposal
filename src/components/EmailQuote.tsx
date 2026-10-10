@@ -1,4 +1,5 @@
 import { QuoteInfo, ServiceItem } from '../types';
+import { DEFAULT_VAT_RATE, formatVatLabel } from '../utils/vat';
 
 interface EmailQuoteProps {
   quoteInfo: QuoteInfo;
@@ -13,10 +14,11 @@ export default function EmailQuote({ quoteInfo, services }: EmailQuoteProps) {
     const monthly = services.filter(s => s.billingType === 'monthly').reduce((sum, s) => sum + s.price, 0);
     const yearly = services.filter(s => s.billingType === 'yearly').reduce((sum, s) => sum + s.price, 0);
     const totalNet = oneTime + monthly + yearly;
-    const vat = totalNet * 0.27;
+    const vatRate = quoteInfo.vatRate ?? DEFAULT_VAT_RATE;
+    const vat = totalNet * vatRate;
     const gross = totalNet + vat;
     
-    return { oneTime, monthly, yearly, totalNet, vat, gross };
+    return { oneTime, monthly, yearly, totalNet, vatRate, vat, gross };
   };
 
   const totals = calculateTotals();
@@ -187,12 +189,14 @@ export default function EmailQuote({ quoteInfo, services }: EmailQuoteProps) {
                             {totals.totalNet.toLocaleString('hu-HU')} Ft
                           </td>
                         </tr>
-                        <tr>
-                          <td style={{ fontSize: '14px', color: '#374151', padding: '4px 0' }}>ÁFA (27%)</td>
-                          <td style={{ fontSize: '14px', fontWeight: '600', color: '#111827', textAlign: 'right', padding: '4px 0' }}>
-                            {totals.vat.toLocaleString('hu-HU')} Ft
-                          </td>
-                        </tr>
+                        {totals.vatRate > 0 && (
+                          <tr>
+                            <td style={{ fontSize: '14px', color: '#374151', padding: '4px 0' }}>{formatVatLabel(totals.vatRate)}</td>
+                            <td style={{ fontSize: '14px', fontWeight: '600', color: '#111827', textAlign: 'right', padding: '4px 0' }}>
+                              {totals.vat.toLocaleString('hu-HU')} Ft
+                            </td>
+                          </tr>
+                        )}
                         <tr>
                           <td style={{ fontSize: '16px', fontWeight: '700', color: '#111827', padding: '8px 0 0 0' }}>Bruttó összesen</td>
                           <td style={{ fontSize: '18px', fontWeight: '700', color: '#2563eb', textAlign: 'right', padding: '8px 0 0 0' }}>

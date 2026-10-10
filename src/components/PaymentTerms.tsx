@@ -1,7 +1,14 @@
 
 import { CreditCard } from 'lucide-react';
+import { DEFAULT_VAT_RATE } from '../utils/vat';
+import { DEFAULT_PAYMENT_SCHEDULE, PAYMENT_STAGE_TEXTS, PaymentSchedule } from '../utils/paymentSchedule';
 
-export default function PaymentTerms() {
+interface PaymentTermsProps {
+  vatRate?: number;
+  paymentSchedule?: PaymentSchedule;
+}
+
+export default function PaymentTerms({ vatRate = DEFAULT_VAT_RATE, paymentSchedule = DEFAULT_PAYMENT_SCHEDULE }: PaymentTermsProps) {
   return (
     <div className="mb-8">
       <div className="flex items-center gap-2 mb-4">
@@ -15,24 +22,22 @@ export default function PaymentTerms() {
         <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
           <h3 className="font-semibold text-gray-900 mb-4 text-lg">Fizetési ütemezés</h3>
           <div className="space-y-3">
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-                1
+            {PAYMENT_STAGE_TEXTS[paymentSchedule].map((stage, index) => (
+              <div key={stage.title} className="flex items-start gap-3">
+                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  {index + 1}
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">{stage.title}</p>
+                  <p className="text-sm text-gray-600">{stage.description}</p>
+                </div>
               </div>
-              <div>
-                <p className="font-semibold text-gray-900">Előleg - 20%</p>
-                <p className="text-sm text-gray-600">A megrendelés visszaigazolása után</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-                2
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Végösszeg - 80%</p>
-                <p className="text-sm text-gray-600">A projekt sikeres átadása után</p>
-              </div>
-            </div>
+            ))}
+            {paymentSchedule === 'hosting-first' && (
+              <p className="text-sm text-gray-600 pt-2 border-t border-blue-200">
+                A havi díjas szolgáltatások díja havonta, az igénybevétel kezdetétől esedékes.
+              </p>
+            )}
           </div>
         </div>
 
@@ -53,7 +58,11 @@ export default function PaymentTerms() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-              <span>ÁFA: 27% (tartalmazza a végösszeget)</span>
+              <span>
+                {vatRate > 0
+                  ? `ÁFA: ${Math.round(vatRate * 100)}% (tartalmazza a végösszeget)`
+                  : 'A feltüntetett árak végösszegek, ÁFA-t nem tartalmaznak'}
+              </span>
             </div>
           </div>
         </div>

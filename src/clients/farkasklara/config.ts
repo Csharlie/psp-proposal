@@ -130,19 +130,21 @@ export const farkasklaraConfig: ClientConfig = {
 
   // Megjelenítési beállítások
   showYearlyCosts: false,
+  vatRate: 0, // nettó = bruttó
+  paymentSchedule: 'hosting-first', // nincs előleg: a domain & tárhely díja indítja a munkát
 
   customTexts: {
     paymentTerms: `### Fizetési Feltételek
 
-- **Előleg**: 50% szerződéskötéskor
-- **Végszámla**: 50% átadás-átvételkor
+- **Domain & tárhely díja**: a megrendelés visszaigazolásakor, beérkezése után indul a fejlesztés (előleg nincs)
+- **Fennmaradó összeg**: a kész weboldal átadásakor
 - **Fizetési határidő**: 8 nap
 - **Fizetési mód**: Banki átutalás
 
 ### Érvényesség
 
 - Ajánlat érvényessége: **30 nap**
-- Árak tartalmazzák az ÁFÁ-t
+- Az árak végösszegek, ÁFA-t nem tartalmaznak
 - Árak HUF-ban értendők`,
 
     additionalTerms: `### További Feltételek

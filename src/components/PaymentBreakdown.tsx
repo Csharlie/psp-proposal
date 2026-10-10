@@ -1,12 +1,21 @@
 import { ServiceItem } from '../types';
+import { DEFAULT_VAT_RATE, formatVatLabel } from '../utils/vat';
+import {
+  DEFAULT_PAYMENT_SCHEDULE,
+  PAYMENT_STAGE_TEXTS,
+  PaymentSchedule,
+  getPaymentStageNets,
+} from '../utils/paymentSchedule';
 
 interface PaymentBreakdownProps {
   services: ServiceItem[];
   showDetails?: boolean;
   showYearlyCosts?: boolean;
+  vatRate?: number;
+  paymentSchedule?: PaymentSchedule;
 }
 
-export default function PaymentBreakdown({ services, showDetails = false, showYearlyCosts = true }: PaymentBreakdownProps) {
+export default function PaymentBreakdown({ services, showDetails = false, showYearlyCosts = true, vatRate = DEFAULT_VAT_RATE, paymentSchedule = DEFAULT_PAYMENT_SCHEDULE }: PaymentBreakdownProps) {
   // Szolgáltatások szétválasztása díjtípus szerint
   const oneTimeServices = services.filter(s => s.billingType === 'one-time');
   const monthlyServices = services.filter(s => s.billingType === 'monthly');
@@ -18,17 +27,14 @@ export default function PaymentBreakdown({ services, showDetails = false, showYe
 
   // Teljes egyszeri költség (egyszeri + éves díjak az első évre)
   const totalPrice = oneTimeTotal + yearlyTotal;
-  const vatAmount = totalPrice * 0.27;
+  const vatAmount = totalPrice * vatRate;
   const totalWithVat = totalPrice + vatAmount;
 
-  // Előleg (20%) és végösszeg (80%)
-  const advancePaymentNet = totalPrice * 0.20;
-  const advancePaymentVat = vatAmount * 0.20;
-  const advancePayment = totalWithVat * 0.20;
-  
-  const finalPaymentNet = totalPrice * 0.80;
-  const finalPaymentVat = vatAmount * 0.80;
-  const finalPayment = totalWithVat * 0.80;
+  // Fizetési szakaszok (pl. előleg + végösszeg, vagy tárhely + fennmaradó összeg)
+  const stageNets = getPaymentStageNets(paymentSchedule, services);
+  const stages = PAYMENT_STAGE_TEXTS[paymentSchedule]
+    .map((text, index) => ({ ...text, net: stageNets[index] }))
+    .filter(stage => stage.net > 0);
 
   const formatPrice = (price: number): string => {
     return price.toLocaleString('hu-HU', {
@@ -50,57 +56,33 @@ export default function PaymentBreakdown({ services, showDetails = false, showYe
         
         <h4 className="font-semibold text-gray-900 mb-4 text-lg">Fizetési ütemezés</h4>
         <div className="space-y-4">
-          {/* Előleg */}
-          <div className="bg-white p-4 rounded-lg border border-gray-200">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-                1
-              </div>
-              <span className="font-semibold text-gray-900">Előleg (20%)</span>
-            </div>
-            <div className="ml-10 space-y-2 text-sm">
-              <div className="flex justify-between text-gray-700">
-                <span>Nettó:</span>
-                <span className="font-semibold">{formatPrice(advancePaymentNet)}</span>
-              </div>
-              {showDetails && (
-                <div className="flex justify-between text-gray-700">
-                  <span>ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(advancePaymentVat)}</span>
+          {stages.map((stage, index) => (
+            <div key={stage.title} className="bg-white p-4 rounded-lg border border-gray-200">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  {index + 1}
                 </div>
-              )}
-              <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
-                <span>Bruttó:</span>
-                <span>{formatPrice(advancePayment)}</span>
+                <span className="font-semibold text-gray-900">{stage.title}</span>
               </div>
-            </div>
-          </div>
-
-          {/* Végösszeg */}
-          <div className="bg-white p-4 rounded-lg border border-gray-200">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">
-                2
-              </div>
-              <span className="font-semibold text-gray-900">Végösszeg (80%)</span>
-            </div>
-            <div className="ml-10 space-y-2 text-sm">
-              <div className="flex justify-between text-gray-700">
-                <span>Nettó:</span>
-                <span className="font-semibold">{formatPrice(finalPaymentNet)}</span>
-              </div>
-              {showDetails && (
+              <p className="ml-10 mb-3 text-sm text-gray-600">{stage.description}</p>
+              <div className="ml-10 space-y-2 text-sm">
                 <div className="flex justify-between text-gray-700">
-                  <span>ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(finalPaymentVat)}</span>
+                  <span>Nettó:</span>
+                  <span className="font-semibold">{formatPrice(stage.net)}</span>
                 </div>
-              )}
-              <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
-                <span>Bruttó:</span>
-                <span>{formatPrice(finalPayment)}</span>
+                {showDetails && vatRate > 0 && (
+                  <div className="flex justify-between text-gray-700">
+                    <span>{formatVatLabel(vatRate)}:</span>
+                    <span className="font-semibold">{formatPrice(stage.net * vatRate)}</span>
+                  </div>
+                )}
+                <div className="flex justify-between text-base font-bold text-blue-600 border-t pt-2">
+                  <span>Bruttó:</span>
+                  <span>{formatPrice(stage.net * (1 + vatRate))}</span>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* Összesített összegek */}
@@ -110,9 +92,9 @@ export default function PaymentBreakdown({ services, showDetails = false, showYe
             <span className="font-semibold">Összesített nettó{showYearlyCosts ? ' / egyszeri + éves' : ''}:</span>
             <span className="font-semibold">{formatPrice(totalPrice)}</span>
           </div>
-          {showDetails && (
+          {showDetails && vatRate > 0 && (
             <div className="flex justify-between text-gray-700">
-              <span className="font-semibold">ÁFA (27%):</span>
+              <span className="font-semibold">{formatVatLabel(vatRate)}:</span>
               <span className="font-semibold">{formatPrice(vatAmount)}</span>
             </div>
           )}
@@ -128,15 +110,15 @@ export default function PaymentBreakdown({ services, showDetails = false, showYe
                 <span className="font-semibold">Összesített nettó / hó:</span>
                 <span className="font-semibold">{formatPrice(monthlyTotal)}</span>
               </div>
-              {showDetails && (
+              {showDetails && vatRate > 0 && (
                 <div className="flex justify-between text-gray-700">
-                  <span className="font-semibold">ÁFA (27%):</span>
-                  <span className="font-semibold">{formatPrice(monthlyTotal * 0.27)}</span>
+                  <span className="font-semibold">{formatVatLabel(vatRate)}:</span>
+                  <span className="font-semibold">{formatPrice(monthlyTotal * vatRate)}</span>
                 </div>
               )}
               <div className="flex justify-between font-bold text-blue-600 border-t-2 pt-3">
                 <span>Összesített bruttó / hó:</span>
-                <span>{formatPrice(monthlyTotal * 1.27)}</span>
+                <span>{formatPrice(monthlyTotal * (1 + vatRate))}</span>
               </div>
             </>
           )}
