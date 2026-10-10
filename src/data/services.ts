@@ -563,6 +563,22 @@ const serviceDefinitions: ServiceBase[] = [
     selectable: true,
   },
 
+  // Farkas Klára specifikus szolgáltatások
+  {
+    id: 'website-farkasklara',
+    category: 'Webfejlesztés',
+    name: 'Többoldalas céges weboldal',
+    description: 'Főoldal, szolgáltatásonkénti aloldalak, Rólunk, Kapcsolat, Könyvelőváltás és Tudástár oldal, ajánlatkérő űrlap, mobilra optimalizálva',
+    prices: {
+      premium: 289000,
+      standard: 239000,
+      basic: 199000,
+    },
+    billingType: 'one-time',
+    billingPeriod: 'egyszeri',
+    selectable: false,
+  },
+
   // AutoZeno specifikus szolgáltatások
   {
     id: 'landing-page',

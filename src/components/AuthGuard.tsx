@@ -9,8 +9,8 @@ const AUTH_ENABLED = true;
 
 // Bejelentkezési adatok
 const CREDENTIALS = {
-  username: 'benettcar',
-  password: 'BCPSP26!'
+  username: 'farkasklara',
+  password: 'FKPSP26!'
 };
 
 export default function AuthGuard({ children }: AuthGuardProps) {

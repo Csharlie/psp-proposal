@@ -5,6 +5,7 @@ import { startupXyzConfig } from './startup-xyz/config';
 import { autozenoConfig } from './autozeno/config';
 import { bellatorConfig } from './bellator/config';
 import { benettcarConfig } from './benettcar/config';
+import { farkasklaraConfig } from './farkasklara/config';
 
 export const availableConfigs: Record<string, ClientConfig> = {
   'pelda-kft': peldaKftConfig,
@@ -12,6 +13,7 @@ export const availableConfigs: Record<string, ClientConfig> = {
   'autozeno': autozenoConfig,
   'bellator': bellatorConfig,
   'benettcar': benettcarConfig,
+  'farkasklara': farkasklaraConfig,
 };
 
 export function getConfig(key: string): ClientConfig {
